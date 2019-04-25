@@ -48,4 +48,5 @@
 # Tomis additions
 *LightingData.asset filter=lfs diff=lfs merge=lfs -text
 Assets/Scenes/Windridge[[:space:]]City[[:space:]]Demo[[:space:]]Scene/LightingData.asset filter=lfs diff=lfs merge=lfs -text
+test.tttx filter=lfs diff=lfs merge=lfs -text
 *LightingData* filter=lfs diff=lfs merge=lfs -text
