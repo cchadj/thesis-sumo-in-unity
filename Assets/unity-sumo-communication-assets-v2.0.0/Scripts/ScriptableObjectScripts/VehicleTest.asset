@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08bf0d23eb73faa438b10069f73ed0e6, type: 3}
+  m_Name: VehicleTest
+  m_EditorClassIdentifier: 
+  _ID: 45
+  _raw2DPosition: {x: 207.84, y: -129.5}
+  _position2DConverted: {x: 207.84, y: 0, z: -129.5}
+  _position3D: {x: 72.47, y: 0.05, z: -21.27}
+  _prevPosition2D: {x: 207.84, y: 0, z: -129.5}
+  _angle: 333.8
+  _prevAngle: 329.3403
+  _speed: 0
+  _acceleration: 0
+  _width: 0
+  _length: 0
+  _height: 0
+  _signal: 0
+  _routeID: 
+  _edgeID: 
+  _laneID: 
+  _laneIndex: 0
+  _maxAcceleration: 0
+  _edgeIDs: []
+  _departStep: 0
+  _prevPositions: []
+  _mockNewPositions:
+  - {x: 209.51953, y: -0.099585354, z: -229.97607}
+  - {x: 235.52979, y: -0.09958601, z: -226.16553}
+  - {x: 260.5017, y: -0.09958887, z: -208.26294}
+  - {x: 253.36328, y: -0.09959406, z: -176.78003}
+  - {x: 233.95679, y: -0.09959853, z: -149.00928}
+  - {x: 205.4414, y: -0.099600434, z: -137.37866}
+  _mockNewAngles:
+  - 71.27729
+  - 63.690353
+  - 40.446186
+  - 10.1159725
+  - 329.3403
+  - 328.7253
+  _mockAccelerations:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  _mockSpeeds:
+  - 10
+  - 10
+  - 25
+  - 34
+  - 12
+  - 5
+  _mockStep: 1
+  _selectedIndex: -1

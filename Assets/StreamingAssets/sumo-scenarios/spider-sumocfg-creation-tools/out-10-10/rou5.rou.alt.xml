@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 04/03/19 11:14:18 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-10-10/./rou5.rou.xml"/>
+        <alternatives-output value="out-10-10/./rou5.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="1.0"/>
+        <end value="101.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="1.00">
+        <routeDistribution last="0">
+            <route cost="18.85" probability="1.00000000" edges="G3F3 F3F4 F4F5 F5F6 F6E6"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="1" depart="21.00">
+        <routeDistribution last="0">
+            <route cost="24.94" probability="1.00000000" edges="H6I6 I6H6 H6G6 G6F6 F6E6 E6D6 D6C6 C6B6 B6B5 B5B4 B4B3 B3B2 B2C2 C2D2 D2E2 E2D2"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="2" depart="41.00">
+        <routeDistribution last="0">
+            <route cost="14.98" probability="1.00000000" edges="C2B2 B2B1 B1B10 B10B9 B9B8 B8C8 C8D8 D8E8 E8F8 F8G8"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="3" depart="61.00">
+        <routeDistribution last="0">
+            <route cost="13.05" probability="1.00000000" edges="I5H5 H5G5 G5F5 F5E5 E5D5 D5C5 C5B5 B5B4"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="4" depart="81.00">
+        <routeDistribution last="0">
+            <route cost="17.49" probability="1.00000000" edges="F7F6 F6E6 E6D6 D6C6 C6B6 B6B5 B5B4 B4B3 B3B4"/>
+        </routeDistribution>
+    </vehicle>
+</routes>

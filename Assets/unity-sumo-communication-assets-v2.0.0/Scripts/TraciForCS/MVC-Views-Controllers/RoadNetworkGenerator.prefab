@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1953644358437776}
+  m_IsPrefabAsset: 1
+--- !u!1 &1953644358437776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4220412633573708}
+  - component: {fileID: 114878319896070144}
+  m_Layer: 0
+  m_Name: RoadNetworkGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4220412633573708
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953644358437776}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114878319896070144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1953644358437776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f867c84a25724e64fb86645865fd7d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sumoNetworkData: {fileID: 11400000, guid: 4ee5074a6027d9f45ae3d8f41a7717d0, type: 2}
+  _transformNetworkData: {fileID: 11400000, guid: 316d2ce8058e09f479ac8c1a20ddfa22,
+    type: 2}
+  _currentlySelectedTargets: {fileID: 11400000, guid: 762af430c92a3e6469703c2ffbb79152,
+    type: 2}
+  Name: RoadNetworkFromSumo
+  SumoNetXmlFile: C:/unity-workspace/ena/Assets/sumo/sumo-plainxmls/fixedv2.net.xml
+  RoadMaterial: {fileID: 2100000, guid: d711fb7c40259e04db1d5c29e6c52589, type: 2}
+  JunctionMaterial: {fileID: 0}
+  JunctionTrafficLightMaterial: {fileID: 0}
+  LengthThreshold: 100000
+  RoadWidth: 4
+  _onClickLaneEvents: []
+  AddBoxCollider: 1
+  _makeClickable: 0
+  _laneDataDisplayTexts: {fileID: 11400000, guid: ddf6859168bb5084fb375f3ab31d0e30,
+    type: 2}
+  LaneCanvas: {fileID: 0}
+  AttachHeightMatcher: 0
+  HeightBufferObjects: []
+  DrawNormals: 0
+  ShowDebugRays: 0

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- generated on 2019-03-10 15:43:20.051597 by $Id$
+  options: -o trips.trips.xml -n net-1net.net.xml -v -r rout.rou.xml -b 0 -e 3600 -p 100
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="0" depart="0.00" from="53" to="30"/>
+    <trip id="1" depart="100.00" from="50" to="10"/>
+    <trip id="2" depart="200.00" from="47" to="21"/>
+    <trip id="3" depart="300.00" from="57" to="34"/>
+    <trip id="4" depart="400.00" from="40" to="51"/>
+    <trip id="5" depart="500.00" from="19" to="68"/>
+    <trip id="6" depart="600.00" from="19" to="39"/>
+    <trip id="7" depart="700.00" from="30" to="60"/>
+    <trip id="8" depart="800.00" from="7" to="48"/>
+    <trip id="9" depart="900.00" from="14" to="41"/>
+    <trip id="10" depart="1000.00" from="41" to="14"/>
+    <trip id="11" depart="1100.00" from="16" to="20"/>
+    <trip id="12" depart="1200.00" from="22" to="63"/>
+    <trip id="13" depart="1300.00" from="49" to="34"/>
+    <trip id="14" depart="1400.00" from="4" to="48"/>
+    <trip id="15" depart="1500.00" from="5" to="45"/>
+    <trip id="16" depart="1600.00" from="5" to="62"/>
+    <trip id="17" depart="1700.00" from="5" to="64"/>
+    <trip id="18" depart="1800.00" from="53" to="5"/>
+    <trip id="19" depart="1900.00" from="68" to="23"/>
+    <trip id="20" depart="2000.00" from="62" to="16"/>
+    <trip id="21" depart="2100.00" from="10" to="49"/>
+    <trip id="22" depart="2200.00" from="66" to="45"/>
+    <trip id="23" depart="2300.00" from="27" to="55"/>
+    <trip id="24" depart="2400.00" from="gneE6" to="41"/>
+    <trip id="25" depart="2500.00" from="41" to="49"/>
+    <trip id="26" depart="2600.00" from="7" to="46"/>
+    <trip id="27" depart="2700.00" from="66" to="32"/>
+    <trip id="28" depart="2800.00" from="52" to="5"/>
+    <trip id="29" depart="2900.00" from="23" to="32"/>
+    <trip id="30" depart="3000.00" from="28" to="51"/>
+    <trip id="31" depart="3100.00" from="5" to="46"/>
+    <trip id="32" depart="3200.00" from="gneE6" to="6"/>
+    <trip id="33" depart="3300.00" from="19" to="50"/>
+    <trip id="34" depart="3400.00" from="64" to="50"/>
+    <trip id="35" depart="3500.00" from="13" to="67"/>
+</routes>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 04/01/19 23:17:58 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-30-60-40/./rou5.rou.xml"/>
+        <alternatives-output value="out-30-60-40/./rou5.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="0.0"/>
+        <end value="100.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="0.00">
+        <routeDistribution last="0">
+            <route cost="156.65" probability="1.00000000" edges="AL3AK3 AK3AK2 AK2AK1 AK1AK30 AK30AK29 AK29AK28 AK28AK27 AK27AK26 AK26AL26 AL26AM26 AM26AN26 AN26AO26 AO26AP26 AP26AQ26 AQ26AR26 AR26AS26 AS26AT26 AT26AU26 AU26AV26 AV26AW26 AW26AX26 AX26AY26 AY26AZ26 AZ26BA26 BA26BB26 BB26BC26 BC26BD26 BD26BE26 BE26BF26 BF26BG26 BG26BH26 BH26BI26 BI26BJ26 BJ26BK26 BK26BL26 BL26BM26 BM26BN26 BN26BO26 BO26BP26 BP26BQ26 BQ26BR26 BR26BS26 BS26BT26 BT26BU26 BU26BV26 BV26BW26 BW26BV26"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="1" depart="20.00">
+        <routeDistribution last="0">
+            <route cost="104.61" probability="1.00000000" edges="AL17AK17 AK17AJ17 AJ17AI17 AI17AH17 AH17AG17 AG17AF17 AF17AE17 AE17AD17 AD17AC17 AC17AC18 AC18AC19 AC19AC20 AC20AC21 AC21AC22 AC22AC23 AC23AC24 AC24AC25 AC25AC26 AC26AC27 AC27AC28 AC28AC29 AC29AC30 AC30AC1 AC1AD1 AD1AE1 AE1AF1 AF1AG1 AG1AH1 AH1AI1 AI1AJ1 AJ1AK1 AK1AL1 AL1AM1 AM1AN1 AN1AO1 AO1AP1 AP1AQ1 AQ1AR1 AR1AS1 AS1AT1 AT1AU1 AU1AV1 AV1AW1 AW1AX1 AX1AW1"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="2" depart="40.00">
+        <routeDistribution last="0">
+            <route cost="115.88" probability="1.00000000" edges="AV27AV28 AV28AU28 AU28AT28 AT28AS28 AS28AR28 AR28AQ28 AQ28AP28 AP28AO28 AO28AN28 AN28AN29 AN29AN30 AN30AN1 AN1AN2 AN2AN3 AN3AN4 AN4AN5 AN5AN6 AN6AN7 AN7AN8 AN8AM8"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="3" depart="60.00">
+        <routeDistribution last="0">
+            <route cost="110.40" probability="1.00000000" edges="AJ25AK25 AK25AK26 AK26AK27 AK27AK28 AK28AK29 AK29AK30 AK30AK1 AK1AK2 AK2AL2 AL2AM2 AM2AN2 AN2AO2 AO2AP2 AP2AQ2 AQ2AR2 AR2AS2 AS2AT2 AT2AU2 AU2AV2 AV2AW2 AW2AX2 AX2AY2 AY2AZ2 AZ2BA2 BA2BB2 BB2BB3"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="4" depart="80.00">
+        <routeDistribution last="0">
+            <route cost="139.12" probability="1.00000000" edges="AE21AF21 AF21AE21 AE21AD21 AD21AC21 AC21AB21 AB21AB20 AB20AB19 AB19AB18 AB18AB17 AB17AB16 AB16AB15 AB15AB14 AB14AB13 AB13AB12 AB12AB11 AB11AB10 AB10AC10 AC10AD10 AD10AE10 AE10AF10 AF10AG10 AG10AH10 AH10AI10 AI10AJ10 AJ10AK10 AK10AL10 AL10AM10 AM10AN10 AN10AO10 AO10AP10 AP10AQ10 AQ10AR10 AR10AS10 AS10AT10 AT10AU10 AU10AV10 AV10AW10 AW10AX10 AX10AY10 AY10AZ10 AZ10BA10 BA10BB10 BB10BC10 BC10BD10 BD10BE10 BE10BF10 BF10BG10 BG10BH10 BH10BI10 BI10BJ10 BJ10BJ9"/>
+        </routeDistribution>
+    </vehicle>
+</routes>

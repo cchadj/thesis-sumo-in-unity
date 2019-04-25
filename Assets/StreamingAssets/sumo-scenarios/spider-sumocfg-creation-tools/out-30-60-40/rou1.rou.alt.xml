@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 04/01/19 23:17:56 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-30-60-40/./rou1.rou.xml"/>
+        <alternatives-output value="out-30-60-40/./rou1.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="0.0"/>
+        <end value="100.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="0.00">
+        <routeDistribution last="0">
+            <route cost="141.36" probability="1.00000000" edges="BU18BT18 BT18BS18 BS18BR18 BR18BQ18 BQ18BP18 BP18BO18 BO18BN18 BN18BM18 BM18BL18 BL18BK18 BK18BJ18 BJ18BI18 BI18BH18 BH18BG18 BG18BF18 BF18BE18 BE18BD18 BD18BC18 BC18BB18 BB18BA18 BA18AZ18 AZ18AY18 AY18AX18 AX18AW18 AW18AV18 AV18AU18 AU18AT18 AT18AS18 AS18AR18 AR18AQ18 AQ18AP18 AP18AO18 AO18AN18 AN18AM18 AM18AL18 AL18AK18 AK18AJ18 AJ18AI18 AI18AH18 AH18AH17 AH17AH16 AH16AH15 AH15AH14 AH14AH13 AH13AH12 AH12AH13"/>
+        </routeDistribution>
+    </vehicle>
+</routes>

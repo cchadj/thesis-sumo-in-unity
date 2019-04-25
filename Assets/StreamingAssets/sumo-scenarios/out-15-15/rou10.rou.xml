@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 04/09/19 16:18:53 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-15-15-new/./rou10.rou.xml"/>
+        <alternatives-output value="out-15-15-new/./rou10.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="1.0"/>
+        <end value="101.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="1.00">
+        <route edges="N3O3 O3N3 N3M3 M3L3 L3K3 K3J3 J3I3 I3H3 H3G3 G3F3 F3E3 E3D3 D3C3 C3B3 B3B2 B2B1 B1B15 B15B14 B14B13 B13B12 B12B13"/>
+    </vehicle>
+    <vehicle id="1" depart="11.00">
+        <route edges="L7L6 L6L5 L5L4 L4L3 L3M3 M3N3 N3N4"/>
+    </vehicle>
+    <vehicle id="2" depart="21.00">
+        <route edges="L5L6 L6L5 L5L4 L4L3 L3L2 L2L1 L1K1"/>
+    </vehicle>
+    <vehicle id="3" depart="31.00">
+        <route edges="H12H13 H13G13 G13F13 F13E13 E13D13 D13C13 C13C14 C14C15 C15C1 C1C2 C2C3 C3C4 C4D4 D4E4 E4F4 F4G4 G4H4 H4I4 I4J4 J4K4 K4L4 L4M4 M4N4 N4O4 O4N4"/>
+    </vehicle>
+    <vehicle id="4" depart="41.00">
+        <route edges="E6D6 D6D7 D7D8 D8E8"/>
+    </vehicle>
+    <vehicle id="5" depart="51.00">
+        <route edges="M6M7 M7L7 L7K7 K7J7 J7I7 I7H7 H7G7 G7G8"/>
+    </vehicle>
+    <vehicle id="6" depart="61.00">
+        <route edges="D9E9 E9D9 D9C9 C9C10 C10C11 C11C12 C12C13 C13C14 C14C15 C15D15 D15E15 E15D15"/>
+    </vehicle>
+    <vehicle id="7" depart="71.00">
+        <route edges="K11K12 K12J12 J12I12 I12H12 H12G12 G12F12 F12E12 E12D12 D12C12 C12C13 C13C14 C14C15 C15C1 C1B1 B1B2"/>
+    </vehicle>
+    <vehicle id="8" depart="81.00">
+        <route edges="J13J14 J14J13 J13J12 J12J11 J11K11 K11L11 L11M11 M11N11 N11N12"/>
+    </vehicle>
+    <vehicle id="9" depart="91.00">
+        <route edges="E1D1 D1D15 D15D14 D14D13 D13D12 D12D11 D11E11 E11F11 F11G11 G11H11 H11I11 I11J11 J11K11 K11L11 L11M11 M11M10"/>
+    </vehicle>
+</routes>
