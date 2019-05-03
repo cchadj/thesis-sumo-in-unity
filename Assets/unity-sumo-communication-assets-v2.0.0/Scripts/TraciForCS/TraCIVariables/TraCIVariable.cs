@@ -21,7 +21,7 @@ namespace RiseProject.Tomis.SumoInUnity.SumoTypes
         }
 
         public bool IsInstantiated { get => _isInstantiated; set => _isInstantiated = value;}
-        private bool _isInstantiated = false;
+        [SerializeField]private bool _isInstantiated = false;
 
         private void Instantiate()
         {

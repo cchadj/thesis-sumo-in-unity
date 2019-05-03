@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 using System.Globalization;
 using System.Collections.Generic;
-
+using System.Reflection;
 using Tomis.UnityEditor.Utilities;
 using cakeslice;
 
@@ -11,6 +11,7 @@ using RiseProject.Tomis.Util.Serializable;
 using RiseProject.Tomis.DataHolders;
 using RiseProject.Tomis.SumoInUnity.MVC;
 using UnityEngine;
+using Random = System.Random;
 
 [ExecuteInEditMode]
 public class RoadNetworkRenderer : MonoBehaviour
@@ -18,15 +19,16 @@ public class RoadNetworkRenderer : MonoBehaviour
     [Header("Rendered Road Network Settings")]
     [Tooltip("What name do you want the generated mesh to be")]
     public string meshName;
+
     [FileSelect(
         OpenAtPath = @"/StreamingAssets/sumo-scenarios/",
         AssetRelativePath = true,
-        SelectMode =  SelectionMode.File,
+        SelectMode = SelectionMode.File,
         ButtonName = "Select Sumo Net File",
-        FileExtensions = "net.xml",
+        FileExtensions = "xml",
         Tooltip = "Select .net.xml file to create road network from")]
-
     public string sumoNetXmlFile;
+        //"/Users/afxentios/unity-workspace/sumo-in-unity-v.4.0.0/Assets/StreamingAssets/sumo-scenarios/out-15-15/net.net.xml";
     public Material roadMaterial;
     public Material junctionMaterial;
     public Material junctionTrafficLightMaterial;
@@ -34,6 +36,9 @@ public class RoadNetworkRenderer : MonoBehaviour
              " if Length Threshold is <=0 then no segmentation occurs. ")]
     public float lengthThreshold;
     public float roadWidth = 4f;
+    public float renderPercentage;
+    public bool renderJunctions;
+
 
     private CurrentlySelectedTargets CurrentlySelectedTargets { get; set; }
     private TransformNetworkData TransformNetworkData { get; set; }
@@ -67,7 +72,6 @@ public class RoadNetworkRenderer : MonoBehaviour
     public bool showDebugRays;
 
     private int _laneCount;
-    private string _netXmlFile;
     private readonly Dictionary<string, Junction> _junctionDict;
     private GameObject _generatedRoadNetwork;
     private GameObject _generatedLanes;
@@ -144,32 +148,43 @@ public class RoadNetworkRenderer : MonoBehaviour
         };
         _generatedJunctions.transform.parent = _generatedRoadNetwork.transform;
 
-        Debug.Log("Folder opened: " + sumoNetXmlFile);
+//        sumoNetXmlFile = "/Users/afxentios/unity-workspace/sumo-in-unity-v.4.0.0/Assets/StreamingAssets/sumo-scenarios/out-15-15/net.net.xml";
+        Debug.Log("File opened: " + sumoNetXmlFile);
+        
         /* We must render the Road*/
-        _netXmlFile = sumoNetXmlFile; // Directory.GetFiles(SumoNetXmlFile, "*.net.xml", SearchOption.AllDirectories)[0];
         var lanes = GetLaneDataFromNetXml().ToArray();
         var junctions = GetJunctionDataFromNetXml().ToArray();
 
-        var laneGameObjectDict = new IDtoGameObjectsDictionary();
         /* RENDER LANES */
+        var count = 0;
+        var renderEach = Mathf.RoundToInt(1f / renderPercentage);
+        var laneGameObjectDict = new IDtoGameObjectsDictionary();
         foreach (var lane in lanes)
         {
+            if (UnityEngine.Random.value > renderPercentage)
+            {
+                continue;
+                
+            }
             _laneCount++;
             var curLane = lane;
             laneGameObjectDict.Add(curLane.ID, RenderLane(curLane, roadWidth));
         }
 
-        var junctionGameObjectDict = new IDtoGameObjectDictionary();
         /* RENDER JUNCTIONS */
-        foreach (var junction in junctions)
+        if (renderJunctions)
         {
-            _junctionCount++;
-            var curJunction = junction;
-            junctionGameObjectDict.Add(curJunction.ID, RenderShapedVariable(curJunction));
+            var junctionGameObjectDict = new IDtoGameObjectDictionary();
+            foreach (var junction in junctions)
+            {
+                _junctionCount++;
+                var curJunction = junction;
+                junctionGameObjectDict.Add(curJunction.ID, RenderShapedVariable(curJunction));
+            }
+
+            TransformNetworkData.LaneIDGameObjectPairs = laneGameObjectDict;
         }
-
-        TransformNetworkData.LaneIDGameObjectPairs = laneGameObjectDict;
-
+        
         return _generatedRoadNetwork;
     }
 
@@ -233,6 +248,7 @@ public class RoadNetworkRenderer : MonoBehaviour
                     laneQuad.AddComponent<MeshHeightMatcher>();
                 }
 
+                
                 if (drawNormals)
                 {
                    laneQuad.AddComponent<DrawNormals>();
@@ -243,15 +259,19 @@ public class RoadNetworkRenderer : MonoBehaviour
 
                 var laneController = laneQuad.AddComponent<LaneController>();
                 laneController.TraCIVariable = lane;
+
+                var laneInCameraFrustum = laneQuad.AddComponent<LaneInCameraFrustum>();
+                laneInCameraFrustum.Lane = lane;
+                laneInCameraFrustum.ID = lane.ID;
                 
                 if (MakeClickable && addBoxCollider)
                 {
 
-                    Outline highlightLine = laneQuad.gameObject.AddComponent<Outline>();
+                    var highlightLine = laneQuad.gameObject.AddComponent<Outline>();
                     highlightLine.color = 1;
                     highlightLine.enabled = false;
 
-                    SelectableObjectEvent selectableObjectEvent = laneQuad.gameObject.AddComponent<SelectableObjectEvent>();
+                    var selectableObjectEvent = laneQuad.gameObject.AddComponent<SelectableObjectEvent>();
                     selectableObjectEvent.Transform = laneQuad.transform.GetChild(0);
                     selectableObjectEvent.OnHoverOutline = highlightLine;
                     selectableObjectEvent.SelectedTargets = CurrentlySelectedTargets;
@@ -321,9 +341,9 @@ public class RoadNetworkRenderer : MonoBehaviour
     /// <returns></returns>
     private List<Lane> GetLaneDataFromNetXml()
     {
-        List<Lane> lanes = new List<Lane>();
-        List<Edge> edges = new List<Edge>();
-        XDocument doc = XDocument.Load(_netXmlFile);
+        var lanes = new List<Lane>();
+        var edges = new List<Edge>();
+        var doc = XDocument.Load(sumoNetXmlFile);
         var edgesElements = doc.Root
                           .Elements("edge");
         foreach (XElement edgeElement in edgesElements)
@@ -346,20 +366,28 @@ public class RoadNetworkRenderer : MonoBehaviour
                 newLane.Index = (uint)laneElement.Attribute("index");
                 newLane.Speed = (float)laneElement.Attribute("speed");
                 newLane.Length = (float)laneElement.Attribute("length");
-                newLane.EdgeID = id;
+                newLane.EdgeId = id;
                 newLane.Edge = newEdge;
 
+                Vector2 centerOfMass = Vector2.zero;
                 List<Vector2> vectorPoints = new List<Vector2>();
                 string[] shapePositions = ((string)laneElement.Attribute("shape")).Split(null);
                 for (int i = 0; i < shapePositions.Length; i++)
                 {
                     string[] point = shapePositions[i].Split(',');
-                    vectorPoints.Add(new Vector2(
+                    var curPoint = new Vector2(
                         float.Parse(point[0], CultureInfo.InvariantCulture.NumberFormat),
-                        float.Parse(point[1], CultureInfo.InvariantCulture.NumberFormat)));
-                    newLane.ShapeVertexPoints = vectorPoints;
+                        float.Parse(point[1], CultureInfo.InvariantCulture.NumberFormat));
+                    vectorPoints.Add(curPoint);
+
+                    centerOfMass += curPoint;
+
                     /* UseCultureInfo.InvariantCulture.NumberFormat for . decimal mark */
                 }
+
+                centerOfMass /= shapePositions.Length;
+                newLane.centerOfMass = new Vector3(centerOfMass.x, 0f, centerOfMass.y);
+                newLane.ShapeVertexPoints = vectorPoints;
                 lanes.Add(newLane);
                 curEdgeLanes.Add(newLane);
             }
@@ -375,7 +403,7 @@ public class RoadNetworkRenderer : MonoBehaviour
     {
         /* <junction id="5" type="priority" x="100.00" y="400.00" incLanes="10to5_0 6to5_0 1to5_0" intLanes=":5_0_0 :5_9_0 :5_10_0 :5_3_0 :5_4_0 :5_5_0 :5_6_0 :5_7_0 :5_11_0" shape="104.75,403.25 104.75,396.75 103.25,395.25 96.75,395.25 95.25,396.75 95.25,403.25"> */
         List<Junction> junctions = new List<Junction>();
-        XDocument doc = XDocument.Load(_netXmlFile);
+        XDocument doc = XDocument.Load(sumoNetXmlFile);
         var junctionElements = doc.Root.Elements("junction");
 
         foreach (XElement junctionElement in junctionElements)

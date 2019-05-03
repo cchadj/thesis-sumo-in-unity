@@ -18,8 +18,9 @@ namespace Tomis.UnityEditor.Utilities
 
             if (!string.IsNullOrEmpty(fileSelectAttribute.OpenAtPath))
             {
+                
                 openAtPath = fileSelectAttribute.AssetRelativePath ?
-                    Application.dataPath + @"\" + fileSelectAttribute.OpenAtPath : fileSelectAttribute.OpenAtPath;
+                   Path.Combine( Application.dataPath,  "./" + fileSelectAttribute.OpenAtPath) : fileSelectAttribute.OpenAtPath;
                 openAtPath = Path.GetFullPath(openAtPath); // Do this to remove \..\ because unity does not understand this
             }
 
@@ -45,7 +46,7 @@ namespace Tomis.UnityEditor.Utilities
                     if (fileSelectAttribute.SelectMode == SelectionMode.Folder)
                     {
                         selectedFilePath = EditorUtility.OpenFolderPanel(buttonName, 
-                            openAtPath ?? "", fileSelectAttribute.FileExtensions);
+                            openAtPath ?? "",  fileSelectAttribute.FileExtensions);
                     }
                     else
                     {

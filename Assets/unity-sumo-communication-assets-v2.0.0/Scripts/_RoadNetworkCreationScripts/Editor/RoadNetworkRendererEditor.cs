@@ -42,6 +42,7 @@ public class RoadNetworkRendererEditor : Editor
                     GameObject.DestroyImmediate(g, false);
                     renderedRoadNetwork = null;
                 }
+            
                 foreach (GameObject g in GameObject.FindGameObjectsWithTag("GeneratedDictionaries"))
                 {
                     Debug.Log("Destroying old road network with name : " + g.name);

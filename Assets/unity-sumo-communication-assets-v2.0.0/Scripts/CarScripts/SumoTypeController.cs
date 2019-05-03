@@ -2,6 +2,7 @@
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Zenject;
 
 namespace RiseProject.Tomis.SumoInUnity.MVC
 {
@@ -9,23 +10,13 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
     {
         [SerializeField, ReadOnly] private T traCIVariable;
 
-        private void Awake()
+        [Inject]
+        private void Construct(SumoCommands sumoCommands)
         {
-            if(_commands == null)
-                Commands = SumoCommands.Instance;
+            Commands = sumoCommands;
         }
 
-        private SumoCommands _commands;
-        protected SumoCommands Commands {
-            get
-            {
-                if (_commands == null)
-                    _commands = SumoCommands.Instance;
-                
-                return _commands;
-            }
-            private set => _commands = value;
-        }
+        protected SumoCommands Commands { get; private set; }
 
         public T TraCIVariable { 
             get => traCIVariable;

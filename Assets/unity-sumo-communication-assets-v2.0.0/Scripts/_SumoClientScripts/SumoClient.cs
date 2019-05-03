@@ -21,6 +21,7 @@ using Tomis.Utils.Unity;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Serialization;
+using Zenject;
 using Application = UnityEngine.Application;
 using Debug = UnityEngine.Debug;
 
@@ -222,20 +223,7 @@ namespace RiseProject.Tomis.SumoInUnity
             set => _vehicleTypeCommands = value;
         }
 
-        private SumoCommands _sumoCommands;
-
-        private SumoCommands SumoCommands
-        {
-            get
-            {
-                // SumoCommand is a singleton
-                if (_sumoCommands == null)
-                    _sumoCommands = SumoCommands.Instance;
-                
-                return _sumoCommands;
-            }
-            set => _sumoCommands = value;
-        }
+        private SumoCommands SumoCommands { get; set; }
 
         #endregion Command Declarations 
 
@@ -422,6 +410,12 @@ namespace RiseProject.Tomis.SumoInUnity
             return Path.GetFullPath(exe);
         }
 
+        [Inject]
+        private void Construct(SumoCommands sumoCommands)
+        {
+            SumoCommands = sumoCommands;
+        }
+
         private void Awake()
         {
             AppManager = ApplicationManager.Instance;
@@ -451,7 +445,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 CreateSimStepExecutionTimeByVehicleCountPlot = StartupData.createSimStepDelayByVehicleCount;
             }
             
-            if(_sumoCommands == null)
+            if(SumoCommands == null)
                 SumoCommands = SumoCommands.Instance;
 
             SumoNetworkData = SumoNetworkData.Instance;
@@ -938,8 +932,7 @@ namespace RiseProject.Tomis.SumoInUnity
                         break;
                 }
             }
-            
-            
+                       
             VehiclesArrivedShared.Clear();
 
             if (UseContextSubscription) 

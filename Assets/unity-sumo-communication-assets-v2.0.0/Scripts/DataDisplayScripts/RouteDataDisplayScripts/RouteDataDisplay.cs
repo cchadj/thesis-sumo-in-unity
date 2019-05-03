@@ -4,28 +4,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+
 public class RouteDataDisplay : MonoBehaviour
 {
-    [SerializeField]
-    private SumoCommands _sumoCommands;
-
     [SerializeField]
     private Transform _templateRouteDetailsDisplay;
     [SerializeField]
     private Transform _showRoutesPanel;
 
-    public SumoCommands SumoCommands
-    {
-        get
-        {
-            return _sumoCommands;
-        }
-        private set
-        {
-            _sumoCommands = value;
-        }
-    }
-    
+    private SumoCommands SumoCommands { get; set; }
+
     public Transform ShowRoutesPanel
     {
         get
@@ -62,6 +51,13 @@ public class RouteDataDisplay : MonoBehaviour
         {
             _instansiatedRouteDetails = value;
         }
+    }
+
+
+    [Inject]
+    private void Construct(SumoCommands sumoCommands)
+    {
+        SumoCommands = sumoCommands;
     }
 
     bool firstUpdate = true;

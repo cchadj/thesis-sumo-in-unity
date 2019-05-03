@@ -74,7 +74,7 @@ public class LaneDataDisplay : DataDisplay
         if (lane == null)
             return;
         LaneIDText.text = $"Lane ID: {lane.ID}";
-        EdgeIDText.text = $"Text ID: {lane.EdgeID}";
+        EdgeIDText.text = $"Text ID: {lane.EdgeId}";
         SpeedText.text = $"Maximum speed: {lane.Speed}";
     }
 
