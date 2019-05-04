@@ -17,15 +17,16 @@ namespace RiseProject.Tomis.DataHolders
         [field: SerializeField, Rename("SumoConfiguration Filename")] public string SumoConfigFilename { get; set; }
 
         [Space(5), Header("Simulation Start up data")]
-        [ReadOnly] public bool createFpsByVehicleCountPlot = true;
-        [ReadOnly] public bool dontUseSumo;
-        [ReadOnly] public bool dontUSeVehicleSimulator;
-        [ReadOnly] public bool useReporter;
-        [ReadOnly] public float stepLength = 0.03f;
-        [ReadOnly] public bool useMultithreading;
-        [ReadOnly] public bool createSimStepDelayByVehicleCount;
-        [ReadOnly] public bool useContextSubscriptions;
-        [ReadOnly] public SumoProcessRedirectionMode redirectionMode;
+        public bool createFpsByVehicleCountPlot = true;
+        public bool UseSumoFromAssets;
+        public bool dontUseSumo;
+        public bool dontUseVehicleSimulator;
+        public bool useReporter;
+        public float stepLength = 0.03f;
+        public bool useMultithreading;
+        public bool createSimStepDelayByVehicleCount;
+        public bool useContextSubscriptions;
+        public SumoProcessRedirectionMode redirectionMode;
     }
 }
 

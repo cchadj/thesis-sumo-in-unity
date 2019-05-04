@@ -15,10 +15,12 @@ MonoBehaviour:
   <UseStartupData>k__BackingField: 0
   <SumoConfigFilename>k__BackingField: C:/Projects/sumo-in-unity/Assets/StreamingAssets/sumo-scenarios/out-15-15/run2500.sumocfg
   createFpsByVehicleCountPlot: 1
+  UseSumoFromAssets: 1
   dontUseSumo: 0
-  dontUSeVehicleSimulator: 1
+  dontUseVehicleSimulator: 0
   useReporter: 0
   stepLength: 0.049999997
   useMultithreading: 0
-  createSimStepDelayByVehicleCount: 1
+  createSimStepDelayByVehicleCount: 0
   useContextSubscriptions: 0
+  redirectionMode: 0

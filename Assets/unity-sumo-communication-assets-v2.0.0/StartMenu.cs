@@ -89,9 +89,9 @@ public class StartMenu : MonoBehaviour
         startupData.dontUseSumo = dontUseSumoToggle.isOn;
         dontUseSumoToggle.onValueChanged.AddListener(isToggleOn => startupData.dontUseSumo = isToggleOn);
 
-        startupData.dontUSeVehicleSimulator = dontUseVehicleSimulatorToggle.isOn;
+        startupData.dontUseVehicleSimulator = dontUseVehicleSimulatorToggle.isOn;
         dontUseVehicleSimulatorToggle.onValueChanged.AddListener(isToggleOn =>
-            startupData.dontUSeVehicleSimulator = isToggleOn);
+            startupData.dontUseVehicleSimulator = isToggleOn);
 
         // Performance toggles
         startupData.useMultithreading = useMultithreadingToggle.isOn;

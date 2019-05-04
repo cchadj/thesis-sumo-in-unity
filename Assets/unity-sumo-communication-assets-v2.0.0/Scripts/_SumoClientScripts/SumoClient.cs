@@ -74,12 +74,18 @@ namespace RiseProject.Tomis.SumoInUnity
         /// </summary>
         private const string RELATIVE_BUILD_PATH_TO_SUMO_EXECUTABLE_FOLDER = "sumo-executables";
 
+        [field: SerializeField, Tooltip("Use sumo from the assets folder instead of the one found at PATH")] 
+        public bool UseLocalSumo;
+        
         [field: SerializeField] public bool ShouldServeSumo { get; set; }
 
         [field: SerializeField] public bool CaptureSumoProcessErrors { get; set; }
         /// <summary> How many connections will this server support. </summary>
         [field: SerializeField] public int NumberOfConnections { get; set; } = DEFAULT_NUMBER_OF_CONNECTIONS;
 
+        
+        private string PathToSumoExecutables { get; set; }
+        
         #endregion Serve Sumo 
 
         #region Connection to SUMO
@@ -236,7 +242,7 @@ namespace RiseProject.Tomis.SumoInUnity
         /// <summary>
         /// vehicles that entered context range the last sim step
         /// </summary>
-        private VehicleDictionary VehiclesEnteredContextRange { get; } = new VehicleDictionary();
+        private VehicleDictionary VehiclesJustEnteredContextRange { get; } = new VehicleDictionary();
         /// <summary>
         /// Vehicles that exited the context range the last sim step
         /// </summary>
@@ -360,7 +366,7 @@ namespace RiseProject.Tomis.SumoInUnity
         [field: SerializeField]
         public int BeginStep { get; set; }
 
-        public string PathToSumoExecutables { private get; set; }
+
 
         public int NumberOfActiveVehicles { get; private set; }
         public int NumberOfVehiclesInsideContextRange { get; private set; }
@@ -411,9 +417,10 @@ namespace RiseProject.Tomis.SumoInUnity
         }
 
         [Inject]
-        private void Construct(SumoCommands sumoCommands)
+        private void Construct(SumoCommands sumoCommands, SimulationStartupData startupData)
         {
             SumoCommands = sumoCommands;
+            StartupData = startupData;
         }
 
         private void Awake()
@@ -424,15 +431,21 @@ namespace RiseProject.Tomis.SumoInUnity
                 enabled = false;
                 return;
             }
-
-            StartupData = SimulationStartupData.Instance;
-            if (StartupData && StartupData.UseStartupData)
+            
+            Assert.IsNotNull(StartupData, "SumoClient:Awake StartupData is null. Make sure a StartUp Scriptable" +
+                                          " Object asset was created ");   
+            if (StartupData.UseStartupData)
             {
+                Debug.Log("SumoClient: Using start up data from " + StartupData.name + " SimulationStartUpData " +
+                          "Scriptalbe Object asset");
+                
                 if (StartupData.dontUseSumo)
                 {
                     enabled = false;
                     return;
                 }
+
+                UseLocalSumo = StartupData.UseSumoFromAssets;         
                 
                 StepLength = StartupData.stepLength;
                 SumocfgFile = StartupData.SumoConfigFilename;
@@ -457,23 +470,22 @@ namespace RiseProject.Tomis.SumoInUnity
             const string sumoPathName = "SUMO_HOME";
             var sumoHomeEnvironmentalVariable = Environment.GetEnvironmentVariable(sumoPathName);
 
-            Debug.Log("PathToExecutable: " + PathToSumoExecutables);
-            var value = sumoHomeEnvironmentalVariable + PathToSumoExecutables;
 
+            // if SUMO_HOME is set then the binary in path is used. Otherwise the binary that is local to the build 
+            // of this project is used. The local binary is also used if UseLocalSumoExeutable is set
+            var value = sumoHomeEnvironmentalVariable + PathToSumoExecutables;
             try
             {
                 const EnvironmentVariableTarget target = EnvironmentVariableTarget.Machine;
-                if (sumoHomeEnvironmentalVariable != null)
-                {
-
-                }
-                else
+                if (UseLocalSumo || sumoHomeEnvironmentalVariable == null)
                 {
                     PathToSumoExecutables = Path.Combine(Application.streamingAssetsPath,
                         RELATIVE_BUILD_PATH_TO_SUMO_EXECUTABLE_FOLDER);
-                    Environment.SetEnvironmentVariable(sumoPathName,
-                        Path.Combine(PathToSumoExecutables),
-                        target);                    
+                    
+                    // DOESNT WORK
+//                    Environment.SetEnvironmentVariable(sumoPathName,
+//                        Path.Combine(PathToSumoExecutables),
+//                        target);                    
 
                 }
 
@@ -485,6 +497,9 @@ namespace RiseProject.Tomis.SumoInUnity
                 IsSumoPathSet = false;
                 Debug.LogError("SUMO_HOME is not set and can not be set. \n" + e.StackTrace);
             }
+            
+            Debug.Log("PathToExecutable: " + PathToSumoExecutables);
+
 
             // Assign Step length to shared vehicle data so each Vehicle can use it (for VehicleMover).
             SharedVehicleData.SimulationStepLength = StepLength;
@@ -508,11 +523,22 @@ namespace RiseProject.Tomis.SumoInUnity
             var argsStr = " -c " + "\"" + SumocfgFile + "\"" + " --remote-port " + RemotePort +
                           " --step-length " + StepLength +
                           " --start  " + "  --num-clients " + NumberOfConnections;
-            var sumoExecutable = "/usr/local/bin/sumo";
+            string sumoExecutable;
+            if (UseSumoGui)
+            {
+                sumoExecutable = string.IsNullOrEmpty(PathToSumoExecutables)
+                    ? "sumo-gui"
+                    : Path.Combine(PathToSumoExecutables, "sumo-gui");
+            }
+            else
+            {
 
-            //   UseSumoGui ? 
-            //      Path.Combine(PathToSumoExecutables, "sumo-gui"):
-            //     Path.Combine(PathToSumoExecutables, "sumo");
+                sumoExecutable = string.IsNullOrEmpty(PathToSumoExecutables)
+                    ? "sumo"
+                    : Path.Combine(PathToSumoExecutables, "sumo");
+
+            }
+            
             Debug.Log("SumoExecutaable: " + sumoExecutable);
 
             var mode = ProcessExecutor.RedirectionMode.None;
@@ -718,7 +744,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 SumoNetworkData.VehiclesArrivedShared = VehiclesArrivedShared;
                 SumoNetworkData.VehiclesLoadedShared = VehiclesActiveShared;
 
-                SumoNetworkData.VehiclesEnteredContextRange = VehiclesEnteredContextRange;
+                SumoNetworkData.VehiclesEnteredContextRange = VehiclesJustEnteredContextRange;
                 SumoNetworkData.VehiclesExitedContextRange = VehiclesExitedContextRange;
                 SumoNetworkData.VehiclesInContextRange = VehiclesInContextRange;
             }
@@ -726,7 +752,8 @@ namespace RiseProject.Tomis.SumoInUnity
             Routes = new Dictionary<string, Route>();
             Junctions = new Dictionary<string, Junction>();
             Lanes = new Dictionary<string, Lane>();
-            /* Execute the get to cache routes on init */
+            
+            // Execute the get to cache routes on init
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Routes.ContainsKey("1");
             Debug.Log("RouteIDs in the current doc");
@@ -966,7 +993,6 @@ namespace RiseProject.Tomis.SumoInUnity
         }
 
 
-
         private void HandleLaneContextSubscription(ContextSubscriptionEventArgs e)
         {
             NumberOfVehiclesInsideContextRange = 0;
@@ -986,11 +1012,10 @@ namespace RiseProject.Tomis.SumoInUnity
                 // -------------- UPDATE DICTIONARIES and GET VEHICLE INSTANCE (or create instance) -------------- //
                 Vehicle vehicle = null;
                 var vehicleJustEntered = false;
-
                 
-                if (VehiclesEnteredContextRange.ContainsKey(vehicleId))
+                if (VehiclesJustEnteredContextRange.ContainsKey(vehicleId))
                 {
-                    VehiclesEnteredContextRange.Remove(vehicleId);
+                    VehiclesJustEnteredContextRange.Remove(vehicleId);
                 }
                 else if (!VehiclesInContextRange.ContainsKey(vehicleId))
                 {
@@ -999,7 +1024,7 @@ namespace RiseProject.Tomis.SumoInUnity
                     
                     vehicle.Instantiate(vehicleId);
                     vehicle.SubscriptionState = Vehicle.ContextSubscriptionState.JustEnteredContextRange;
-                    VehiclesEnteredContextRange[vehicleId] = vehicle;
+                    VehiclesJustEnteredContextRange[vehicleId] = vehicle;
                     VehiclesInContextRange[vehicleId] = vehicle;
                 }
                 
@@ -1018,13 +1043,11 @@ namespace RiseProject.Tomis.SumoInUnity
                 var pos = subscriptionResultsResponses[TraCIConstants.VAR_POSITION].GetContentAs<Position2D>();
                 var angle = subscriptionResultsResponses[TraCIConstants.VAR_ANGLE].GetContentAs<float>();
                 
-                // Assert that subscription results are only 2 (the bare minimum we care about)
-                Assert.AreEqual(subscriptionResultsResponses.Count, 2);
-                
-                
                 vehicle.SetPositionFromRawPosition2D(pos);
                 vehicle.Angle = angle;
                 
+                // Assert that subscription results are only 2 (the bare minimum we care about)
+                Assert.AreEqual(subscriptionResultsResponses.Count, 2);
             }
 
             foreach (var id in VehiclesInContextRange.Keys)

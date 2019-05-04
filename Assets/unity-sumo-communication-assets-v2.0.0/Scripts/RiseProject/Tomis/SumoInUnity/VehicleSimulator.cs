@@ -68,7 +68,7 @@ namespace RiseProject.Tomis.SumoInUnity
         {
             var startUpData = SimulationStartupData.Instance;
 
-            if (startUpData && startUpData.UseStartupData && startUpData.dontUSeVehicleSimulator)
+            if (startUpData && startUpData.UseStartupData && startUpData.dontUseVehicleSimulator)
             {
                 enabled = false;
                 return;
@@ -169,7 +169,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 var isVehicleFound = GameObjectByVehicleId.TryGetValue(idVehiclePair.Key, out var vehicleGameObjectToDestroy);
                 if (!isVehicleFound)
                 {
-                    Debug.LogError("Vehicle with id " + idVehiclePair.Key + " not found to be removed.");
+                     Debug.LogError("Vehicle with id " + idVehiclePair.Key + " not found to be removed.");
                     continue;
                 }
 

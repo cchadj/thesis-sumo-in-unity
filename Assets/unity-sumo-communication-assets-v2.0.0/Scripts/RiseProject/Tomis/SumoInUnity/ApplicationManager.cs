@@ -1,6 +1,7 @@
 ﻿using RiseProject.Tomis.DataHolders;
 using Tomis.Utils.Unity;
 using UnityEngine;
+using Zenject;
 
 namespace RiseProject.Tomis.SumoInUnity
 {
@@ -18,17 +19,24 @@ namespace RiseProject.Tomis.SumoInUnity
         [field: SerializeField] private bool UseReporter { get; set; }
         private SimulationStartupData StartupData { get; set; }
 
+        [Inject]
+        private void Construct(SimulationStartupData startupData)
+        {
+            StartupData = startupData;
+        }
+        
         private void Awake()
         {
             Client = GetComponent<SumoClient>();
             Simulator = GetComponent<VehicleSimulator>();
-
-            StartupData = SimulationStartupData.Instance;
-
-            if (StartupData && StartupData.UseStartupData)
+            
+            if (StartupData.UseStartupData)
             {
+                
+                Debug.Log("SumoClient: Using start up data from " + StartupData.name + " SimulationStartUpData " +
+                          "Scriptalbe Object asset");
                 DontUseSumo = StartupData.dontUseSumo;
-                DontUseVehicleSimulator = StartupData.dontUSeVehicleSimulator;
+                DontUseVehicleSimulator = StartupData.dontUseVehicleSimulator;
  
                 UseReporter = StartupData.useReporter;
             }

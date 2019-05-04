@@ -8,18 +8,22 @@ using Zenject;
 
 public class LaneInCameraFrustum : MonoBehaviour
 {
+    [ReadOnly] public Lane Lane;
+    [ReadOnly] public string ID;
 
-    public Lane Lane;
+    private SumoNetworkData networkData;
     private bool _isInsideLanesInsideFrustum = false;
-    [SerializeField] private SumoNetworkData networkData;
     private Renderer _renderer;
 
-
+    // Cache WaitForSeconds for performance
+    private static readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(1f);
+    
     [Inject]
     private void Construct(SumoNetworkData sumoNetworkData)
     {
         networkData = sumoNetworkData;
     }
+    
     
     /// <summary>
     /// Replace the mesh of this lane object with a very small mesh that
@@ -32,8 +36,7 @@ public class LaneInCameraFrustum : MonoBehaviour
         if (Random.value > 0.33f)
         {
             enabled = false;
-            GameObject.Destroy(gameObject);
-            
+            Destroy(gameObject);            
         }
          
         _renderer = GetComponent<MeshRenderer>();
@@ -53,18 +56,13 @@ public class LaneInCameraFrustum : MonoBehaviour
         {
             vertices = newVertices, 
             triangles = new []{ 2, 1, 0},
-
         };
 
         GetComponent<MeshFilter>().mesh = mesh;
         StartCoroutine(VisibilityTest());
     }
 
-    private static readonly WaitForSeconds  _waitForSeconds = new WaitForSeconds(1f);
-    private static int i;
-
-    [ReadOnly] public string ID;
-
+    
     private IEnumerator VisibilityTest()
     {
         while (true)
@@ -85,7 +83,7 @@ public class LaneInCameraFrustum : MonoBehaviour
                 _isInsideLanesInsideFrustum = false;
             }
 
-            yield return _waitForSeconds;
+            yield return WaitForSeconds;
             
         }
     }

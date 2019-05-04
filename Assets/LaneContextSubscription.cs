@@ -5,9 +5,10 @@ using UnityEngine;
 using Zenject;
 using System.Reflection;
 using CodingConnected.TraCI.NET;
+using RiseProject.Tomis.SumoInUnity;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
-using UnityQuery;
-using Debug = System.Diagnostics.Debug;
+using Debug = UnityEngine;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -28,16 +29,25 @@ public class LaneContextSubscription : MonoBehaviour
         {TraCIConstants.VAR_POSITION, TraCIConstants.VAR_ANGLE};
     private static readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(2f);
     private static readonly List<byte> _emptyList = new List<byte> {};
+    private SumoClient _sumoClient;
 
     [Inject]
-    private void Construct(SumoNetworkData sumoNetworkData, SumoCommands sumoCommands)
+    private void Construct(
+        SumoClient sumoClient,
+        SumoNetworkData sumoNetworkData, 
+        SumoCommands sumoCommands)
     {
+        _sumoClient = sumoClient;   
         _networkData = sumoNetworkData;
         _sumoCommands = sumoCommands;
+        
     }
 
     private void Start()
     {
+        if (!_sumoClient.UseContextSubscription)
+            Destroy(this);
+        
         _cam = GetComponent<Camera>();
         
         transform.localScale.Set(1f, 1f, 1f);

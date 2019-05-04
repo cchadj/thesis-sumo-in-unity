@@ -36,9 +36,11 @@ namespace RiseProject.Tomis.Editors
                 {
                     text = "Port: ",
                     tooltip = "Port where Sumo Server listens to. Used to serve sumo aswel."
-                }, Client.RemotePort);
-
+                }, Client.RemotePort);            
             EditorGUILayout.EndHorizontal();
+            
+            EditorHelper.CreateDivider("Serve Sumo Settings", "Settings when creating process from C# code");
+
             Client.ShouldServeSumo = EditorGUILayout.Toggle(new GUIContent()
             {
                 text = "Fire up sumo server?",
@@ -47,8 +49,12 @@ namespace RiseProject.Tomis.Editors
 
             if (Client.ShouldServeSumo)
             {
-                EditorHelper.CreateDivider("Serve Sumo Settings", "Settings when creating process from C# code");
-                
+                Client.UseLocalSumo = EditorGUILayout.Toggle(new GUIContent()
+                {
+                    text = "Use Local sumo executables?",
+                    tooltip = "Use Sumo executables from the asset folder or from what is found at PATH?"
+                }, Client.UseLocalSumo);
+               
                 EditorGUILayout.BeginHorizontal();
                 Client.UseSumoGui = EditorGUILayout.Toggle(new GUIContent()
                 {
@@ -94,27 +100,27 @@ namespace RiseProject.Tomis.Editors
                     }, Client.CaptureSumoProcessErrors
                 );
 
-                Client.RedirectionMode = (SumoProcessRedirectionMode)EditorGUILayout.EnumPopup(
+                Client.RedirectionMode = (SumoProcessRedirectionMode) EditorGUILayout.EnumPopup(
                     new GUIContent
                     {
                         text = " Output Redirection Mode ",
                         tooltip = " How will the output of the SUMO process will be redirected "
                     },
                     Client.RedirectionMode);
-                
-                
+
+
                 if (GUILayout.Button("Select Sumo Configuration File"))
                 {
                     var p =
-                    Path.Combine(Application.streamingAssetsPath, "sumo-scenarios");
+                        Path.Combine(Application.streamingAssetsPath, "sumo-scenarios");
                     Debug.Log(p);
 
                     var filters = new[] {"Sumo configuration files", "sumocfg,sumo.cfg"};
                     Client.SumocfgFile = EditorUtility.OpenFilePanelWithFilters("SUMO configuration files",
                         p,
-                         filters);
+                        filters);
                 }
-                
+
                 if (Client.SumocfgFile.IsNullOrEmpty())
                     EditorGUILayout.HelpBox("!WARNING: No sumocfg file selected!", MessageType.Warning);
                 else
