@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.IO;
-using RiseProject.Tomis.DataHolders;
 using RiseProject.Tomis.SumoInUnity;
 using TMPro;
 using Tomis.Utils.Unity;
@@ -50,7 +49,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
         var numberOfActiveVehiclesInitialText = numberOfActiveVehiclesText.text;
         var fpsInitialText = fpsText.text;
         var simStepExecutionTimeInitialText = simStepExecutionTime.text;
-        var currentlySubscribedLaneIDInitialText = currentlyContextSubscribedLaneIDText.text;
+        var currentlySubscribedLaneIdInitialText = currentlyContextSubscribedLaneIDText.text;
         var numberOfVehiclesInsideContextRangeInitialText = numberOfVehiclesInsideContextRangeText.text;
         
         if(!_sumoClient.CreateFpsByVehicleCountPlot)
@@ -85,7 +84,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
 
             if (_sumoClient.UseContextSubscription)
             {
-                currentlyContextSubscribedLaneIDText.SetText($"{currentlySubscribedLaneIDInitialText,LEFT_ALIGN}{_sumoClient.CurrentlyContextSubscribedObjectID,RIGHT_ALIGN}" );
+                currentlyContextSubscribedLaneIDText.SetText($"{currentlySubscribedLaneIdInitialText,LEFT_ALIGN}{_sumoClient.CurrentlyContextSubscribedObjectID,RIGHT_ALIGN}" );
                 numberOfVehiclesInsideContextRangeText.SetText($"{numberOfVehiclesInsideContextRangeInitialText,LEFT_ALIGN}{_sumoClient.NumberOfVehiclesInsideContextRange,RIGHT_ALIGN}");
             } 
             yield return _updateSimulationStateSeconds;

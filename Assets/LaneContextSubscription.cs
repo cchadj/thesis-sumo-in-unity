@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using RiseProject.Tomis.DataHolders;
 using UnityEngine;
 using Zenject;
 using System.Reflection;
 using CodingConnected.TraCI.NET;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
+using UnityQuery;
 using Debug = System.Diagnostics.Debug;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -20,9 +22,12 @@ public class LaneContextSubscription : MonoBehaviour
     private SumoNetworkData _networkData;
     private SumoCommands _sumoCommands;
     private Transform centerOfFrustum;
+    [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
     
     private static readonly List<byte> _listOfVariablesToSubscribeTo = new List<byte>
         {TraCIConstants.VAR_POSITION, TraCIConstants.VAR_ANGLE};
+    private static readonly WaitForSeconds _waitForSeconds = new WaitForSeconds(2f);
+    private static readonly List<byte> _emptyList = new List<byte> {};
 
     [Inject]
     private void Construct(SumoNetworkData sumoNetworkData, SumoCommands sumoCommands)
@@ -36,23 +41,46 @@ public class LaneContextSubscription : MonoBehaviour
         _cam = GetComponent<Camera>();
         
         transform.localScale.Set(1f, 1f, 1f);
-        var frustumCenterLocalPosition = new Vector3(0, 0, _cam.farClipPlane/2f);
         
+        // We need to keep track of the center of the frustum. The center of the frustum will be used to  find the
+        // closest lane to subscribe to
+        var frustumCenterLocalPosition = new Vector3(0, 0, _cam.farClipPlane/2f);
         centerOfFrustum = new GameObject().transform;
         centerOfFrustum.gameObject.SetIcon(IconManager.Icon.CircleGreen);
         centerOfFrustum.parent = transform;
         centerOfFrustum.localPosition = frustumCenterLocalPosition;
         centerOfFrustum.name = "Center Of Camera Frustum";
+
+        StartCoroutine(SubscriptionCoroutine());
     }
 
+
+    private IEnumerator SubscriptionCoroutine()
+    {
+        while (true)
+        {
+            ContextSubscribeToLaneInFrustum();
+            yield return _waitForSeconds;
+
+        }
+    }
+
+    /// <summary>
+    /// Find and subscribe to the lane that is closest to the center of the frustum.
+    /// The center of the frustum is calculated at Start.
+    /// The test happens in the xz plane.
+    /// </summary>
     private void ContextSubscribeToLaneInFrustum()
     {
+        // Get all the lanes that are inside the camera frustum.
         var lanesInsideFrustum = _networkData.LanesInsideFrustum;
-
+        if (_networkData.LanesInsideFrustum.Count == 0)
+            return;
+       
+        // Find the closest lane
         closestLane = null;
         var closestDistanceSqr = Mathf.Infinity;
         var centerOfFrustumPosition = centerOfFrustum.position;
-
         foreach (var lane in lanesInsideFrustum.Values)
         {
             var distX = lane.centerOfMass.x - centerOfFrustumPosition.x;
@@ -65,12 +93,34 @@ public class LaneContextSubscription : MonoBehaviour
                 closestLane = lane;
             }
         }
-
-        
+        // Assert because if a lane is visible and no closest lane found then something is wrong
         UnityEngine.Debug.Assert(closestLane != null, nameof(closestLane) + " != null");
+
+        // No need to subscribe to a a new lane if it close or the old one
+        if (closestLane.ID == currentlySubscribedLaneID)
+            return;
+        
+        // Subscribe to new lane and unsubscribe from old one, if the lane  is different than the currently subscribed lane 
         _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f,
-            TraCIConstants.VAR_VEHICLE, contextRange, _listOfVariablesToSubscribeTo);
+            Vehicle.ContextDomain, contextRange, _listOfVariablesToSubscribeTo);
+        
+        _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, TraCIConstants.CMD_GET_VEHICLE_VARIABLE);
+        // Update currently subscribed lane        
+ 
+        currentlySubscribedLaneID = closestLane.ID;
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying && closestLane)
+        {
+            GUI.color = Color.green;
+            UnityEditor.Handles.DrawWireDisc(closestLane.centerOfMass, Vector3.up, contextRange);    
+        }
+    }
+#endif
+    
 }
 
 public class IconManager {

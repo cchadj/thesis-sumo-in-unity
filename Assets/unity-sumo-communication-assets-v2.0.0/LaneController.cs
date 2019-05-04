@@ -28,27 +28,28 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             SubscribeContext(VariablesToSubscribeTo, 0, 10000, Vehicle.ContextDomain, radius);
         }
         
-        #if UNITY_EDITOR
-        private void OnDrawGizmos()
-        {
-            GUI.color = Color.green;
-            UnityEditor.Handles.DrawWireDisc(transform.GetChild(0).position ,Vector3.up, radius);
-        }
-        #endif
-
-        private void Update()
-        {
-            var client = SumoClient.Instance;
-            if (client.UseContextSubscription)
-            {
-                if(client.IsConnectionInitialized)
-                    SubscribeContext();
-                else
-                    client.ConnectionInisialized += (s, e) => SubscribeContext();
-            }
-
-            enabled = false;
-        }
+//        #if UNITY_EDITOR
+//        private void OnDrawGizmos()
+//        {
+//            GUI.color = Color.green;
+//            UnityEditor.Handles.DrawWireDisc(transform.GetChild(0).position ,Vector3.up, radius);
+//        }
+//        #endif
+//
+//        private void Update()
+//        {
+//            enabled = false;
+//            var client = SumoClient.Instance;
+//            if (client.UseContextSubscription)
+//            {
+//                if(client.IsConnectionInitialized)
+//                    SubscribeContext();
+//                else
+//                    client.ConnectionInisialized += (s, e) => SubscribeContext();
+//            }
+//
+//            enabled = false;
+//        }
     }
 
     public interface IContextSubscriptable

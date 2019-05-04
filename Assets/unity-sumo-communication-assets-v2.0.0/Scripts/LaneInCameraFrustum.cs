@@ -71,7 +71,6 @@ public class LaneInCameraFrustum : MonoBehaviour
         {
             if (_renderer.isVisible)
             {
-                Debug.Log(Lane.ID + "I am visible");
                 if (!networkData.LanesInsideFrustum.ContainsKey(ID))
                 {
                  

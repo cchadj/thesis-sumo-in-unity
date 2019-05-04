@@ -1049,7 +1049,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 }                
             }
 
-            CurrentlyContextSubscribedObjectID = e.ObjecId;
+            CurrentlyContextSubscribedObjectID = e.ObjectId;
         }
 
 
@@ -1061,9 +1061,9 @@ namespace RiseProject.Tomis.SumoInUnity
                 UseContextSubscription && !( CreateFpsByVehicleCountPlot || CreateSimStepExecutionTimeByVehicleCountPlot)
                 );
             
-            Assert.IsFalse(e.ObjecId != "ignored" && UseContextSubscription );
+            Assert.IsFalse(e.ObjectId != "ignored" && UseContextSubscription );
                         
-            var vehicleId = e.ObjecId;
+            var vehicleId = e.ObjectId;
 
             // Global VAR subscription list
             if (vehicleId == "ignored")
