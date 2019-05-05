@@ -101,10 +101,6 @@ public class LaneInCameraFrustum : MonoBehaviour
 //       
 //    }
 
-    public void Call()
-    {
-        Debug.Log("Sup babe? my ID : " + ID);
-    }
 }
 
 public interface ICallable

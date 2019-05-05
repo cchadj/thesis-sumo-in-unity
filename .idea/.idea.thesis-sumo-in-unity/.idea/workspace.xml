@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e599c441-d3bc-4f04-88cf-7c88355d2c29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/LaneContextSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LaneContextSubscription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Resources/Materials/Outlined-Diffuse-Shader-Fixed/OutlineShowcase.unitypackage.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/Resources/Singletons/StartupData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/Resources/Singletons/StartupData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/ApplicationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/ApplicationManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SimulationStartupData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SimulationStartupData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/Editor/SumoClientEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/Editor/SumoClientEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/SumoClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/SumoClient.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/StartMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/StartMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/_Scenes/PerformanceTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/_Scenes/PerformanceTest.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +192,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="349">
@@ -244,28 +234,44 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
+            <state relative-caret-position="990">
+              <caret line="102" selection-start-line="102" selection-end-line="102" />
               <folding>
-                <marker date="1557002855488" expanded="false" signature="6:197" ph="..." />
-                <marker date="1557002855488" expanded="true" signature="247:3033" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="650:701" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="716:1028" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
-                <marker date="1557002855488" expanded="true" signature="1053:1937" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="1093:1187" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="1524:1702" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="1749:1839" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="1984:2609" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="2011:2603" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="2058:2328" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="2141:2314" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="2398:2538" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="2619:2949" ph="/* private void OnWillRenderObject() ... */" />
-                <marker date="1557002855488" expanded="true" signature="2973:3031" ph="{...}" />
-                <marker date="1557002855488" expanded="true" signature="3061:3111" ph="{...}" />
+                <marker date="1557002989266" expanded="false" signature="6:197" ph="..." />
+                <marker date="1557002989266" expanded="true" signature="247:2952" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="650:701" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="716:1028" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
+                <marker date="1557002989266" expanded="true" signature="1053:1937" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="1093:1187" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="1524:1702" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="1749:1839" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="1984:2609" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="2011:2603" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="2058:2328" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="2141:2314" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="2398:2538" ph="{...}" />
+                <marker date="1557002989266" expanded="true" signature="2619:2949" ph="/* private void OnWillRenderObject() ... */" />
+                <marker date="1557002989266" expanded="true" signature="2980:3030" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+              <folding>
+                <marker date="1557003085007" expanded="false" signature="6:55" ph="..." />
+                <marker date="1557003085007" expanded="true" signature="101:501" ph="{...}" />
+                <marker date="1557003085007" expanded="true" signature="240:484" ph="{...}" />
+                <marker date="1557003085007" expanded="true" signature="313:441" ph="{...}" />
+                <marker date="1557003085007" expanded="true" signature="604:892" ph="{...}" />
+                <marker date="1557003085007" expanded="true" signature="714:890" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -486,6 +492,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_RoadNetworkCreationScripts/RoadNetworkRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/ApplicationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/LaneContextSubscription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -507,10 +514,11 @@
         <option value="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" />
         <option value="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/SumoClient.cs" />
         <option value="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs" />
+        <option value="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-8" />
     <option name="width" value="1696" />
@@ -577,12 +585,12 @@
       <updated>1556992969553</updated>
       <workItem from="1556992973781" duration="51000" />
       <workItem from="1556993061602" duration="4450000" />
-      <workItem from="1556997952578" duration="4200000" />
+      <workItem from="1556997952578" duration="5029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8701000" />
+    <option name="totallyTimeSpent" value="9530000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -595,7 +603,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.123471886" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -997,6 +1004,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
+          <folding>
+            <marker date="1557002989266" expanded="false" signature="6:197" ph="..." />
+            <marker date="1557002989266" expanded="true" signature="247:2952" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="650:701" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="716:1028" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
+            <marker date="1557002989266" expanded="true" signature="1053:1937" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="1093:1187" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="1524:1702" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="1749:1839" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="1984:2609" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="2011:2603" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="2058:2328" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="2141:2314" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="2398:2538" ph="{...}" />
+            <marker date="1557002989266" expanded="true" signature="2619:2949" ph="/* private void OnWillRenderObject() ... */" />
+            <marker date="1557002989266" expanded="true" signature="2980:3030" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
+          <folding>
+            <marker date="1557003085007" expanded="false" signature="6:55" ph="..." />
+            <marker date="1557003085007" expanded="true" signature="101:501" ph="{...}" />
+            <marker date="1557003085007" expanded="true" signature="240:484" ph="{...}" />
+            <marker date="1557003085007" expanded="true" signature="313:441" ph="{...}" />
+            <marker date="1557003085007" expanded="true" signature="604:892" ph="{...}" />
+            <marker date="1557003085007" expanded="true" signature="714:890" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
@@ -1033,31 +1079,6 @@
             <marker date="1557000080439" expanded="true" signature="11628:12825" ph="{...}" />
             <marker date="1557000080439" expanded="true" signature="12870:13119" ph="/// Utility function used to fade out vehicle and remove the vehicle from the pool. ... " />
             <marker date="1557000080439" expanded="true" signature="13200:13692" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="15" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-          <folding>
-            <marker date="1557002855488" expanded="false" signature="6:197" ph="..." />
-            <marker date="1557002855488" expanded="true" signature="247:3033" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="650:701" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="716:1028" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
-            <marker date="1557002855488" expanded="true" signature="1053:1937" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="1093:1187" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="1524:1702" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="1749:1839" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="1984:2609" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="2011:2603" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="2058:2328" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="2141:2314" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="2398:2538" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="2619:2949" ph="/* private void OnWillRenderObject() ... */" />
-            <marker date="1557002855488" expanded="true" signature="2973:3031" ph="{...}" />
-            <marker date="1557002855488" expanded="true" signature="3061:3111" ph="{...}" />
           </folding>
         </state>
       </provider>

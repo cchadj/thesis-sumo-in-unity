@@ -19,6 +19,9 @@ public class DisplayRenderer : MonoBehaviour
 
         renderersEnabled = display;
     }
+    
+    
+    
 }
 
 #if UNITY_EDITOR
