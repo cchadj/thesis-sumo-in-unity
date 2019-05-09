@@ -294,6 +294,7 @@
         <e p="assert-logs" t="Include">
           <e p="assertion-log0.txt" t="Include" />
         </e>
+        <e p="CameraIntersect.cs" t="Include" />
         <e p="ExternalAssets" t="Include">
           <e p="BezierPathCreator" t="Include">
             <e p="Core" t="Include">
