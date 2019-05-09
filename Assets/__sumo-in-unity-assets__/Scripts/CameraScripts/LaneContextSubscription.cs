@@ -43,7 +43,6 @@ public class LaneContextSubscription : MonoBehaviour
         _networkData = sumoNetworkData;
         _sumoCommands = sumoCommands;
         simulationState = simState;
-
     }
 
     private void Start()
@@ -111,6 +110,9 @@ public class LaneContextSubscription : MonoBehaviour
 
         // No need to subscribe to a a new lane if it close or the old one
         if (closestLane.ID == currentlySubscribedLaneID)
+            return;
+
+        if (closestDistanceSqr < 10f)
             return;
         
         // Subscribe to new lane and unsubscribe from old one, if the lane  is different than the currently subscribed lane 

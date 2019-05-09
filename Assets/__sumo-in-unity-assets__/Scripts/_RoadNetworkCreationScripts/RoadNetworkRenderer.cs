@@ -25,7 +25,7 @@ public class RoadNetworkRenderer : MonoBehaviour
         AssetRelativePath = true,
         SelectMode = SelectionMode.File,
         ButtonName = "Select Sumo Net File",
-        FileExtensions = "xml",
+        FileExtensions = "net.xml",
         Tooltip = "Select .net.xml file to create road network from")]
     public string sumoNetXmlFile;
         //"/Users/afxentios/unity-workspace/sumo-in-unity-v.4.0.0/Assets/StreamingAssets/sumo-scenarios/out-15-15/net.net.xml";

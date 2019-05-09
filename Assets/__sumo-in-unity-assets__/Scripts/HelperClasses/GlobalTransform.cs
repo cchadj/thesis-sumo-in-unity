@@ -17,11 +17,13 @@ public class GlobalTransform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnDrawGizmosSelected()
     {
-        position = transform.position;
-        rotation = transform.rotation.eulerAngles;
-        scale = transform.lossyScale;
+        var t = transform;
+        position = t.position;
+        rotation = t.rotation.eulerAngles;
+        scale = t.lossyScale;
     }
+
 }
 #endif

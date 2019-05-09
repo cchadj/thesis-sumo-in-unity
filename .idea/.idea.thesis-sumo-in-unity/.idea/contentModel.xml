@@ -9,10 +9,321 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="__sumo-in-unity-assets__" t="Include">
+          <e p="DLLs" t="Include">
+            <e p="Google.Protobuf.3.6.0" t="Include">
+              <e p="lib" t="Include">
+                <e p="net45" t="Include">
+                  <e p="Google.Protobuf.xml" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Editor" t="Include">
+            <e p="MeantToBeAbstractEditor.cs" t="Include" />
+          </e>
+          <e p="Prefabs" t="Include">
+            <e p="CarPrefabs" t="Include">
+              <e p="Truck" t="Include">
+                <e p="archibase.net.txt" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Protobuf" t="Include">
+            <e p="Protos" t="Include">
+              <e p="cs-classes" t="Include">
+                <e p="Car.cs" t="Include" />
+                <e p="CommandMessage.cs" t="Include" />
+                <e p="LaneProto.cs" t="Include" />
+              </e>
+              <e p="README.txt" t="Include" />
+            </e>
+          </e>
+          <e p="Resources" t="Include">
+            <e p="Materials" t="Include">
+              <e p="Outlined-Diffuse-Shader-Fixed" t="Include">
+                <e p="CustomOutline-CameraIndependent.shader" t="Include" />
+                <e p="CustomOutline-ConstantWidth.shader" t="Include" />
+                <e p="CustomOutline.shader" t="Include" />
+                <e p="Outlined2" t="Include">
+                  <e p="outlined2.shader" t="Include" />
+                </e>
+                <e p="RegularOutline.shader" t="Include" />
+                <e p="triangleOutline.shader" t="Include" />
+                <e p="UniformOutline.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="_ApplicationManagerScripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="ApplicationManagerEditor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="_RoadNetworkCreationScripts" t="Include">
+              <e p="DrawNormals.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="HeightBufferCreatorEditor.cs" t="Include" />
+                <e p="RoadNetworkRendererEditor.cs" t="Include" />
+              </e>
+              <e p="HeightBufferCreator.cs" t="Include" />
+              <e p="JunctionData.cs" t="Include" />
+              <e p="LaneData.cs" t="Include" />
+              <e p="LaneRayCaster.cs" t="Include" />
+              <e p="LengthThresholdTooSmallException.cs" t="Include" />
+              <e p="MeshHeightMatcher.cs" t="Include" />
+              <e p="NetworkData.cs" t="Include" />
+              <e p="PolygonMesher.cs" t="Include" />
+              <e p="QuadCreator.cs" t="Include" />
+              <e p="RoadNetworkDataContainer.cs" t="Include" />
+              <e p="RoadNetworkRenderer.cs" t="Include" />
+              <e p="SerializeMesh.cs" t="Include" />
+              <e p="Triangulator.cs" t="Include" />
+            </e>
+            <e p="_SumoClientScripts" t="Include">
+              <e p="Editor" t="Include">
+                <e p="SumoClientEditor.cs" t="Include" />
+              </e>
+              <e p="ProcessExecutor.cs" t="Include" />
+              <e p="SumoClient.cs" t="Include" />
+            </e>
+            <e p="CameraScripts" t="Include">
+              <e p="CameraModeManager.cs" t="Include" />
+              <e p="CaptureImage.cs" t="Include" />
+              <e p="CursorLock.cs" t="Include" />
+              <e p="ExtendedFlycam.cs" t="Include" />
+              <e p="GetClosestVisibleItem.cs" t="Include" />
+              <e p="GetVisibleTargets.cs" t="Include" />
+              <e p="LaneContextSubscription.cs" t="Include" />
+              <e p="MenuToggle.cs" t="Include" />
+              <e p="MouseOrbit.cs" t="Include" />
+            </e>
+            <e p="CanvasScripts" t="Include">
+              <e p="CanvasDisplayManager.cs" t="Include" />
+              <e p="SimulationStateCanvas.cs" t="Include" />
+              <e p="StartMenu.cs" t="Include" />
+              <e p="VehicleCanvas.cs" t="Include" />
+            </e>
+            <e p="CaptureScreen.cs" t="Include" />
+            <e p="CarScripts" t="Include">
+              <e p="CarAIVehicleMover.cs" t="Include" />
+              <e p="CarRayCaster.cs" t="Include" />
+              <e p="ControlSteering.cs" t="Include" />
+              <e p="DynamicSumoWaypointProgressTracker.cs" t="Include" />
+              <e p="DynamicWaypointCircuit.cs" t="Include" />
+              <e p="IVehicleMoverGettable.cs" t="Include" />
+              <e p="MoveByPhysicsFollowPath.cs" t="Include" />
+              <e p="MoveCar.cs" t="Include" />
+              <e p="OpenInFileBrowser.cs" t="Include" />
+              <e p="PushCar.cs" t="Include" />
+              <e p="SimpleCarController.cs" t="Include" />
+              <e p="SumoTypeController.cs" t="Include" />
+              <e p="VehicleConfigurationData.cs" t="Include" />
+              <e p="VehicleLightController.cs" t="Include" />
+              <e p="VehicleMover.cs" t="Include" />
+              <e p="VehicleMoverByInterpolation.cs" t="Include" />
+              <e p="VehicleMoverByLinearInterpolation.cs" t="Include" />
+              <e p="VehicleMoverByPhysics.cs" t="Include" />
+              <e p="VehicleMoverByTransform.cs" t="Include" />
+              <e p="VehicleMoverSimple.cs" t="Include" />
+            </e>
+            <e p="CsClientScripts" t="Include">
+              <e p="Client.cs" t="Include" />
+              <e p="SocketWrapper.cs" t="Include" />
+            </e>
+            <e p="DataDisplayScripts" t="Include">
+              <e p="DataDisplay.cs" t="Include" />
+              <e p="DropdownFilter.cs" t="Include" />
+              <e p="LaneDataDisplayScripts" t="Include">
+                <e p="LaneDataDisplay.cs" t="Include" />
+              </e>
+              <e p="MenuController.cs" t="Include" />
+              <e p="RouteDataDisplayScripts" t="Include">
+                <e p="RouteData.cs" t="Include" />
+                <e p="RouteDataDisplay.cs" t="Include" />
+                <e p="RouteDataDisplayItem.cs" t="Include" />
+                <e p="RouteDetailMouseEvents.cs" t="Include" />
+              </e>
+              <e p="SearchElement.cs" t="Include" />
+              <e p="VehicleDataDisplayScripts" t="Include">
+                <e p="NoVehicleSelected.cs" t="Include" />
+                <e p="VehicleDataDisplay.cs" t="Include" />
+              </e>
+            </e>
+            <e p="DataInjection" t="Include">
+              <e p="MyMonoInstaller.cs" t="Include" />
+            </e>
+            <e p="DisplayRenderer.cs" t="Include" />
+            <e p="EventSystem" t="Include">
+              <e p="GameEvent.cs" t="Include" />
+              <e p="GameEventListener.cs" t="Include" />
+            </e>
+            <e p="FadeOutAll.cs" t="Include" />
+            <e p="HelperClasses" t="Include">
+              <e p="Editor" t="Include">
+                <e p="CustomEditorBase.cs" t="Include" />
+                <e p="EditorHelper.cs" t="Include" />
+                <e p="SerializedPropertyExtensions.cs" t="Include" />
+              </e>
+              <e p="FileHelper.cs" t="Include" />
+              <e p="FixedSizedQueue.cs" t="Include" />
+              <e p="GlobalTransform.cs" t="Include" />
+              <e p="HelpfulAttributes" t="Include">
+                <e p="CallProperty" t="Include">
+                  <e p="CallSetterAttribute.cs" t="Include" />
+                  <e p="Editor" t="Include">
+                    <e p="CallSetterPropertyDrawer.cs" t="Include" />
+                  </e>
+                </e>
+                <e p="FileSelect" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="FileSelectPropertyDrawer.cs" t="Include" />
+                  </e>
+                  <e p="FileSelectAttribute.cs" t="Include" />
+                </e>
+                <e p="LayerSelect" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="LayerAttributeEditor.cs" t="Include" />
+                  </e>
+                  <e p="LayerAttribute.cs" t="Include" />
+                </e>
+                <e p="ReadOnly" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="ReadOnlyDrawer.cs" t="Include" />
+                  </e>
+                  <e p="ReadOnlyAttribute.cs" t="Include" />
+                </e>
+                <e p="Rename" t="Include">
+                  <e p="ButtonAttribute.cs" t="Include" />
+                  <e p="Editor" t="Include">
+                    <e p="ButtonDrawer.cs" t="Include" />
+                    <e p="RenameDrawer.cs" t="Include" />
+                  </e>
+                  <e p="RenameAttribute.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Highlight.cs" t="Include" />
+              <e p="IInstantiatable.cs" t="Include" />
+              <e p="OutlineEffect" t="Include">
+                <e p="Demo" t="Include">
+                  <e p="MaterialSwitcher.cs" t="Include" />
+                  <e p="OutlineAnimation.cs" t="Include" />
+                  <e p="Rotate.cs" t="Include" />
+                  <e p="Toggle.cs" t="Include" />
+                </e>
+                <e p="LinkedSet.cs" t="Include" />
+                <e p="Outline.cs" t="Include" />
+                <e p="OutlineEffect.cs" t="Include" />
+                <e p="Resources" t="Include">
+                  <e p="OutlineBufferShader.shader" t="Include" />
+                  <e p="OutlineShader.shader" t="Include" />
+                </e>
+              </e>
+              <e p="SelectableObjectEvent.cs" t="Include" />
+              <e p="SingletonMonoBehaviour.cs" t="Include" />
+            </e>
+            <e p="InputManager.cs" t="Include" />
+            <e p="LaneInCameraFrustum.cs" t="Include" />
+            <e p="MockTester.cs" t="Include" />
+            <e p="MyTransform.cs" t="Include" />
+            <e p="RiseProject" t="Include">
+              <e p="Tomis" t="Include">
+                <e p="SumoInUnity" t="Include">
+                  <e p="ApplicationManager.cs" t="Include" />
+                  <e p="VehicleSimulator.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="ScriptableObjectScripts" t="Include">
+              <e p="CurrentlySelectedTargets.cs" t="Include" />
+              <e p="DataDisplayTexts.cs" t="Include" />
+              <e p="Editor" t="Include">
+                <e p="SumoNetworkDataEditor.cs" t="Include" />
+                <e p="VehicleEditor.cs" t="Include" />
+              </e>
+              <e p="EnableVehicleView.cs" t="Include" />
+              <e p="FunctionalScriptableObjectWithNetworkDataAccess.cs" t="Include" />
+              <e p="HighlightRoute.cs" t="Include" />
+              <e p="ISelectableTraciVariable.cs" t="Include" />
+              <e p="LaneDataDisplayTexts.cs" t="Include" />
+              <e p="SharedVehicleData.cs" t="Include" />
+              <e p="SimulationState.cs" t="Include" />
+              <e p="SingletonScriptableObject.cs" t="Include" />
+              <e p="SumoCommands.cs" t="Include" />
+              <e p="SumoNetworkData.cs" t="Include" />
+              <e p="TransformNetworkData.cs" t="Include" />
+            </e>
+            <e p="Serialization" t="Include">
+              <e p="SerializableDictionary.cs" t="Include" />
+            </e>
+            <e p="SimulationStartupData.cs" t="Include" />
+            <e p="TestScripts" t="Include">
+              <e p="TestPerformanceOfDifferentAccessors.cs" t="Include" />
+              <e p="TestPerformanceOfEvents.cs" t="Include" />
+            </e>
+            <e p="TraciForCS" t="Include">
+              <e p="ConnectionNotInitializedException.cs" t="Include" />
+              <e p="Helpers" t="Include">
+                <e p="TraCIAuxiliaryMethods.cs" t="Include" />
+              </e>
+              <e p="IDataHolder.cs" t="Include" />
+              <e p="MVC-Views-Controllers" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="VehicleViewEditor.cs" t="Include" />
+                </e>
+                <e p="LaneController.cs" t="Include" />
+                <e p="SumoTypeView.cs" t="Include" />
+                <e p="VehicleController.cs" t="Include" />
+                <e p="VehicleView.cs" t="Include" />
+              </e>
+              <e p="TaskManager.cs" t="Include" />
+              <e p="TraCIVariable.cs" t="Include" />
+              <e p="TraciVariableData.cs" t="Include" />
+              <e p="TraCIVariables" t="Include">
+                <e p="Edge.cs" t="Include" />
+                <e p="Junction.cs" t="Include" />
+                <e p="Lane.cs" t="Include" />
+                <e p="Route.cs" t="Include" />
+                <e p="TraCIVariable.cs" t="Include" />
+                <e p="TraCIVariableShaped.cs" t="Include" />
+                <e p="Vehicle.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="assert-logs" t="Include">
           <e p="assertion-log0.txt" t="Include" />
         </e>
         <e p="ExternalAssets" t="Include">
+          <e p="BezierPathCreator" t="Include">
+            <e p="Core" t="Include">
+              <e p="Editor" t="Include">
+                <e p="Helper" t="Include">
+                  <e p="MouseUtility.cs" t="Include" />
+                  <e p="PathHandle.cs" t="Include" />
+                  <e p="ScreenSpacePolyLine.cs" t="Include" />
+                </e>
+                <e p="PathEditor.cs" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Objects" t="Include">
+                  <e p="BezierPath.cs" t="Include" />
+                  <e p="EndOfPathInstruction.cs" t="Include" />
+                  <e p="GlobalDisplaySettings.cs" t="Include" />
+                  <e p="MinMax3D.cs" t="Include" />
+                  <e p="PathCreator.cs" t="Include" />
+                  <e p="PathCreatorData.cs" t="Include" />
+                  <e p="PathSpace.cs" t="Include" />
+                  <e p="VertexPath.cs" t="Include" />
+                </e>
+                <e p="Utility" t="Include">
+                  <e p="CubicBezierUtility.cs" t="Include" />
+                  <e p="MathUtility.cs" t="Include" />
+                  <e p="VertexPathUtility.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
           <e p="CinemachineExamples" t="Include">
             <e p="Scenes" t="Include">
               <e p="Scripting" t="Include">
@@ -266,6 +577,215 @@
                 <e p="CarVisualController.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="UtilityAI-master" t="Include">
+            <e p="Action.cs" t="Include" />
+            <e p="ActionWithInputs.cs" t="Include" />
+            <e p="AI.cs" t="Include" />
+            <e p="AISettings.cs" t="Include" />
+            <e p="Brain.cs" t="Include" />
+            <e p="ContextualScorer.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="ActionNode.cs" t="Include" />
+              <e p="ActionWithInputsNode.cs" t="Include" />
+              <e p="AIDebugger.cs" t="Include" />
+              <e p="BrainEditor.cs" t="Include" />
+              <e p="BrainNode.cs" t="Include" />
+              <e p="Connection.cs" t="Include" />
+              <e p="ContextualScorerNode.cs" t="Include" />
+              <e p="EditorZoomArea.cs" t="Include" />
+              <e p="InputScorerNode.cs" t="Include" />
+              <e p="Node.cs" t="Include" />
+              <e p="Port.cs" t="Include" />
+              <e p="QualifierNode.cs" t="Include" />
+              <e p="SelectorNode.cs" t="Include" />
+            </e>
+            <e p="EditorViewState.cs" t="Include" />
+            <e p="HighestScoringQualifierSelector.cs" t="Include" />
+            <e p="IContextProvider.cs" t="Include" />
+            <e p="InputScorer.cs" t="Include" />
+            <e p="ISelectable.cs" t="Include" />
+            <e p="MultiplyAllQualifier.cs" t="Include" />
+            <e p="Qualifier.cs" t="Include" />
+            <e p="Selector.cs" t="Include" />
+            <e p="UtilityAI.asmdef" t="Include" />
+          </e>
+          <e p="VolumetricLighting-Adam" t="Include">
+            <e p="AreaLight" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="AreaLight.cs" t="Include" />
+                <e p="AreaLight.Direct.cs" t="Include" />
+                <e p="AreaLight.Shadow.cs" t="Include" />
+                <e p="AreaLightLUT.DisneyDiffuse.cs" t="Include" />
+                <e p="AreaLightLUT.GGX.cs" t="Include" />
+                <e p="AreaLightLUT.Load.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="AreaLight.cginc" t="Include" />
+                <e p="AreaLight.shader" t="Include" />
+                <e p="AreaLightShadows.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="LightManager" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="LightManager.cs" t="Include" />
+                <e p="LightManagerFogEllipsoids.cs" t="Include" />
+                <e p="LightManagerFogLights.cs" t="Include" />
+              </e>
+            </e>
+            <e p="LightOverride" t="Include">
+              <e p="LightOverride.cs" t="Include" />
+            </e>
+            <e p="MinValueAttribute" t="Include">
+              <e p="Editor" t="Include">
+                <e p="MinValueDrawer.cs" t="Include" />
+              </e>
+              <e p="MinValueAttribute.cs" t="Include" />
+            </e>
+            <e p="Scenes" t="Include">
+              <e p="Materials" t="Include">
+                <e p="StandardAlphaBlended-VolumetricFog.shader" t="Include" />
+              </e>
+            </e>
+            <e p="TubeLight" t="Include">
+              <e p="Editor" t="Include">
+                <e p="TubeLightEditor.cs" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="TubeLight.cs" t="Include" />
+                <e p="TubeLightShadowPlane.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="TubeLight.cginc" t="Include" />
+                <e p="TubeLight.shader" t="Include" />
+                <e p="TubeLightAttenuation.cginc" t="Include" />
+                <e p="TubeLightShadowPlanes.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="VolumetricFog" t="Include">
+              <e p="Editor" t="Include">
+                <e p="FogLightEditor.cs" t="Include" />
+                <e p="VolumetricFogEditor.cs" t="Include" />
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="FogEllipsoid.cs" t="Include" />
+                <e p="FogLight.cs" t="Include" />
+                <e p="FogLight.DirectionalShadow.cs" t="Include" />
+                <e p="VolumetricFog.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="ApplyToOpaque.shader" t="Include" />
+                <e p="BlurShadowmap.shader" t="Include" />
+                <e p="CopyShadowParams.shader" t="Include" />
+                <e p="Debug.shader" t="Include" />
+                <e p="InjectLightingAndDensity.compute" t="Include" />
+                <e p="Scatter.compute" t="Include" />
+                <e p="Shadowmap.shader" t="Include" />
+                <e p="VolumetricFog.cginc" t="Include" />
+              </e>
+            </e>
+            <e p="Wind" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Wind.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="VolumetricLights-Brackeys" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ImageEffects" t="Include">
+                <e p="TonemappingEditor.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="VolumetricLight.cs" t="Include" />
+              <e p="VolumetricLightRenderer.cs" t="Include" />
+            </e>
+            <e p="Shaders" t="Include">
+              <e p="BilateralBlur.shader" t="Include" />
+              <e p="BlitAdd.shader" t="Include" />
+              <e p="VolumetricLight.shader" t="Include" />
+            </e>
+            <e p="Standard Assets" t="Include">
+              <e p="Effects" t="Include">
+                <e p="ImageEffects" t="Include">
+                  <e p="Scripts" t="Include">
+                    <e p="PostEffectsBase.cs" t="Include" />
+                    <e p="Tonemapping.cs" t="Include" />
+                  </e>
+                  <e p="Shaders" t="Include">
+                    <e p="Tonemapper.shader" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Kirlitsias" t="Include">
+          <e p="AI" t="Include">
+            <e p="Actions" t="Include">
+              <e p="CrossDesicion.cs" t="Include" />
+              <e p="CrossingActions" t="Include">
+                <e p="CrossingMoveFaster.cs" t="Include" />
+                <e p="MoveBackwards.cs" t="Include" />
+                <e p="MoveFreely.cs" t="Include" />
+              </e>
+              <e p="MoveOnSideWalk.cs" t="Include" />
+              <e p="MoveTowardsGoal.cs" t="Include" />
+            </e>
+            <e p="Agent.cs" t="Include" />
+            <e p="AgentType.cs" t="Include" />
+            <e p="AgentTypeNavmesh.cs" t="Include" />
+            <e p="ConceptualScripts" t="Include">
+              <e p="CarLaneF.cs" t="Include" />
+              <e p="ConstantValue.cs" t="Include" />
+              <e p="CrossingScorers" t="Include">
+                <e p="CarLaneB.cs" t="Include" />
+                <e p="CarPedDot.cs" t="Include" />
+                <e p="CarSpeedConf.cs" t="Include" />
+                <e p="DistanceToSafety.cs" t="Include" />
+                <e p="Gap.cs" t="Include" />
+              </e>
+              <e p="PressScore.cs" t="Include" />
+            </e>
+            <e p="Context" t="Include">
+              <e p="HumanContext.cs" t="Include" />
+            </e>
+          </e>
+          <e p="GraphIterface" t="Include">
+            <e p="AgentGraphStateMachine.cs" t="Include" />
+            <e p="Goal.cs" t="Include" />
+            <e p="GoalManager.cs" t="Include" />
+            <e p="IEntityInfo.cs" t="Include" />
+            <e p="RoadBehavior.cs" t="Include" />
+            <e p="SimAgent.cs" t="Include" />
+            <e p="StateMachine.cs" t="Include" />
+          </e>
+          <e p="Math" t="Include">
+            <e p="Intersection.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="Buildings" t="Include">
+              <e p="ManipulateMeshEditor.cs" t="Include" />
+              <e p="RescaleBuilding.cs" t="Include" />
+            </e>
+            <e p="Car" t="Include">
+              <e p="CarLogic.cs" t="Include" />
+              <e p="GraphCarSpawner.cs" t="Include" />
+            </e>
+            <e p="GraphFromXml.cs" t="Include" />
+            <e p="LaneEdit.cs" t="Include" />
+            <e p="MeshToGraph.cs" t="Include" />
+            <e p="MovingEntity.cs" t="Include" />
+            <e p="NodeHolder.cs" t="Include" />
+            <e p="PrefabPlacer.cs" t="Include" />
+            <e p="RoadNetworkGraph" t="Include">
+              <e p="GraphExtensions.cs" t="Include" />
+              <e p="LaneExtensions.cs" t="Include" />
+              <e p="SimpleGraphRoadNetwork.cs" t="Include" />
+            </e>
+            <e p="Serializer.cs" t="Include" />
+            <e p="Slopereader.cs" t="Include" />
+            <e p="TMPAgent.cs" t="Include" />
           </e>
         </e>
         <e p="log.txt" t="Include" />
@@ -994,286 +1514,62 @@
             <e p="trips.trips.xml" t="Include" />
           </e>
         </e>
-        <e p="unity-sumo-communication-assets-v2.0.0" t="Include">
-          <e p="DLLs" t="Include">
-            <e p="Google.Protobuf.3.6.0" t="Include">
-              <e p="lib" t="Include">
-                <e p="net45" t="Include">
-                  <e p="Google.Protobuf.xml" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
-          <e p="Editor" t="Include">
-            <e p="MeantToBeAbstractEditor.cs" t="Include" />
-          </e>
-          <e p="Prefabs" t="Include">
-            <e p="CarPrefabs" t="Include">
-              <e p="Truck" t="Include">
-                <e p="archibase.net.txt" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Protobuf" t="Include">
-            <e p="Protos" t="Include">
-              <e p="cs-classes" t="Include">
-                <e p="Car.cs" t="Include" />
-                <e p="CommandMessage.cs" t="Include" />
-                <e p="LaneProto.cs" t="Include" />
-              </e>
-              <e p="README.txt" t="Include" />
-            </e>
-          </e>
-          <e p="Resources" t="Include">
-            <e p="Materials" t="Include">
-              <e p="Outlined-Diffuse-Shader-Fixed" t="Include">
-                <e p="CustomOutline-CameraIndependent.shader" t="Include" />
-                <e p="CustomOutline-ConstantWidth.shader" t="Include" />
-                <e p="CustomOutline.shader" t="Include" />
-                <e p="Outlined2" t="Include">
-                  <e p="outlined2.shader" t="Include" />
-                </e>
-                <e p="RegularOutline.shader" t="Include" />
-                <e p="triangleOutline.shader" t="Include" />
-                <e p="UniformOutline.shader" t="Include" />
-              </e>
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="_ApplicationManagerScripts" t="Include">
-              <e p="Editor" t="Include">
-                <e p="ApplicationManagerEditor.cs" t="Include" />
-              </e>
-            </e>
-            <e p="_RoadNetworkCreationScripts" t="Include">
-              <e p="DrawNormals.cs" t="Include" />
-              <e p="Editor" t="Include">
-                <e p="HeightBufferCreatorEditor.cs" t="Include" />
-                <e p="RoadNetworkRendererEditor.cs" t="Include" />
-              </e>
-              <e p="HeightBufferCreator.cs" t="Include" />
-              <e p="JunctionData.cs" t="Include" />
-              <e p="LaneData.cs" t="Include" />
-              <e p="LaneRayCaster.cs" t="Include" />
-              <e p="LengthThresholdTooSmallException.cs" t="Include" />
-              <e p="MeshHeightMatcher.cs" t="Include" />
-              <e p="NetworkData.cs" t="Include" />
-              <e p="PolygonMesher.cs" t="Include" />
-              <e p="QuadCreator.cs" t="Include" />
-              <e p="RoadNetworkDataContainer.cs" t="Include" />
-              <e p="RoadNetworkRenderer.cs" t="Include" />
-              <e p="SerializeMesh.cs" t="Include" />
-              <e p="Triangulator.cs" t="Include" />
-            </e>
-            <e p="_SumoClientScripts" t="Include">
-              <e p="Editor" t="Include">
-                <e p="SumoClientEditor.cs" t="Include" />
-              </e>
-              <e p="ProcessExecutor.cs" t="Include" />
-              <e p="SumoClient.cs" t="Include" />
-            </e>
-            <e p="CameraScripts" t="Include">
-              <e p="CameraModeManager.cs" t="Include" />
-              <e p="CaptureImage.cs" t="Include" />
-              <e p="CursorLock.cs" t="Include" />
-              <e p="ExtendedFlycam.cs" t="Include" />
-              <e p="GetClosestVisibleItem.cs" t="Include" />
-              <e p="GetVisibleTargets.cs" t="Include" />
-              <e p="LaneContextSubscription.cs" t="Include" />
-              <e p="MenuToggle.cs" t="Include" />
-              <e p="MouseOrbit.cs" t="Include" />
-            </e>
-            <e p="CanvasScripts" t="Include">
-              <e p="CanvasDisplayManager.cs" t="Include" />
-              <e p="SimulationStateCanvas.cs" t="Include" />
-              <e p="StartMenu.cs" t="Include" />
-              <e p="VehicleCanvas.cs" t="Include" />
-            </e>
-            <e p="CaptureScreen.cs" t="Include" />
-            <e p="CarScripts" t="Include">
-              <e p="CarAIVehicleMover.cs" t="Include" />
-              <e p="CarRayCaster.cs" t="Include" />
-              <e p="ControlSteering.cs" t="Include" />
-              <e p="DynamicSumoWaypointProgressTracker.cs" t="Include" />
-              <e p="DynamicWaypointCircuit.cs" t="Include" />
-              <e p="IVehicleMoverGettable.cs" t="Include" />
-              <e p="MoveByPhysicsFollowPath.cs" t="Include" />
-              <e p="MoveCar.cs" t="Include" />
-              <e p="OpenInFileBrowser.cs" t="Include" />
-              <e p="PushCar.cs" t="Include" />
-              <e p="SimpleCarController.cs" t="Include" />
-              <e p="SumoTypeController.cs" t="Include" />
-              <e p="VehicleConfigurationData.cs" t="Include" />
-              <e p="VehicleLightController.cs" t="Include" />
-              <e p="VehicleMover.cs" t="Include" />
-              <e p="VehicleMoverByInterpolation.cs" t="Include" />
-              <e p="VehicleMoverByLinearInterpolation.cs" t="Include" />
-              <e p="VehicleMoverByPhysics.cs" t="Include" />
-              <e p="VehicleMoverByTransform.cs" t="Include" />
-              <e p="VehicleMoverSimple.cs" t="Include" />
-            </e>
-            <e p="CsClientScripts" t="Include">
-              <e p="Client.cs" t="Include" />
-              <e p="SocketWrapper.cs" t="Include" />
-            </e>
-            <e p="DataDisplayScripts" t="Include">
-              <e p="DataDisplay.cs" t="Include" />
-              <e p="DropdownFilter.cs" t="Include" />
-              <e p="LaneDataDisplayScripts" t="Include">
-                <e p="LaneDataDisplay.cs" t="Include" />
-              </e>
-              <e p="MenuController.cs" t="Include" />
-              <e p="RouteDataDisplayScripts" t="Include">
-                <e p="RouteData.cs" t="Include" />
-                <e p="RouteDataDisplay.cs" t="Include" />
-                <e p="RouteDataDisplayItem.cs" t="Include" />
-                <e p="RouteDetailMouseEvents.cs" t="Include" />
-              </e>
-              <e p="SearchElement.cs" t="Include" />
-              <e p="VehicleDataDisplayScripts" t="Include">
-                <e p="NoVehicleSelected.cs" t="Include" />
-                <e p="VehicleDataDisplay.cs" t="Include" />
-              </e>
-            </e>
-            <e p="DataInjection" t="Include">
-              <e p="MyMonoInstaller.cs" t="Include" />
-            </e>
-            <e p="DisplayRenderer.cs" t="Include" />
-            <e p="EventSystem" t="Include">
-              <e p="GameEvent.cs" t="Include" />
-              <e p="GameEventListener.cs" t="Include" />
-            </e>
-            <e p="FadeOutAll.cs" t="Include" />
-            <e p="HelperClasses" t="Include">
-              <e p="Editor" t="Include">
-                <e p="CustomEditorBase.cs" t="Include" />
-                <e p="EditorHelper.cs" t="Include" />
-                <e p="SerializedPropertyExtensions.cs" t="Include" />
-              </e>
-              <e p="FileHelper.cs" t="Include" />
-              <e p="FixedSizedQueue.cs" t="Include" />
-              <e p="GlobalTransform.cs" t="Include" />
-              <e p="HelpfulAttributes" t="Include">
-                <e p="CallProperty" t="Include">
-                  <e p="CallSetterAttribute.cs" t="Include" />
-                  <e p="Editor" t="Include">
-                    <e p="CallSetterPropertyDrawer.cs" t="Include" />
+        <e p="TestTransformAccess.cs" t="Include" />
+        <e p="Windridge" t="Include">
+          <e p="RoadNet" t="Include">
+            <e p="LeftNicosia.net.xml" t="Include" />
+            <e p="LeftNicosia1.net.xml" t="Include" />
+            <e p="Models" t="Include">
+              <e p="NatureManufacture Assets - Trials Not Full Resolution" t="Include">
+                <e p="EasyRoads-HD_Add_ON" t="Include">
+                  <e p="Shaders" t="Include">
+                    <e p="Decal_Metalic_Road_Shader Parallax ArrayTrial.shader" t="Include" />
+                    <e p="Decal_Metalic_Road_Shader Parallax Trial.shader" t="Include" />
+                    <e p="Standard_Metalic_Cross_Road_Shader Parallax ArrayTrial.shader" t="Include" />
+                    <e p="Standard_Metalic_Road_Shader Parallax ArrayTrial.shader" t="Include" />
                   </e>
                 </e>
-                <e p="FileSelect" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="FileSelectPropertyDrawer.cs" t="Include" />
+                <e p="Foliage Shaders" t="Include">
+                  <e p="Cross_Model_Shader.shader" t="Include" />
+                  <e p="NM_indirect.cginc" t="Include" />
+                  <e p="NMWind.cginc" t="Include" />
+                  <e p="NMWindNoShiver.cginc" t="Include" />
+                  <e p="Tree_Bark_Metalic.shader" t="Include" />
+                  <e p="Tree_Leaves_Specular.shader" t="Include" />
+                </e>
+                <e p="NatureManufacture Wind" t="Include">
+                  <e p="NM_Wind.cs" t="Include" />
+                </e>
+                <e p="Park Photo Scanned Assets" t="Include">
+                  <e p="Shaders" t="Include">
+                    <e p="Standard_Metalic_UV_Free_Walls_and_Floors.shader" t="Include" />
                   </e>
-                  <e p="FileSelectAttribute.cs" t="Include" />
                 </e>
-                <e p="LayerSelect" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="LayerAttributeEditor.cs" t="Include" />
+              </e>
+              <e p="Windridge City Assets" t="Include">
+                <e p="CTS Trial" t="Include">
+                  <e p="Shaders" t="Include">
+                    <e p="CTS Terrain Shader Advanced LOD Trial.shader" t="Include" />
+                    <e p="CTS Terrain Shader Advanced Trial.shader" t="Include" />
                   </e>
-                  <e p="LayerAttribute.cs" t="Include" />
                 </e>
-                <e p="ReadOnly" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="ReadOnlyDrawer.cs" t="Include" />
+                <e p="READ ME - About project and assets.txt" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="UIQuallityManager" t="Include">
+                    <e p="UIQualityManager.cs" t="Include" />
                   </e>
-                  <e p="ReadOnlyAttribute.cs" t="Include" />
                 </e>
-                <e p="Rename" t="Include">
-                  <e p="ButtonAttribute.cs" t="Include" />
-                  <e p="Editor" t="Include">
-                    <e p="ButtonDrawer.cs" t="Include" />
-                    <e p="RenameDrawer.cs" t="Include" />
-                  </e>
-                  <e p="RenameAttribute.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Highlight.cs" t="Include" />
-              <e p="IInstantiatable.cs" t="Include" />
-              <e p="OutlineEffect" t="Include">
-                <e p="Demo" t="Include">
-                  <e p="MaterialSwitcher.cs" t="Include" />
-                  <e p="OutlineAnimation.cs" t="Include" />
-                  <e p="Rotate.cs" t="Include" />
-                  <e p="Toggle.cs" t="Include" />
-                </e>
-                <e p="LinkedSet.cs" t="Include" />
-                <e p="Outline.cs" t="Include" />
-                <e p="OutlineEffect.cs" t="Include" />
-                <e p="Resources" t="Include">
-                  <e p="OutlineBufferShader.shader" t="Include" />
-                  <e p="OutlineShader.shader" t="Include" />
-                </e>
-              </e>
-              <e p="SelectableObjectEvent.cs" t="Include" />
-              <e p="SingletonMonoBehaviour.cs" t="Include" />
-            </e>
-            <e p="InputManager.cs" t="Include" />
-            <e p="LaneInCameraFrustum.cs" t="Include" />
-            <e p="MockTester.cs" t="Include" />
-            <e p="MyTransform.cs" t="Include" />
-            <e p="RiseProject" t="Include">
-              <e p="Tomis" t="Include">
-                <e p="SumoInUnity" t="Include">
-                  <e p="ApplicationManager.cs" t="Include" />
-                  <e p="VehicleSimulator.cs" t="Include" />
-                </e>
+                <e p="Third-Party Notices.txt" t="Include" />
+                <e p="UnityCompanionLicense_ForAssetComnponentsStatedInThird-PartyNotices.txt" t="Include" />
               </e>
             </e>
-            <e p="ScriptableObjectScripts" t="Include">
-              <e p="CurrentlySelectedTargets.cs" t="Include" />
-              <e p="DataDisplayTexts.cs" t="Include" />
-              <e p="Editor" t="Include">
-                <e p="SumoNetworkDataEditor.cs" t="Include" />
-                <e p="VehicleEditor.cs" t="Include" />
-              </e>
-              <e p="EnableVehicleView.cs" t="Include" />
-              <e p="FunctionalScriptableObjectWithNetworkDataAccess.cs" t="Include" />
-              <e p="HighlightRoute.cs" t="Include" />
-              <e p="ISelectableTraciVariable.cs" t="Include" />
-              <e p="LaneDataDisplayTexts.cs" t="Include" />
-              <e p="SharedVehicleData.cs" t="Include" />
-              <e p="SimulationState.cs" t="Include" />
-              <e p="SingletonScriptableObject.cs" t="Include" />
-              <e p="SumoCommands.cs" t="Include" />
-              <e p="SumoNetworkData.cs" t="Include" />
-              <e p="TransformNetworkData.cs" t="Include" />
-            </e>
-            <e p="Serialization" t="Include">
-              <e p="SerializableDictionary.cs" t="Include" />
-            </e>
-            <e p="SimulationStartupData.cs" t="Include" />
-            <e p="TestScripts" t="Include">
-              <e p="TestPerformanceOfDifferentAccessors.cs" t="Include" />
-              <e p="TestPerformanceOfEvents.cs" t="Include" />
-            </e>
-            <e p="TraciForCS" t="Include">
-              <e p="ConnectionNotInitializedException.cs" t="Include" />
-              <e p="Helpers" t="Include">
-                <e p="TraCIAuxiliaryMethods.cs" t="Include" />
-              </e>
-              <e p="IDataHolder.cs" t="Include" />
-              <e p="MVC-Views-Controllers" t="Include">
-                <e p="Editor" t="Include">
-                  <e p="VehicleViewEditor.cs" t="Include" />
-                </e>
-                <e p="LaneController.cs" t="Include" />
-                <e p="SumoTypeView.cs" t="Include" />
-                <e p="VehicleController.cs" t="Include" />
-                <e p="VehicleView.cs" t="Include" />
-              </e>
-              <e p="TaskManager.cs" t="Include" />
-              <e p="TraCIVariable.cs" t="Include" />
-              <e p="TraciVariableData.cs" t="Include" />
-              <e p="TraCIVariables" t="Include">
-                <e p="Edge.cs" t="Include" />
-                <e p="Junction.cs" t="Include" />
-                <e p="Lane.cs" t="Include" />
-                <e p="Route.cs" t="Include" />
-                <e p="TraCIVariable.cs" t="Include" />
-                <e p="TraCIVariableShaped.cs" t="Include" />
-                <e p="Vehicle.cs" t="Include" />
-              </e>
-            </e>
+            <e p="NicosiaSmall.net.xml" t="Include" />
+          </e>
+        </e>
+        <e p="WindridgeTomis" t="Include">
+          <e p="LampSwitcher.cs" t="Include" />
+          <e p="Scenes" t="Include">
+            <e p="READ ME - About Scene.txt" t="Include" />
           </e>
         </e>
       </e>
@@ -1284,6 +1580,7 @@
         <e p="bin" t="ExcludeRecursive" />
       </e>
       <e p="thesis-sumo-in-unity.sln" t="IncludeFlat" />
+      <e p="UtilityAI.csproj" t="IncludeRecursive" />
       <e p="Zenject-Editor.csproj" t="IncludeRecursive" />
       <e p="Zenject.csproj" t="IncludeRecursive" />
     </e>
