@@ -12,7 +12,7 @@ using System.Xml.Linq;
 using CodingConnected.TraCI.NET;
 using CodingConnected.TraCI.NET.Commands;
 using CodingConnected.TraCI.NET.Types;
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
 using RiseProject.Tomis.Util.TraciAuxilliary;
@@ -38,7 +38,11 @@ namespace RiseProject.Tomis.SumoInUnity
         CaptureNone
     }
 
-
+    public enum SubscriptionType
+    {
+        Variable,
+        Context,
+    }
     
     public class SumoClient : SingletonMonoBehaviour<SumoClient>
     {
@@ -113,7 +117,7 @@ namespace RiseProject.Tomis.SumoInUnity
         private LaneCommands _laneCommands;
         private VehicleTypeCommands _vehicleTypeCommands;
 
-        [field: SerializeField] public bool UseContextSubscription { get; set; }
+        [field: SerializeField] public SubscriptionType SubscriptionType { get; set; }
         
         /// <summary> A number of traci variables each new car will subscribe to. Make polling easier for each vehicle. </summary>
         private readonly List<byte> _vehicleSubscriptionList = new List<byte>
@@ -446,14 +450,14 @@ namespace RiseProject.Tomis.SumoInUnity
                     return;
                 }
 
-                UseLocalSumo = StartupData.UseSumoFromAssets;         
+                UseLocalSumo = StartupData.useLocalSumo;         
                 
                 StepLength = StartupData.stepLength;
                 SumocfgFile = StartupData.SumoConfigFilename;
                 RedirectionMode = StartupData.redirectionMode;
                 
                 UseMultithreading = StartupData.useMultithreading;
-                UseContextSubscription = StartupData.useContextSubscriptions;
+                SubscriptionType = StartupData.subscriptionType;
                 
                 CreateFpsByVehicleCountPlot = StartupData.createFpsByVehicleCountPlot;
                 CreateSimStepExecutionTimeByVehicleCountPlot = StartupData.createSimStepDelayByVehicleCount;
@@ -663,28 +667,36 @@ namespace RiseProject.Tomis.SumoInUnity
                 
                 // When using context subscription we care about vehicles that arrive to their destination and are inside
                 // the context range so we can add them to vehicles that exited the context range.
-                if(UseContextSubscription)
-                    SimulationSubscriptionList = new List<byte>
-                    {
-                        TraCIConstants.VAR_ARRIVED_VEHICLES_IDS
-                    };
-                else
-                    SimulationSubscriptionList = new List<byte>
-                    {
-                        TraCIConstants.VAR_DEPARTED_VEHICLES_IDS, 
-                        TraCIConstants.VAR_ARRIVED_VEHICLES_IDS
-                    };
+                switch (SubscriptionType)
+                {
+                    case SubscriptionType.Variable:
+                        SimulationSubscriptionList = new List<byte>
+                        {
+                            TraCIConstants.VAR_DEPARTED_VEHICLES_IDS, 
+                            TraCIConstants.VAR_ARRIVED_VEHICLES_IDS
+                        };
+                        break;
+                    case SubscriptionType.Context:
+                        SimulationSubscriptionList = new List<byte>
+                        {
+                            TraCIConstants.VAR_ARRIVED_VEHICLES_IDS
+                        };
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
 
                 // By subscribing to simulation commands now (I believe) that arrived vehicles will be updated before
                 // using them to add them to vehicles that exited context range.
                 SimulationCommands.Subscribe("ignored", 0, 10000, SimulationSubscriptionList);
                 
-                if (UseContextSubscription) // Either use context or variable subscriptions for polling the vehicle data.
+                if (SubscriptionType == SubscriptionType.Context) // Either use context or variable subscriptions for polling the vehicle data.
                     TraCIClient.LaneContextSubscription += TraCIClient_LaneContextSubscription;
 
                 // When doing context subscription we do not need to subscribe to this subscription unless
                 // we want to collect information about the amount of active vehicles
-                if(!UseContextSubscription || (CreateFpsByVehicleCountPlot || CreateSimStepExecutionTimeByVehicleCountPlot))
+                if(SubscriptionType != SubscriptionType.Context || (CreateFpsByVehicleCountPlot || CreateSimStepExecutionTimeByVehicleCountPlot))
                     TraCIClient.VehicleSubscription += TraCIClient_VehicleSubscription;
                 
                 TraCIClient.SimulationSubscription += TraCIClient_SimulationSubscription;
@@ -785,7 +797,7 @@ namespace RiseProject.Tomis.SumoInUnity
             {
                 IsFirstStep = false;
 
-                if (!UseContextSubscription)
+                if (SubscriptionType != SubscriptionType.Context)
                 {                
                     var loadedVehicles = SimulationCommands.GetLoadedIDList("ignored").Content;
                     loadedVehicles.ForEach(AddVehicleToDeparted);
@@ -813,7 +825,7 @@ namespace RiseProject.Tomis.SumoInUnity
             // if using context subscriptions then code execution should never get in this method
             // because vehicles make variable subscriptions here. We do not care about departed vehicles when
             // using context subscription.
-            Assert.IsFalse( UseContextSubscription );
+            Assert.IsFalse( SubscriptionType == SubscriptionType.Context);
             
             if (VehiclesDepartedShared.ContainsKey(id)) 
                 return;
@@ -824,7 +836,7 @@ namespace RiseProject.Tomis.SumoInUnity
             lock (SumoCommands.ClientLock)
             {
                 // No additional subscriptions should happen when using context subscription
-                Assert.IsFalse( UseContextSubscription );
+                Assert.IsFalse( SubscriptionType  == SubscriptionType.Context);
                 VehicleCommands.Subscribe(id, 0, 10000000, _vehicleSubscriptionList);
                 pos = VehicleCommands.GetPosition(id).Content;
                 angle = (float) VehicleCommands.GetAngle(id).Content;
@@ -933,8 +945,8 @@ namespace RiseProject.Tomis.SumoInUnity
             
             // Assert to check the bare minimum responses are being subscribed to
             Assert.IsTrue(
-                UseContextSubscription && e.Responses.Count() == 1 ||
-                         !UseContextSubscription && e.Responses.Count() == 2
+                SubscriptionType == SubscriptionType.Context && e.Responses.Count() == 1 ||
+                         SubscriptionType == SubscriptionType.Variable && e.Responses.Count() == 2
                 );
             
             foreach (var responseObj in e.Responses)
@@ -944,7 +956,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 {
                     case TraCIConstants.VAR_DEPARTED_VEHICLES_IDS:
                         // We don't care about departed vehicles in Context subscription
-                        Assert.IsFalse( UseContextSubscription );
+                        Assert.IsFalse( SubscriptionType  == SubscriptionType.Context);
                         
                         _departedVehicleIDs = ((TraCIResponse<List<string>>) responseObj).Content;
                         break;
@@ -963,10 +975,10 @@ namespace RiseProject.Tomis.SumoInUnity
                        
             VehiclesArrivedShared.Clear();
 
-            if (UseContextSubscription) 
+            if (SubscriptionType == SubscriptionType.Context) 
                 return;
             
-            Assert.IsFalse(UseContextSubscription);
+            Assert.IsFalse(SubscriptionType == SubscriptionType.Context);
             
             VehiclesDepartedShared.Clear();
             
@@ -1001,7 +1013,7 @@ namespace RiseProject.Tomis.SumoInUnity
             
             NumberOfVehiclesInsideContextRange = 0;
             
-            Assert.IsTrue(UseContextSubscription);
+            Assert.IsTrue(SubscriptionType == SubscriptionType.Context);
             
             var variableSubscriptionByObjectId = e.VariableSubscriptionByObjectId;
             //var vehiclesFoundThisSimStep = new HashSet<string>();
@@ -1090,12 +1102,12 @@ namespace RiseProject.Tomis.SumoInUnity
         private void HandleVehicleSubscription(VariableSubscriptionEventArgs e)
         {
             // This handler should not execute for Context subscriptions because no data received from here are important
-            // unless we want to create logs. In that case we care about the amount 
+            // unless we want to create logs. In that case we care about the amount of active vehicles
             Assert.IsFalse(
-                UseContextSubscription && !( CreateFpsByVehicleCountPlot || CreateSimStepExecutionTimeByVehicleCountPlot)
+                SubscriptionType == SubscriptionType.Context && !( CreateFpsByVehicleCountPlot || CreateSimStepExecutionTimeByVehicleCountPlot)
                 );
             
-            Assert.IsFalse(e.ObjectId != "ignored" && UseContextSubscription );
+            Assert.IsFalse(e.ObjectId != "ignored" && SubscriptionType == SubscriptionType.Context );
                         
             var vehicleId = e.ObjectId;
 
@@ -1130,7 +1142,7 @@ namespace RiseProject.Tomis.SumoInUnity
 
 
             // Below this line everything should not be executed when dealing with context subscription, no matter the case
-            Assert.IsFalse( UseContextSubscription );
+            Assert.IsFalse( SubscriptionType == SubscriptionType.Context );
             
             var vehicleRetrieved = VehiclesActiveShared[vehicleId];
 

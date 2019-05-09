@@ -2,7 +2,7 @@
 using UnityEngine;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
 
     /// <summary>

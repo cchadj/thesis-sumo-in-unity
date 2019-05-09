@@ -3,7 +3,7 @@
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.SumoInUnity.MVC;
 
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
     /// <summary>
     /// Contains all the data needed from the simulation.

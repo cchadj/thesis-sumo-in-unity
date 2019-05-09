@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.MVC;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
@@ -44,19 +44,19 @@ namespace RiseProject.Tomis.SumoInUnity
             
         }
 
-        private TransformNetworkData _transformNetworkData = null;
-        private TransformNetworkData TransformNetworkData {
+        private SumoToUnityGameObjectMap _sumoToUnityGameObjectMap = null;
+        private SumoToUnityGameObjectMap SumoToUnityGameObjectMap {
             get
             {
-                if (_transformNetworkData == null)
-                    _transformNetworkData = TransformNetworkData.Instance;
+                if (_sumoToUnityGameObjectMap == null)
+                    _sumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
                 
-                if (_transformNetworkData == null)
+                if (_sumoToUnityGameObjectMap == null)
 
                     throw new NullReferenceException("Could not retrieve TransformNetworkData singleton ");
-                return _transformNetworkData;
+                return _sumoToUnityGameObjectMap;
             }
-            set => _transformNetworkData = value;
+            set => _sumoToUnityGameObjectMap = value;
         }
         private SharedVehicleData SharedVehicleData { get; set; }
         private SumoClient Client { get; set; }
@@ -77,9 +77,9 @@ namespace RiseProject.Tomis.SumoInUnity
             }
             
             Client = SumoClient.Instance;
-            _onlyShowContextRangeVehicles = Client.UseContextSubscription;
+            _onlyShowContextRangeVehicles = Client.SubscriptionType == SubscriptionType.Context;
             
-            TransformNetworkData = TransformNetworkData.Instance;
+            SumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
             SumoNetworkData = SumoNetworkData.Instance;
             SharedVehicleData = SharedVehicleData.Instance;
             
@@ -96,8 +96,8 @@ namespace RiseProject.Tomis.SumoInUnity
             GameObjectByVehicleId = new IDtoGameObjectDictionary();
             _vehiclesEligibleForDeletion = new Dictionary<string, Transform>();
             
-            if(TransformNetworkData != null)
-                TransformNetworkData.VehicleGameObjects = GameObjectByVehicleId;
+            if(SumoToUnityGameObjectMap != null)
+                SumoToUnityGameObjectMap.VehicleGameObjects = GameObjectByVehicleId;
             
             PopulateVehicleTransformPool(_poolSize);
         }

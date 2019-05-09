@@ -20,17 +20,17 @@ public class HighlightRoute : FunctionalScriptableObjectWithNetworkDataAccess<st
             List<Lane> lanes = SumoNetworkData.Edges[id].Lanes;
             foreach (Lane lane in lanes)
             {
-                List<GameObject> laneGameObjects = TransformNetworkData.LaneIDGameObjectPairs[lane.ID];
-                int objectCount = laneGameObjects.Count;
-                int c = 0;
-                foreach ( GameObject lanego in laneGameObjects)
-                {
-                    float normalized = (float)c++/objectCount;
-                    MeshRenderer renderer =  lanego.GetComponent<MeshRenderer>();
-                    if (!_isRouteHighlighted)
-                        _startcolor = renderer.material.color;
-                    renderer.material.color = _isRouteHighlighted ? _startcolor : UnityEngine.Color.Lerp(_startcolor, UnityEngine.Color.yellow, normalized);
-                }
+//                var laneGameObjects = SumoToUnityGameObjectMap.LaneIDGameObjectPairs[lane.ID];
+//                int objectCount = laneGameObjects.Count;
+//                int c = 0;
+////                foreach ( GameObject lanego in laneGameObjects)
+////                {
+////                    float normalized = (float)c++/objectCount;
+////                    MeshRenderer renderer =  lanego.GetComponent<MeshRenderer>();
+////                    if (!_isRouteHighlighted)
+////                        _startcolor = renderer.material.color;
+////                    renderer.material.color = _isRouteHighlighted ? _startcolor : UnityEngine.Color.Lerp(_startcolor, UnityEngine.Color.yellow, normalized);
+////                }
             }
         }
         _isRouteHighlighted = !_isRouteHighlighted;

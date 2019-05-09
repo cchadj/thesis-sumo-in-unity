@@ -4,7 +4,7 @@ using Tomis.Utils.Unity;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
     [CreateAssetMenu(menuName = "DataPersistence/Startup data")]
     public class SimulationStartupData : SingletonScriptableObject<SimulationStartupData>
@@ -18,14 +18,14 @@ namespace RiseProject.Tomis.DataHolders
 
         [Space(5), Header("Simulation Start up data")]
         public bool createFpsByVehicleCountPlot = true;
-        public bool UseSumoFromAssets;
+        public SubscriptionType subscriptionType;
+        public bool useLocalSumo;
         public bool dontUseSumo;
         public bool dontUseVehicleSimulator;
         public bool useReporter;
         public float stepLength = 0.03f;
         public bool useMultithreading;
         public bool createSimStepDelayByVehicleCount;
-        public bool useContextSubscriptions;
         public SumoProcessRedirectionMode redirectionMode;
     }
 }

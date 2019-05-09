@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using UnityEngine.SceneManagement;
 using Crosstales.FB;
 using RiseProject.Tomis.SumoInUnity;
@@ -98,9 +98,9 @@ public class StartMenu : MonoBehaviour
         useMultithreadingToggle.onValueChanged.AddListener(isToggleOn =>
             startupData.useMultithreading = isToggleOn);
         
-        startupData.useContextSubscriptions = useContextSubscriptionsToggle.isOn;
+        startupData.subscriptionType = useContextSubscriptionsToggle.isOn ?  SubscriptionType.Context : SubscriptionType.Variable;
         useContextSubscriptionsToggle.onValueChanged.AddListener( isToggleOn =>
-            startupData.useContextSubscriptions = isToggleOn
+            startupData.subscriptionType = isToggleOn?  SubscriptionType.Context : SubscriptionType.Variable
         );
         
         // Logs and plots toggles

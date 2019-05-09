@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 using TMPro;
 
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 
 namespace RiseProject.Tomis.SumoInUnity.MVC

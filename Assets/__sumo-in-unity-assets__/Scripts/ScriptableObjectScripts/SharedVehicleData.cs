@@ -2,7 +2,7 @@
 using Tomis.Utils.Unity;
 using UnityEngine;
 
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
     [CreateAssetMenu]
     public class SharedVehicleData : SingletonScriptableObject<SharedVehicleData>

@@ -1,6 +1,6 @@
 ﻿using UnityEngine.EventSystems;
 using UnityEngine;
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 
 public class RouteDetailMouseEvents : MonoBehaviour, IPointerClickHandler {
 

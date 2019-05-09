@@ -1,5 +1,6 @@
-﻿using RiseProject.Tomis.DataHolders;
+﻿using RiseProject.Tomis.DataContainers;
 using System;
+using RiseProject.Tomis.SumoInUnity;
 using UnityEngine;
 
 [Serializable]
@@ -10,17 +11,17 @@ public abstract class FunctionalScriptableObjectWithNetworkDataAccess<T> : Scrip
     [SerializeField]
     private SumoCommands _sumoCommands;
     [SerializeField]
-    private TransformNetworkData _transformNetworkData;
+    private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
 
     protected SumoNetworkData SumoNetworkData
     {
         get => _sumoNetworkData;
         private set => _sumoNetworkData = value;
     }
-    protected TransformNetworkData TransformNetworkData
+    protected SumoToUnityGameObjectMap SumoToUnityGameObjectMap
     {
-        get => _transformNetworkData;
-        set => _transformNetworkData = value;
+        get => sumoToUnityGameObjectMap;
+        set => sumoToUnityGameObjectMap = value;
     }
     protected SumoCommands SumoCommands
     {

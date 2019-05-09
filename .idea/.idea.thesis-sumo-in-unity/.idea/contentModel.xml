@@ -251,7 +251,7 @@
               <e p="SingletonScriptableObject.cs" t="Include" />
               <e p="SumoCommands.cs" t="Include" />
               <e p="SumoNetworkData.cs" t="Include" />
-              <e p="TransformNetworkData.cs" t="Include" />
+              <e p="SumoToUnityGameObjectMap.cs" t="Include" />
             </e>
             <e p="Serialization" t="Include">
               <e p="SerializableDictionary.cs" t="Include" />

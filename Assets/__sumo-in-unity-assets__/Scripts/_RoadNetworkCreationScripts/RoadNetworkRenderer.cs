@@ -8,7 +8,7 @@ using cakeslice;
 
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.MVC;
 using UnityEngine;
 using Random = System.Random;
@@ -41,7 +41,7 @@ public class RoadNetworkRenderer : MonoBehaviour
 
 
     private CurrentlySelectedTargets CurrentlySelectedTargets { get; set; }
-    private TransformNetworkData TransformNetworkData { get; set; }
+    [SerializeField, ReadOnly] private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
     private SumoNetworkData NetworkData { get; set; }
     
     [field: SerializeField, Tooltip("These events get raised whenever a lane is clicked."),  Rename("On Click Lane Events")]
@@ -72,7 +72,7 @@ public class RoadNetworkRenderer : MonoBehaviour
     public bool showDebugRays;
 
     private int _laneCount;
-    private readonly Dictionary<string, RiseProject.Tomis.SumoInUnity.SumoTypes.Junction> _junctionDict;
+    private readonly Dictionary<string, Junction> _junctionDict;
     private GameObject _generatedRoadNetwork;
     private GameObject _generatedLanes;
     private GameObject _generatedJunctions;
@@ -122,7 +122,7 @@ public class RoadNetworkRenderer : MonoBehaviour
     public GameObject RenderNetwork()
     {
         NetworkData = SumoNetworkData.Instance;
-        TransformNetworkData = TransformNetworkData.Instance;
+        sumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
         CurrentlySelectedTargets = CurrentlySelectedTargets.Instance;
         
         _generatedRoadNetwork = new GameObject()
@@ -159,6 +159,7 @@ public class RoadNetworkRenderer : MonoBehaviour
         var count = 0;
         var renderEach = Mathf.RoundToInt(1f / renderPercentage);
         var laneGameObjectDict = new IDtoGameObjectsDictionary();
+        sumoToUnityGameObjectMap.LaneIDGameObjectPairs.Clear();
         foreach (var lane in lanes)
         {
             if (UnityEngine.Random.value > renderPercentage)
@@ -168,9 +169,12 @@ public class RoadNetworkRenderer : MonoBehaviour
             }
             _laneCount++;
             var curLane = lane;
-            laneGameObjectDict.Add(curLane.ID, RenderLane(curLane, roadWidth));
+            var laneGameObjects = RenderLane(curLane, roadWidth);
+             laneGameObjectDict.Add(curLane.ID, RenderLane(curLane, roadWidth));
+             sumoToUnityGameObjectMap.LaneIDGameObjectPairs.Add(curLane.ID, laneGameObjects[0]);
         }
 
+        
         /* RENDER JUNCTIONS */
         if (renderJunctions)
         {
@@ -181,8 +185,6 @@ public class RoadNetworkRenderer : MonoBehaviour
                 var curJunction = junction;
                 junctionGameObjectDict.Add(curJunction.ID, RenderShapedVariable(curJunction));
             }
-
-            TransformNetworkData.LaneIDGameObjectPairs = laneGameObjectDict;
         }
         
         return _generatedRoadNetwork;
@@ -199,9 +201,9 @@ public class RoadNetworkRenderer : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="lane"> The lane to render in unity </param>
-    /// <param name="roadWidth"></param>
+    /// <param name="laneWidth"></param>
     /// <returns> List of quads created for the lane </returns>
-    private List<GameObject> RenderLane(Lane lane, float roadWidth)
+    private List<GameObject> RenderLane(Lane lane, float laneWidth)
     {
         /* each lane is representated by two points 
          e.g (23.3, 0,23) -------------------------- (31,23)
@@ -209,13 +211,12 @@ public class RoadNetworkRenderer : MonoBehaviour
         List<GameObject> lanesCreated = new List<GameObject>();
         for (int i = 0; i < lane.ShapeVertexPoints.Count - 1; i++)
         {
-            List<GameObject> laneObjects = null;
+            List<GameObject> laneObjects;
             Vector2 startPoint = (lane.ShapeVertexPoints[i]);
             Vector2 endPoint = lane.ShapeVertexPoints[i + 1];
 
-            Vector3 startPoint3D = new Vector3(startPoint.x, 0f, startPoint.y);
             Vector3 endPoint3D = new Vector3(endPoint.x, 0f, endPoint.y);
-            laneObjects = QuadCreator.CreateQuad(startPoint, endPoint, roadWidth, !_disableNormals, addBoxCollider, lengthThreshold);
+            laneObjects = QuadCreator.CreateQuad(startPoint, endPoint, laneWidth, !_disableNormals, addBoxCollider, lengthThreshold);
 
             int edgeCount = 0;
             foreach (GameObject laneQuad in laneObjects)

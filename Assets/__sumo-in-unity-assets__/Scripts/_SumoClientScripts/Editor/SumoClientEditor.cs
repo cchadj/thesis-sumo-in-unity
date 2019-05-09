@@ -134,13 +134,14 @@ namespace RiseProject.Tomis.Editors
 
             EditorHelper.CreateDivider("Performance Settings",
                 "Settings related to performance of reading polled data");
-            Client.UseContextSubscription = EditorGUILayout.Toggle(
-                new GUIContent
-                {
-                    text = "Use Context Subscriptions",
-                    tooltip =
-                        "Use context Subscriptions instead of variable subscriptions. Check sumo wiki for TraCI. "
-                }, Client.UseContextSubscription);
+
+            Client.SubscriptionType = (SubscriptionType)EditorGUILayout.EnumPopup(
+               new GUIContent
+               {
+                   text = "Subscription Type: ",
+                   tooltip =
+                       "Use Variable or Context subscriptions. Check sumo wiki for TraCI. "
+               }, Client.SubscriptionType);
 
             Client.UseMultithreading = EditorGUILayout.Toggle(
                 new GUIContent

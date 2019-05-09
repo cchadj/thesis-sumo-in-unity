@@ -25,7 +25,7 @@ namespace RiseProject.Tomis.Util.Serializable
     [Serializable] public class IDtoGameObjectDictionary : SerializableDictionary<string, GameObject> { }
 }
 
-namespace RiseProject.Tomis.DataHolders { [Serializable] public class NetworkData : SingletonScriptableObject<SumoNetworkData> { } }
+namespace RiseProject.Tomis.DataContainers { [Serializable] public class NetworkData : SingletonScriptableObject<SumoNetworkData> { } }
 
 
 

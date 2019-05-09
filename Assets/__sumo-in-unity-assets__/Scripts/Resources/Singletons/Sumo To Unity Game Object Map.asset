@@ -10,5 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ce3c28a43c3a4945864d9f5b6e0d618, type: 3}
-  m_Name: TransformNetworkData
+  m_Name: Sumo To Unity Game Object Map
   m_EditorClassIdentifier: 
+  _laneIDGameObjectPairs:
+    keys: []
+  _vehicleGameObjects:
+    keys: []
+    values: []

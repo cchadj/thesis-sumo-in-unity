@@ -1,5 +1,5 @@
 ﻿
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
     /// <summary>
     /// Used for GetComponent because GetComponent<TraciVariable<T>> doesn't work. 

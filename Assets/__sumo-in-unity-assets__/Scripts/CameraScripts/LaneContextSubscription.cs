@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using RiseProject.Tomis.DataHolders;
+using RiseProject.Tomis.DataContainers;
 using UnityEngine;
 using Zenject;
 using System.Reflection;
 using CodingConnected.TraCI.NET;
+
 using RiseProject.Tomis.SumoInUnity;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
+using UnityEngine.Assertions;
 using Debug = UnityEngine;
 
 #if UNITY_EDITOR
@@ -47,8 +49,13 @@ public class LaneContextSubscription : MonoBehaviour
 
     private void Start()
     {
-        if (!_sumoClient.UseContextSubscription)
+        if (_sumoClient.SubscriptionType != SubscriptionType.Context)
+        {
             Destroy(this);
+            enabled = false;
+            return;
+        }
+
         
         _cam = GetComponent<Camera>();
         
@@ -69,8 +76,11 @@ public class LaneContextSubscription : MonoBehaviour
 
     private IEnumerator SubscriptionCoroutine()
     {
+        
         while (true)
         {
+            Assert.AreEqual(_sumoClient.SubscriptionType, SubscriptionType.Context);
+            
             ContextSubscribeToLaneInFrustum();
             yield return WaitForSeconds;
 

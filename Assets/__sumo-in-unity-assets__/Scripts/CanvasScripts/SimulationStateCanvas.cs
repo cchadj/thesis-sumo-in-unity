@@ -42,7 +42,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
         sumocfgText.SetText($"{sumocfgText.text,LEFT_ALIGN}{Path.GetFileName(_sumoClient.SumocfgFile),RIGHT_ALIGN}");
         redirectionModeText.SetText($"{redirectionModeText.text,LEFT_ALIGN}{_sumoClient.RedirectionMode.ToString(),RIGHT_ALIGN}");
         usingMultithreadText.SetText($"{(_sumoClient.UseMultithreading?"No " : "Using ")} Multithreading");
-        subscriptionTypeText.SetText($"{subscriptionTypeText.text,LEFT_ALIGN}{(_sumoClient.UseContextSubscription? "Context" : "Variable"),RIGHT_ALIGN}");
+        subscriptionTypeText.SetText($"{subscriptionTypeText.text,LEFT_ALIGN}{(_sumoClient.SubscriptionType.ToString()),RIGHT_ALIGN}");
         stepLengthText.SetText($"{stepLengthText.text,LEFT_ALIGN}{_sumoClient.StepLength,RIGHT_ALIGN:00.00}");
         enabled = false;
         
@@ -58,7 +58,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
         if(!_sumoClient.CreateSimStepExecutionTimeByVehicleCountPlot)
             Destroy(simStepExecutionTime);
 
-        if (!_sumoClient.UseContextSubscription)
+        if (_sumoClient.SubscriptionType != SubscriptionType.Context)
         {
             
             Destroy(currentlyContextSubscribedLaneIDText);
@@ -67,7 +67,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
         
         if (!_sumoClient.CreateFpsByVehicleCountPlot &&
             !_sumoClient.CreateSimStepExecutionTimeByVehicleCountPlot &&
-            !_sumoClient.UseContextSubscription)
+             _sumoClient.SubscriptionType != SubscriptionType.Context)
         {
             Destroy(numberOfActiveVehiclesText);
             yield break;
@@ -82,7 +82,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
             if(_sumoClient.CreateSimStepExecutionTimeByVehicleCountPlot)
                 simStepExecutionTime.SetText($"{simStepExecutionTimeInitialText,LEFT_ALIGN}{_sumoClient.CurrentSimulationStepExecutionTime,RIGHT_ALIGN:00.00}");
 
-            if (_sumoClient.UseContextSubscription)
+            if (_sumoClient.SubscriptionType == SubscriptionType.Context)
             {
                 currentlyContextSubscribedLaneIDText.SetText($"{currentlySubscribedLaneIdInitialText,LEFT_ALIGN}{_sumoClient.CurrentlyContextSubscribedObjectID,RIGHT_ALIGN}" );
                 numberOfVehiclesInsideContextRangeText.SetText($"{numberOfVehiclesInsideContextRangeInitialText,LEFT_ALIGN}{_sumoClient.NumberOfVehiclesInsideContextRange,RIGHT_ALIGN}");

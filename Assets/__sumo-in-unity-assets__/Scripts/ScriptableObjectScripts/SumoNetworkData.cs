@@ -1,12 +1,13 @@
-﻿using System.Collections.Generic;
-using RiseProject.Tomis.SumoInUnity.SumoTypes;
+﻿using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace RiseProject.Tomis.DataHolders
+namespace RiseProject.Tomis.DataContainers
 {
-    [CreateAssetMenu(menuName = "DataHolders/SumoNetworkData")]
+    /// <summary>
+    /// Contains information about the vehicles and the road network.
+    /// </summary>
+    [CreateAssetMenu(menuName = "DataContainers/SumoNetworkData")]
     public class SumoNetworkData : NetworkData
     {
         [SerializeField] private EdgeDictionary edges;
