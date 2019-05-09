@@ -32,7 +32,11 @@ public class CameraIntersect : MonoBehaviour
         enabled = debug;
     }
 
-        
+    private void Update()
+    {
+        FindIntersectionsWithPlane(out var _);
+    }
+
     /// <summary>
     /// Finds 0 to 4 corners that intersect the horizontal plane at <see cref="horizontalPlaneHeight"/>
     /// </summary>

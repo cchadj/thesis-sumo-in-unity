@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e599c441-d3bc-4f04-88cf-7c88355d2c29" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/CameraIntersect.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/CameraIntersect.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,18 +61,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/CameraIntersect.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+            <state relative-caret-position="296">
+              <caret line="76" column="26" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="27" />
               <folding>
-                <marker date="1557433146214" expanded="true" signature="6:44" ph="..." />
-                <marker date="1557433146214" expanded="true" signature="90:2345" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="664:926" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="941:1191" ph="///  ... " />
-                <marker date="1557433146214" expanded="true" signature="1264:2063" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="1455:1990" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="1686:1784" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="2182:2343" ph="{...}" />
-                <marker date="1557433146214" expanded="true" signature="2241:2328" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="6:44" ph="..." />
+                <marker date="1557433215644" expanded="true" signature="90:2422" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="664:926" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="953:1012" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="1018:1268" ph="/// Finds 0 to 4 corners that intersect the horizontal plane at &lt;see cref=&quot;horizontalPlaneHeight&quot;/&gt; ... " />
+                <marker date="1557433215644" expanded="true" signature="1341:2140" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="1532:2067" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="1763:1861" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="2259:2420" ph="{...}" />
+                <marker date="1557433215644" expanded="true" signature="2318:2405" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -673,12 +675,12 @@
       <workItem from="1557382783073" duration="307000" />
       <workItem from="1557388196596" duration="3465000" />
       <workItem from="1557396293684" duration="11603000" />
-      <workItem from="1557430136844" duration="3006000" />
+      <workItem from="1557430136844" duration="3437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59810000" />
+    <option name="totallyTimeSpent" value="60241000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1711,18 +1713,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/CameraIntersect.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+        <state relative-caret-position="296">
+          <caret line="76" column="26" selection-start-line="76" selection-start-column="19" selection-end-line="76" selection-end-column="27" />
           <folding>
-            <marker date="1557433146214" expanded="true" signature="6:44" ph="..." />
-            <marker date="1557433146214" expanded="true" signature="90:2345" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="664:926" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="941:1191" ph="///  ... " />
-            <marker date="1557433146214" expanded="true" signature="1264:2063" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="1455:1990" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="1686:1784" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="2182:2343" ph="{...}" />
-            <marker date="1557433146214" expanded="true" signature="2241:2328" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="6:44" ph="..." />
+            <marker date="1557433215644" expanded="true" signature="90:2422" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="664:926" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="953:1012" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="1018:1268" ph="/// Finds 0 to 4 corners that intersect the horizontal plane at &lt;see cref=&quot;horizontalPlaneHeight&quot;/&gt; ... " />
+            <marker date="1557433215644" expanded="true" signature="1341:2140" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="1532:2067" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="1763:1861" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="2259:2420" ph="{...}" />
+            <marker date="1557433215644" expanded="true" signature="2318:2405" ph="{...}" />
           </folding>
         </state>
       </provider>
