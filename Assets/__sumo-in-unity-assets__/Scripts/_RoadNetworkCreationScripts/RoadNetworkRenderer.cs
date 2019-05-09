@@ -72,7 +72,7 @@ public class RoadNetworkRenderer : MonoBehaviour
     public bool showDebugRays;
 
     private int _laneCount;
-    private readonly Dictionary<string, Junction> _junctionDict;
+    private readonly Dictionary<string, RiseProject.Tomis.SumoInUnity.SumoTypes.Junction> _junctionDict;
     private GameObject _generatedRoadNetwork;
     private GameObject _generatedLanes;
     private GameObject _generatedJunctions;

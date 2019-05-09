@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/unity-sumo-communication-assets-v2.0.0/_Scenes/MainMenu.unity
+    path: Assets/__sumo-in-unity-assets__/_Scenes/MainMenu.unity
     guid: 12cdeb0a5b7e16641a20f4ca1235d35e
   - enabled: 1
-    path: Assets/unity-sumo-communication-assets-v2.0.0/_Scenes/PerformanceTest.unity
+    path: Assets/__sumo-in-unity-assets__/_Scenes/PerformanceTest.unity
     guid: 52d5a17b59d5ecb41aad23e06734c7f1
   - enabled: 1
-    path: Assets/unity-sumo-communication-assets-v2.0.0/_Scenes/SumoInUnityDemo.unity
+    path: Assets/__sumo-in-unity-assets__/_Scenes/SumoInUnityDemo.unity
     guid: 193f6ce55485acd4f97fed82a31763ed
   m_configObjects: {}

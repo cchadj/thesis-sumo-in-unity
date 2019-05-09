@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: e9dee3bd72aaf3a4f8b44c4b42fa9ad5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Bench
+    100002: Bollard
+    100004: Building
+    100006: BuildingEntrance
+    100008: CityWall
+    100010: Hedge
+    100012: Road
+    100014: RoadArea
+    100016: RoadConnector
+    100018: RoadCrossingAtConnector
+    100020: RoadJunction
+    100022: //RootNode
+    100024: SurfaceArea
+    100026: SurfaceParking
+    100028: TreeRow
+    100030: Tunnel
+    100032: Wall
+    400000: Bench
+    400002: Bollard
+    400004: Building
+    400006: BuildingEntrance
+    400008: CityWall
+    400010: Hedge
+    400012: Road
+    400014: RoadArea
+    400016: RoadConnector
+    400018: RoadCrossingAtConnector
+    400020: RoadJunction
+    400022: //RootNode
+    400024: SurfaceArea
+    400026: SurfaceParking
+    400028: TreeRow
+    400030: Tunnel
+    400032: Wall
+    2100000: WOOD_0
+    2100002: MAT_0_0
+    2100004: BUILDING_DEFAULT_0
+    2100006: ROOF_DEFAULT_0
+    2100008: CONCRETE_0
+    2100010: ENTRANCE_DEFAULT_0
+    2100012: WALL_DEFAULT_0
+    2100014: HEDGE_0
+    2100016: ASPHALT_0
+    2100018: ROAD_MARKING_DASHED_0
+    2100020: COBBLESTONE_0
+    2100022: PAVING_STONE_0
+    2100024: KERB_0
+    2100026: STEPS_DEFAULT_0
+    2100028: EARTH_0
+    2100030: GRASS_0
+    2100032: TERRAIN_DEFAULT_0
+    2100034: MAT_1_0
+    2100036: MAT_2_0
+    2100038: TUNNEL_DEFAULT_0
+    2300000: Bench
+    2300002: Bollard
+    2300004: Building
+    2300006: BuildingEntrance
+    2300008: CityWall
+    2300010: Hedge
+    2300012: Road
+    2300014: RoadArea
+    2300016: RoadConnector
+    2300018: RoadCrossingAtConnector
+    2300020: RoadJunction
+    2300022: SurfaceArea
+    2300024: SurfaceParking
+    2300026: TreeRow
+    2300028: Tunnel
+    2300030: Wall
+    3300000: Bench
+    3300002: Bollard
+    3300004: Building
+    3300006: BuildingEntrance
+    3300008: CityWall
+    3300010: Hedge
+    3300012: Road
+    3300014: RoadArea
+    3300016: RoadConnector
+    3300018: RoadCrossingAtConnector
+    3300020: RoadJunction
+    3300022: SurfaceArea
+    3300024: SurfaceParking
+    3300026: TreeRow
+    3300028: Tunnel
+    3300030: Wall
+    4300000: Bench
+    4300002: Bollard
+    4300004: Building
+    4300006: BuildingEntrance
+    4300008: CityWall
+    4300010: Hedge
+    4300012: Road
+    4300014: RoadArea
+    4300016: RoadConnector
+    4300018: RoadCrossingAtConnector
+    4300020: RoadJunction
+    4300022: SurfaceArea
+    4300024: SurfaceParking
+    4300026: TreeRow
+    4300028: Tunnel
+    4300030: Wall
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
