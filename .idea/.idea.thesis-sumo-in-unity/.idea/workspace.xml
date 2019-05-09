@@ -6,13 +6,100 @@
   <component name="ChangeListManager">
     <list default="true" id="e599c441-d3bc-4f04-88cf-7c88355d2c29" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalTransform.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GlobalTransform.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestPerformanceOfDifferentAccessors.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestPerformanceOfDifferentAccessors.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestPerformanceOfEvents.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TestPerformanceOfEvents.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Copying.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Copying.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneContextSubscription.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneContextSubscription.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnApplyNewSpeedButtonPressed.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnApplyNewSpeedButtonPressed.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnExitButtonPressed.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnExitButtonPressed.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnFollowRandomVehicle.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnFollowRandomVehicle.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnLaneObjectSelect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnLaneObjectSelect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnMenuClose.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnMenuClose.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnMenuOpen.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnMenuOpen.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnObjectDeselect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnObjectDeselect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnObjectSelect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnObjectSelect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnPauseGame.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnPauseGame.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnRouteObjectSelect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnRouteObjectSelect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSearchModeEntered.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSearchModeEntered.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSearchModeExited.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSearchModeExited.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSelectModeEntered.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSelectModeEntered.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSelectModeExited.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnSelectModeExited.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnShowRouteDetails.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnShowRouteDetails.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnVehicleObjectSelect.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/ScriptableObjects/Events/OnVehicleObjectSelect.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/LaneCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/LaneCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/SimulationStateCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/SimulationStateCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/VehicleCanvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CanvasPrefabs/VehicleCanvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Curve Interpolation Car.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Curve Interpolation Car.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Interpolation Strategy Car.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Interpolation Strategy Car.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Physics With Car AI Car.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Physics With Car AI Car.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Simple Polling Car.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/CarPrefabs/Simple Polling Car.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/Camera.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/Camera.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/Car Prefabs.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/Car Prefabs.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/MainPrefabWheelcolliders.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/MainPrefabWheelcolliders.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/MainVehiclePrefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/MainVehiclePrefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnity-PerformanceTests.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnity-PerformanceTests.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab-v2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab-v2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab-v3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab-v3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/SumoInUnitySetupPrefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics Physics Strat 2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics Physics Strat 2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics Physics Strat Standar Assets Ai USE THIS.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics Physics Strat Standar Assets Ai USE THIS.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SetupScene/SumoInUnityPrefabs/PrefabsSetUp/U_EC03_physics.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/StartMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/StartMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SumoInUnitySetupPrefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SumoInUnitySetupPrefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/TestAssert.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/TestAssert.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/ui-components/SimulationState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/ui-components/SimulationState.cs.meta" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,23 +115,23 @@
             <state relative-caret-position="165">
               <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
               <folding>
-                <marker date="1557333534207" expanded="false" signature="6:197" ph="..." />
-                <marker date="1557333534207" expanded="true" signature="247:3295" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="655:706" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="721:1033" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
-                <marker date="1557333534207" expanded="true" signature="1058:1942" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="1098:1192" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="1529:1707" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="1754:1844" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="1989:2638" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2016:2632" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2063:2333" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2146:2319" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2403:2543" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2734:2960" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2813:2954" ph="{...}" />
-                <marker date="1557333534207" expanded="true" signature="2962:3292" ph="/* private void OnWillRenderObject() ... */" />
-                <marker date="1557333534207" expanded="true" signature="3323:3373" ph="{...}" />
+                <marker date="1557382161782" expanded="false" signature="6:197" ph="..." />
+                <marker date="1557382161782" expanded="true" signature="247:3295" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="655:706" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="721:1033" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
+                <marker date="1557382161782" expanded="true" signature="1058:1942" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="1098:1192" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="1529:1707" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="1754:1844" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="1989:2638" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2016:2632" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2063:2333" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2146:2319" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2403:2543" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2734:2960" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2813:2954" ph="{...}" />
+                <marker date="1557382161782" expanded="true" signature="2962:3292" ph="/* private void OnWillRenderObject() ... */" />
+                <marker date="1557382161782" expanded="true" signature="3323:3373" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -53,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CameraScripts/ExtendedFlycam.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="525">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
               <folding>
                 <marker date="1557309673738" expanded="false" signature="6:44" ph="..." />
@@ -69,11 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CarScripts/VehicleMover.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="165" column="51" selection-start-line="165" selection-start-column="28" selection-end-line="165" selection-end-column="51" />
+            <state relative-caret-position="-2">
+              <caret line="155" column="55" lean-forward="true" selection-start-line="155" selection-start-column="55" selection-end-line="155" selection-end-column="55" />
               <folding>
                 <marker date="1556992042758" expanded="false" signature="6:176" ph="..." />
                 <marker date="1556992042758" expanded="true" signature="220:7209" ph="{...}" />
@@ -110,112 +197,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <marker date="1556992034335" expanded="false" signature="6:78" ph="..." />
-                <marker date="1556992034335" expanded="true" signature="139:313" ph="{...}" />
-                <marker date="1556992034335" expanded="true" signature="211:232" ph="{...}" />
-                <marker date="1556992034335" expanded="true" signature="290:311" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneContextSubscription.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2295">
-              <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
-              <folding>
-                <marker date="1557333759157" expanded="false" signature="6:336" ph="..." />
-                <marker date="1557333759157" expanded="true" signature="433:4903" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="1293:1457" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="1483:2269" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="1686:1832" ph="/* We need to keep track of the center of the frustum. The center of the frustum will be used to  find the ... */" />
-                <marker date="1557333759157" expanded="true" signature="2319:2461" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="2346:2455" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="2467:2684" ph="/// Find and subscribe to the lane that is closest to the center of the frustum. ... " />
-                <marker date="1557333759157" expanded="true" signature="2735:4618" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="3186:3590" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="3465:3580" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="4668:4889" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="4724:4883" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="4930:7668" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="4959:5102" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="5125:5490" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="5647:5937" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="5683:5767" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6000:6290" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6036:6125" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6361:6411" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6466:6513" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6594:6828" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="6936:7666" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="7094:7219" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="7711:8432" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="7797:7958" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="8038:8194" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="8270:8323" ph="{...}" />
-                <marker date="1557333759157" expanded="true" signature="8383:8430" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-              <folding>
-                <marker date="1557381093500" expanded="true" signature="132:581" ph="{...}" />
-                <marker date="1557381093500" expanded="true" signature="337:381" ph="{...}" />
-                <marker date="1557381093500" expanded="true" signature="439:579" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="75">
               <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
                 <marker date="1557300147679" expanded="false" signature="6:107" ph="..." />
                 <marker date="1557300147679" expanded="true" signature="153:1036" ph="{...}" />
                 <marker date="1557300147679" expanded="true" signature="445:1034" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/TestAssert.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="84" column="13" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
-              <folding>
-                <marker date="1557334019012" expanded="false" signature="7:89" ph="..." />
-                <marker date="1557334019012" expanded="true" signature="129:2157" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="250:2155" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="572:646" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="667:766" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="785:847" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="868:952" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="971:1052" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1073:1164" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1183:1264" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1285:1376" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1475:1542" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1556:1690" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1710:1775" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1789:1908" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="1928:2000" ph="{...}" />
-                <marker date="1557334019012" expanded="true" signature="2014:2140" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -304,34 +294,29 @@
       <find>GameObjectByVehicleId</find>
       <find>new</find>
       <find>VehiclesEnteredContextRange</find>
+      <find>unity-sumo-communication-assets-v2.0.0</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_RoadNetworkCreationScripts/RoadNetworkRenderer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/ApplicationManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/35B14027-6B2F-460C-88E9-BBFD32CEFF37/4e/0b63f297/GC.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CarScripts/VehicleMover.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/ScriptableObjectScripts/SumoNetworkData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CameraScripts/ExtendedFlycam.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_RoadNetworkCreationScripts/RoadNetworkRenderer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DisplayRenderer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/TestAssert.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneContextSubscription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/TraciForCS/TraCIVariables/TraCIVariable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/SumoClient.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CarScripts/VehicleMover.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CanvasScripts/SimulationStateCanvas.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/_SumoClientScripts/Editor/SumoClientEditor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/SimulationStartupData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/ui-components/SimulationState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/ScriptableObjectScripts/SumoNetworkData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CameraScripts/ExtendedFlycam.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C7033418-969C-409C-8CD1-4950555A0E6C/65/c6317402/Transform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -361,8 +346,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-619" />
-    <option name="y" value="223" />
+    <option name="x" value="-120" />
+    <option name="y" value="345" />
     <option name="width" value="1696" />
     <option name="height" value="1031" />
   </component>
@@ -371,15 +356,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="FileSystemExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
       <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+            </path>
+            <path>
+              <item name="Project" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="48f920db:UnityExplorerNode$AssetsRoot" />
+              <item name="unity-sumo-communication-assets-v2.0.0" type="1045f7f1:UnityExplorerNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -432,11 +431,12 @@
       <workItem from="1557298486565" duration="28162000" />
       <workItem from="1557376893156" duration="81000" />
       <workItem from="1557376999396" duration="3656000" />
+      <workItem from="1557382783073" duration="307000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41429000" />
+    <option name="totallyTimeSpent" value="41736000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -448,9 +448,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-619" y="223" width="1696" height="1031" extended-state="0" />
+    <frame x="-120" y="345" width="1696" height="1031" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12713936" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18581907" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -960,94 +960,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/GlobalTransform.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/TestPerformanceOfDifferentAccessors.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/TestPerformanceOfEvents.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/LaneInCameraFrustum.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="18" column="80" selection-start-line="18" selection-start-column="80" selection-end-line="18" selection-end-column="80" />
           <folding>
-            <marker date="1557333534207" expanded="false" signature="6:197" ph="..." />
-            <marker date="1557333534207" expanded="true" signature="247:3295" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="655:706" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="721:1033" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
-            <marker date="1557333534207" expanded="true" signature="1058:1942" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="1098:1192" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="1529:1707" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="1754:1844" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="1989:2638" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2016:2632" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2063:2333" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2146:2319" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2403:2543" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2734:2960" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2813:2954" ph="{...}" />
-            <marker date="1557333534207" expanded="true" signature="2962:3292" ph="/* private void OnWillRenderObject() ... */" />
-            <marker date="1557333534207" expanded="true" signature="3323:3373" ph="{...}" />
+            <marker date="1557382161782" expanded="false" signature="6:197" ph="..." />
+            <marker date="1557382161782" expanded="true" signature="247:3295" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="655:706" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="721:1033" ph="/// Replace the mesh of this lane object with a very small mesh that ... " />
+            <marker date="1557382161782" expanded="true" signature="1058:1942" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="1098:1192" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="1529:1707" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="1754:1844" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="1989:2638" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2016:2632" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2063:2333" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2146:2319" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2403:2543" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2734:2960" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2813:2954" ph="{...}" />
+            <marker date="1557382161782" expanded="true" signature="2962:3292" ph="/* private void OnWillRenderObject() ... */" />
+            <marker date="1557382161782" expanded="true" signature="3323:3373" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CameraScripts/ExtendedFlycam.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+          <folding>
+            <marker date="1557309673738" expanded="false" signature="6:44" ph="..." />
+            <marker date="1557309673738" expanded="true" signature="90:2495" ph="{...}" />
+            <marker date="1557309673738" expanded="true" signature="96:616" ph="/* EXTENDED FLYCAM ... */" />
+            <marker date="1557309673738" expanded="true" signature="883:2493" ph="{...}" />
+            <marker date="1557309673738" expanded="true" signature="923:2459" ph="{...}" />
+            <marker date="1557309673738" expanded="true" signature="1400:1664" ph="{...}" />
+            <marker date="1557309673738" expanded="true" signature="1751:2015" ph="{...}" />
+            <marker date="1557309673738" expanded="true" signature="2023:2249" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/LaneContextSubscription.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2295">
+        <state relative-caret-position="2430">
           <caret line="174" column="43" selection-start-line="174" selection-start-column="43" selection-end-line="174" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
-            <marker date="1557333759157" expanded="false" signature="6:336" ph="..." />
-            <marker date="1557333759157" expanded="true" signature="433:4903" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="1293:1457" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="1483:2269" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="1686:1832" ph="/* We need to keep track of the center of the frustum. The center of the frustum will be used to  find the ... */" />
-            <marker date="1557333759157" expanded="true" signature="2319:2461" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="2346:2455" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="2467:2684" ph="/// Find and subscribe to the lane that is closest to the center of the frustum. ... " />
-            <marker date="1557333759157" expanded="true" signature="2735:4618" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="3186:3590" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="3465:3580" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="4668:4889" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="4724:4883" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="4930:7668" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="4959:5102" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="5125:5490" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="5647:5937" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="5683:5767" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6000:6290" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6036:6125" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6361:6411" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6466:6513" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6594:6828" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="6936:7666" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="7094:7219" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="7711:8432" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="7797:7958" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="8038:8194" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="8270:8323" ph="{...}" />
-            <marker date="1557333759157" expanded="true" signature="8383:8430" ph="{...}" />
+            <marker date="1557300147679" expanded="false" signature="6:107" ph="..." />
+            <marker date="1557300147679" expanded="true" signature="153:1036" ph="{...}" />
+            <marker date="1557300147679" expanded="true" signature="445:1034" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/TestAssert.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
+        <state relative-caret-position="1215">
           <caret line="84" column="13" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
-          <folding>
-            <marker date="1557334019012" expanded="false" signature="7:89" ph="..." />
-            <marker date="1557334019012" expanded="true" signature="129:2157" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="250:2155" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="572:646" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="667:766" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="785:847" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="868:952" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="971:1052" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1073:1164" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1183:1264" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1285:1376" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1475:1542" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1556:1690" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1710:1775" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1789:1908" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="1928:2000" ph="{...}" />
-            <marker date="1557334019012" expanded="true" signature="2014:2140" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1097,72 +1085,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/GlobalTransform.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/TestPerformanceOfDifferentAccessors.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="48" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/TestPerformanceOfEvents.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="85" column="61" selection-start-line="70" selection-end-line="85" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/GlobalTransform.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="50" selection-end-line="3" selection-end-column="50" />
-          <folding>
-            <marker date="1557381093500" expanded="true" signature="132:581" ph="{...}" />
-            <marker date="1557381093500" expanded="true" signature="337:381" ph="{...}" />
-            <marker date="1557381093500" expanded="true" signature="439:579" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/DataInjection/MyMonoInstaller.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <marker date="1557300147679" expanded="false" signature="6:107" ph="..." />
-            <marker date="1557300147679" expanded="true" signature="153:1036" ph="{...}" />
-            <marker date="1557300147679" expanded="true" signature="445:1034" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CameraScripts/ExtendedFlycam.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <marker date="1557309673738" expanded="false" signature="6:44" ph="..." />
-            <marker date="1557309673738" expanded="true" signature="90:2495" ph="{...}" />
-            <marker date="1557309673738" expanded="true" signature="96:616" ph="/* EXTENDED FLYCAM ... */" />
-            <marker date="1557309673738" expanded="true" signature="883:2493" ph="{...}" />
-            <marker date="1557309673738" expanded="true" signature="923:2459" ph="{...}" />
-            <marker date="1557309673738" expanded="true" signature="1400:1664" ph="{...}" />
-            <marker date="1557309673738" expanded="true" signature="1751:2015" ph="{...}" />
-            <marker date="1557309673738" expanded="true" signature="2023:2249" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/Scripts/CarScripts/VehicleMover.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="165" column="51" selection-start-line="165" selection-start-column="28" selection-end-line="165" selection-end-column="51" />
+        <state relative-caret-position="-2">
+          <caret line="155" column="55" lean-forward="true" selection-start-line="155" selection-start-column="55" selection-end-line="155" selection-end-column="55" />
           <folding>
             <marker date="1556992042758" expanded="false" signature="6:176" ph="..." />
             <marker date="1556992042758" expanded="true" signature="220:7209" ph="{...}" />
@@ -1194,18 +1123,6 @@
             <marker date="1556992042758" expanded="true" signature="6482:6678" ph="{...}" />
             <marker date="1556992042758" expanded="true" signature="6696:7032" ph="/// This event should be raised when the vehicle reaches it's current destination in unity. ... " />
             <marker date="1556992042758" expanded="true" signature="7093:7201" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/unity-sumo-communication-assets-v2.0.0/SubscribeContextForPerformance.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <marker date="1556992034335" expanded="false" signature="6:78" ph="..." />
-            <marker date="1556992034335" expanded="true" signature="139:313" ph="{...}" />
-            <marker date="1556992034335" expanded="true" signature="211:232" ph="{...}" />
-            <marker date="1556992034335" expanded="true" signature="290:311" ph="{...}" />
           </folding>
         </state>
       </provider>

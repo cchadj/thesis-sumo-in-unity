@@ -995,7 +995,6 @@
           </e>
         </e>
         <e p="unity-sumo-communication-assets-v2.0.0" t="Include">
-          <e p="Copying.cs" t="Include" />
           <e p="DLLs" t="Include">
             <e p="Google.Protobuf.3.6.0" t="Include">
               <e p="lib" t="Include">
@@ -1008,9 +1007,6 @@
           <e p="Editor" t="Include">
             <e p="MeantToBeAbstractEditor.cs" t="Include" />
           </e>
-          <e p="GlobalTransform.cs" t="Include" />
-          <e p="LaneContextSubscription.cs" t="Include" />
-          <e p="LaneController.cs" t="Include" />
           <e p="Prefabs" t="Include">
             <e p="CarPrefabs" t="Include">
               <e p="Truck" t="Include">
@@ -1083,12 +1079,14 @@
               <e p="ExtendedFlycam.cs" t="Include" />
               <e p="GetClosestVisibleItem.cs" t="Include" />
               <e p="GetVisibleTargets.cs" t="Include" />
+              <e p="LaneContextSubscription.cs" t="Include" />
               <e p="MenuToggle.cs" t="Include" />
               <e p="MouseOrbit.cs" t="Include" />
             </e>
             <e p="CanvasScripts" t="Include">
               <e p="CanvasDisplayManager.cs" t="Include" />
               <e p="SimulationStateCanvas.cs" t="Include" />
+              <e p="StartMenu.cs" t="Include" />
               <e p="VehicleCanvas.cs" t="Include" />
             </e>
             <e p="CaptureScreen.cs" t="Include" />
@@ -1154,6 +1152,7 @@
               </e>
               <e p="FileHelper.cs" t="Include" />
               <e p="FixedSizedQueue.cs" t="Include" />
+              <e p="GlobalTransform.cs" t="Include" />
               <e p="HelpfulAttributes" t="Include">
                 <e p="CallProperty" t="Include">
                   <e p="CallSetterAttribute.cs" t="Include" />
@@ -1233,6 +1232,7 @@
               <e p="ISelectableTraciVariable.cs" t="Include" />
               <e p="LaneDataDisplayTexts.cs" t="Include" />
               <e p="SharedVehicleData.cs" t="Include" />
+              <e p="SimulationState.cs" t="Include" />
               <e p="SingletonScriptableObject.cs" t="Include" />
               <e p="SumoCommands.cs" t="Include" />
               <e p="SumoNetworkData.cs" t="Include" />
@@ -1256,6 +1256,7 @@
                 <e p="Editor" t="Include">
                   <e p="VehicleViewEditor.cs" t="Include" />
                 </e>
+                <e p="LaneController.cs" t="Include" />
                 <e p="SumoTypeView.cs" t="Include" />
                 <e p="VehicleController.cs" t="Include" />
                 <e p="VehicleView.cs" t="Include" />
@@ -1273,12 +1274,6 @@
                 <e p="Vehicle.cs" t="Include" />
               </e>
             </e>
-          </e>
-          <e p="StartMenu.cs" t="Include" />
-          <e p="SubscribeContextForPerformance.cs" t="Include" />
-          <e p="TestAssert.cs" t="Include" />
-          <e p="ui-components" t="Include">
-            <e p="SimulationState.cs" t="Include" />
           </e>
         </e>
       </e>

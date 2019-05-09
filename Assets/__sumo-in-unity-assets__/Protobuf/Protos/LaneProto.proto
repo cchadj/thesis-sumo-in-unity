@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+message LaneProto 
+{
+    string id = 1;
+    uint32 index = 2;
+    float speed = 3;
+    float length = 4;
+    string edge_id = 5;
+}
