@@ -16,7 +16,8 @@ public class LaneInCameraFrustum : MonoBehaviour
     private Renderer _renderer;
 
     // Cache WaitForSeconds for performance
-    private static readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(1f);
+    private static readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(2f);
+    
     
     [Inject]
     private void Construct(SumoNetworkData sumoNetworkData)
@@ -82,12 +83,25 @@ public class LaneInCameraFrustum : MonoBehaviour
                 networkData.LanesInsideFrustum.Remove(ID);
                 _isInsideLanesInsideFrustum = false;
             }
-
+            
+           
             yield return WaitForSeconds;
             
         }
     }
-        
+
+    
+    //Debug
+    private Vector3 _vectorOne = Vector3.one;
+    private void OnDrawGizmos()
+    {
+        if (Application.isPlaying && networkData.showLanesInsideFrustum)
+        {
+            if(_isInsideLanesInsideFrustum)
+                Gizmos.DrawCube(transform.GetChild(0).position, _vectorOne);
+        }
+    }
+
 //    private void OnWillRenderObject()
 //    {
 //        Debug.Log(Lane.ID  + " Lane is rendered");
@@ -101,10 +115,6 @@ public class LaneInCameraFrustum : MonoBehaviour
 //       
 //    }
 
-    public void Call()
-    {
-        Debug.Log("Sup babe? my ID : " + ID);
-    }
 }
 
 public interface ICallable

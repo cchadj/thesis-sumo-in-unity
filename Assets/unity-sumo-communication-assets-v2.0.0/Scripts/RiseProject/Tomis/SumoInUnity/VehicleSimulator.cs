@@ -15,10 +15,12 @@ namespace RiseProject.Tomis.SumoInUnity
     public class VehicleSimulator : SingletonMonoBehaviour<VehicleSimulator>
     {   
         private IDtoGameObjectDictionary GameObjectByVehicleId { get; set; }
-        private Dictionary<string, Transform> _vehiclesEligibleForDeletion;
-        private Dictionary<string, VehicleMover> _vehicleMoverByVehicleId;
-        private Dictionary<string, VehicleLightController> _lightControllerByVehicleId;
-        private Dictionary<string, FadeOutAll> _renderFaderById;
+        private Dictionary<string, Transform> _vehiclesEligibleForDeletion = new Dictionary<string, Transform>();
+        
+        // GetComponent is actually faster than using dictionary.
+//        private Dictionary<string, VehicleMover> _vehicleMoverByVehicleId;
+//        private Dictionary<string, VehicleLightController> _lightControllerByVehicleId;
+//        private Dictionary<string, FadeOutAll> _renderFaderById;
 
         private Transform _roadNetwork;
 
@@ -93,10 +95,7 @@ namespace RiseProject.Tomis.SumoInUnity
             GeneratedVehiclesParent.transform.position = _roadNetwork.position;
             GameObjectByVehicleId = new IDtoGameObjectDictionary();
             _vehiclesEligibleForDeletion = new Dictionary<string, Transform>();
-            _vehicleMoverByVehicleId = new Dictionary<string, VehicleMover>();
-            _lightControllerByVehicleId = new Dictionary<string, VehicleLightController>();
-            _renderFaderById = new Dictionary<string, FadeOutAll>();
-
+            
             if(TransformNetworkData != null)
                 TransformNetworkData.VehicleGameObjects = GameObjectByVehicleId;
             
@@ -161,10 +160,17 @@ namespace RiseProject.Tomis.SumoInUnity
                 vehiclesLeft = SumoNetworkData.VehiclesArrivedShared;
             }
             
-            /* Vehicles that reached their destination in the simulation become eligible for deletion   */
+            // Vehicles that reached their destination in the simulation become eligible for deletion
             foreach (var idVehiclePair in vehiclesLeft)
             {
+                
                 var vehicle = idVehiclePair.Value;
+
+                if (vehicle.IsEligibleForDeletion)
+                {
+                   // A vehicle can be in vehiclesLeft more than one time and so if already is eligible for deletion continue 
+                   continue;
+                }
                 
                 var isVehicleFound = GameObjectByVehicleId.TryGetValue(idVehiclePair.Key, out var vehicleGameObjectToDestroy);
                 if (!isVehicleFound)
@@ -192,7 +198,6 @@ namespace RiseProject.Tomis.SumoInUnity
                 var curVehicle = departedVehicle.Value;
                 curVehicle.AttachedVehicleTransform = newVehicleTransform;
                 // Attached the new transform to the Vehicle SO. Useful for testing. (SO = ScriptableObject)
-
                 GameObjectByVehicleId.Add(departedVehicle.Key, newVehicleTransform.gameObject);
 
                 // ------------------------ ADD AND SETUP SCRIPTS TO NEW GAME OBJECT ------------------------ //
@@ -211,7 +216,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 var vehicleMover = newVehicleTransform.GetComponent<VehicleMover>();
                 if (vehicleMover)
                 {
-                    _vehicleMoverByVehicleId.Add(id, vehicleMover);
+                    //_vehicleMoverByVehicleId.Add(id, vehicleMover);
                     vehicleMover.ReachedCurrentDestination += VehicleMoverReachedCurrentDestination;
                     vehicleMover.enabled = true;
                 }
@@ -223,20 +228,20 @@ namespace RiseProject.Tomis.SumoInUnity
                 var vehicleLightControl = newVehicleTransform.GetComponent<VehicleLightController>();
                 if (vehicleLightControl)
                 {
-                    _lightControllerByVehicleId.Add(id, vehicleLightControl);
+                    //_lightControllerByVehicleId.Add(id, vehicleLightControl);
                     vehicleLightControl.enabled = true;
                 }
 
                 var renderedFader = newVehicleTransform.gameObject.AddComponent<FadeOutAll>();
-                _renderFaderById.Add(id, renderedFader);
+                //_renderFaderById.Add(id, renderedFader);
             }
             vehiclesEntered.Clear();
         }
 
         private void VehicleMoverReachedCurrentDestination(object sender, VehicleEventArgs e)
         {
-            /* Attempt to disable vehicle if the vehicle reached in destination both in unity
-            and in sumo. If the vehicle is disabled then unsubscribes from the vehicle mover */
+            // Attempt to disable vehicle if the vehicle reached in destination both in unity
+            // and in sumo. If the vehicle is disabled then unsubscribes from the vehicle mover
             if (DisableVehicle(e.id))
                 ((VehicleMover) sender).ReachedCurrentDestination -= VehicleMoverReachedCurrentDestination;
         }
@@ -252,7 +257,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 newVehicleTransform = VehicleTransformPool.Dequeue();
             }
 
-            /* REMEMBER TO SET POOL RETRIEVED TRANSFORM ACTIVE AND THEN DEACTIVATE IT ON DESTRUCTION */
+            // REMEMBER TO SET POOL RETRIEVED TRANSFORM ACTIVE AND THEN DEACTIVATE IT ON DESTRUCTION
             newVehicleTransform.gameObject.SetActive(true);
             return newVehicleTransform;
         }
@@ -271,32 +276,23 @@ namespace RiseProject.Tomis.SumoInUnity
             if (_vehiclesEligibleForDeletion.TryGetValue(id, out var vehicleToDelete))
             {
                 // Deactivate it and put it back on queue
-                var vehicleMover = _vehicleMoverByVehicleId[id];
-                var lightControl = _lightControllerByVehicleId[id];
                 var vehicleConfigurationData = vehicleToDelete.GetComponent<VehicleConfigurationData>();
+                
                 vehicleConfigurationData.TraciVariable.Disable();
                 
-                if (!vehicleMover)
-                    Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no VehicleMover");
-                else
-                    vehicleMover.enabled = false;
 
-                if (!lightControl)
-                    Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no LightControl");
-                else
-                    lightControl.enabled = false;
 
-                if (!vehicleConfigurationData)
-                    Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no vehicleConfigurationData");
-                else
-                    vehicleConfigurationData.enabled = false;
+                _vehiclesEligibleForDeletion.Remove(id);           
 
-               
                 StartCoroutine(DisableVehicle(vehicleToDelete, id));
             }
             return true;
         }
 
+        
+        // Cache Waitforseconds to reduce allocation
+        private static WaitForSeconds WaitForSeconds = new WaitForSeconds(1f);
+        
         /// <summary>
         /// Utility function used to fade out vehicle and remove the vehicle from the pool.
         /// </summary>
@@ -305,16 +301,37 @@ namespace RiseProject.Tomis.SumoInUnity
         /// <returns></returns>
         private IEnumerator DisableVehicle(Transform vehicleToDelete, string id)
         {
-            var fader = _renderFaderById[id];
+            var car = GameObjectByVehicleId[id];
+            GameObjectByVehicleId.Remove(id);
+
+            var fader = car.GetComponent<FadeOutAll>();
             fader.Fade(0f);
 
-            yield return new WaitForSeconds(fader.duration);
-
+            yield return WaitForSeconds; // new WaitForSeconds(fader.duration)
+            
+            var vehicleMover = car.GetComponent<VehicleMover> ();
+            var lightControl = car.GetComponent<VehicleLightController>();
+            var vehicleConfigurationData = car.GetComponent<VehicleConfigurationData>();
+            
             vehicleToDelete.gameObject.SetActive(false);
-            GameObjectByVehicleId.Remove(id);
-            _lightControllerByVehicleId.Remove(id);
-            _vehicleMoverByVehicleId.Remove(id);
-            _renderFaderById.Remove(id);
+            
+            
+            if (!vehicleMover)
+                Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no VehicleMover");
+            else
+                vehicleMover.enabled = false;
+
+            if (!lightControl)
+                Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no LightControl");
+            else
+                lightControl.enabled = false;
+
+            if (!vehicleConfigurationData)
+                Debug.LogError($"VehicleSimulator::DestroyCar({id}) Vehicle with id {id} has no vehicleConfigurationData");
+            else
+                vehicleConfigurationData.enabled = false;
+            
+            
             VehicleTransformPool.Enqueue(vehicleToDelete);
             yield return null;
         }

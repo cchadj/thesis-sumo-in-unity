@@ -64,9 +64,8 @@ namespace RiseProject.Tomis.SumoInUnity
             if (!DontUseSumo)
             {
                 
-                
                 Client.ServeSumo();
-                System.Threading.Thread.Sleep(2000);
+                
 
                 // Wait a bit before connecting to sumo to make sure that we are connected;
                 Client.ConnectToSumo();

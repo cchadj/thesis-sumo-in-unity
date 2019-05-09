@@ -16,6 +16,10 @@ public class MyMonoInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
+        Container.Bind<SimulationState>()
+            .AsSingle()
+            .NonLazy();
+        
         Container.BindInstance(startupData)
             .AsSingle()
             .NonLazy(); 

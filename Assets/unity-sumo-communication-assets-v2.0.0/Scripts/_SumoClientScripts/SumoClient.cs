@@ -417,10 +417,11 @@ namespace RiseProject.Tomis.SumoInUnity
         }
 
         [Inject]
-        private void Construct(SumoCommands sumoCommands, SimulationStartupData startupData)
+        private void Construct(SumoCommands sumoCommands, SimulationStartupData startupData, SimulationState simState)
         {
             SumoCommands = sumoCommands;
             StartupData = startupData;
+            simulationState = simState;
         }
 
         private void Awake()
@@ -602,7 +603,7 @@ namespace RiseProject.Tomis.SumoInUnity
         /// </summary>
         public async void ServeSumo()
         {
-            await RunSumoExecutable();
+            var t = RunSumoExecutable();
         }
 
         private void SumoProcess_ErrorDataReceived(object sender, DataReceivedEventArgs e)
@@ -993,16 +994,20 @@ namespace RiseProject.Tomis.SumoInUnity
         }
 
 
+        private static readonly HashSet<string> VehiclesFoundThisSimStep =  new HashSet<string>();
         private void HandleLaneContextSubscription(ContextSubscriptionEventArgs e)
         {
+            Assert.AreEqual(e.ObjectId, simulationState.currentContextSubscribedLaneID);
+            
             NumberOfVehiclesInsideContextRange = 0;
             
             Assert.IsTrue(UseContextSubscription);
             
             var variableSubscriptionByObjectId = e.VariableSubscriptionByObjectId;
-            var vehiclesFoundThisSimStep = new HashSet<string>();
+            //var vehiclesFoundThisSimStep = new HashSet<string>();
             
             VehiclesExitedContextRange.Clear();
+            VehiclesFoundThisSimStep.Clear();
             
             // Update VehiclesEnteredContextRange, VehiclesInContextRange, VehiclesExitedContextRange
             foreach (var vehicleId in variableSubscriptionByObjectId.Keys)
@@ -1035,7 +1040,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 }
 
                 // Add retrieved vehicle to vehicles found 
-                vehiclesFoundThisSimStep.Add(vehicleId);
+                VehiclesFoundThisSimStep.Add(vehicleId);
                 
                 // ---------------------------    SET SUBSCRIPTION RESULTS  ---------------------------- //
                 // Get subscription variable results
@@ -1050,19 +1055,25 @@ namespace RiseProject.Tomis.SumoInUnity
                 Assert.AreEqual(subscriptionResultsResponses.Count, 2);
             }
 
+            // Remove each vehicle that was found this simulation step and previously was in context range.
+            // It means that the vehicle is no longer in context range.
             foreach (var id in VehiclesInContextRange.Keys)
             {
-                if (!vehiclesFoundThisSimStep.Contains(id))
+                if (!VehiclesFoundThisSimStep.Contains(id))
                 {
                     var v = VehiclesInContextRange[id];
                     VehiclesExitedContextRange[id] = v;
+
                     v.SubscriptionState = Vehicle.ContextSubscriptionState.ExitedContextRange;
                 }                
             }
 
-            foreach (var v in VehiclesExitedContextRange.Keys) 
+            foreach (var v in VehiclesExitedContextRange.Keys)
+            {
                 VehiclesInContextRange.Remove(v);
+            }
 
+            
             foreach (var id in _arrivedVehicleIDs)
             {
                 if (VehiclesInContextRange.TryGetValue(id, out var vehicle))
@@ -1234,6 +1245,7 @@ namespace RiseProject.Tomis.SumoInUnity
         public float CurrentFps { get; private set; }
         private float _updateStartUpTime;
         private bool _isFirstUpdate = true;
+        [SerializeField] private SimulationState simulationState;
 
         /// <summary>
         ///  Used to create Graph with fps and vehicle count

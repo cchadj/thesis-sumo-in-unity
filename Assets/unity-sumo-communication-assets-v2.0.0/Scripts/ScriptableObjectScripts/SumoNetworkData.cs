@@ -14,6 +14,9 @@ namespace RiseProject.Tomis.DataHolders
         [SerializeField] private RouteDictionary routes;
         [SerializeField] private JunctionDictionary junctions;
 
+        [SerializeField, Header("Debug")] 
+        public bool showLanesInsideFrustum = true;
+        
         public readonly LaneDictionary LanesInsideFrustum = new LaneDictionary();
         
         public EdgeDictionary Edges { get => edges; set => edges = value; }
