@@ -1,9 +1,21 @@
-﻿using RiseProject.Tomis.SumoInUnity.SumoTypes;
+﻿using System;
+using System.Collections.Generic;
+using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
 using UnityEngine;
 
 namespace RiseProject.Tomis.DataContainers
 {
+    public class LanesInsideFrustumEventArgs : EventArgs
+    {
+        public readonly List<Lane> LanesInsideFrustum = new List<Lane>();
+
+        public LanesInsideFrustumEventArgs()
+        {
+            
+        }
+    }
+    
     /// <summary>
     /// Contains information about the vehicles and the road network.
     /// </summary>
@@ -15,10 +27,13 @@ namespace RiseProject.Tomis.DataContainers
         [SerializeField] private RouteDictionary routes;
         [SerializeField] private JunctionDictionary junctions;
 
+        public event EventHandler<LanesInsideFrustumEventArgs> RequestVisibleLanes;
+        
+        
         [SerializeField, Header("Debug")] 
         public bool showLanesInsideFrustum = true;
-        
         public readonly LaneDictionary LanesInsideFrustum = new LaneDictionary();
+        
         
         public EdgeDictionary Edges { get => edges; set => edges = value; }
         public LaneDictionary Lanes { get => lanes; set => lanes = value; }
@@ -54,6 +69,14 @@ namespace RiseProject.Tomis.DataContainers
         public void ClearVehicleDictionaries()
         {
             VehiclesArrivedShared.Clear(); VehiclesDepartedShared.Clear(); VehiclesLoadedShared.Clear();
+        }
+
+        public List<Lane> RequestForVisibleLanes()
+        {
+            var e = new LanesInsideFrustumEventArgs();
+            RequestVisibleLanes?.Invoke(this, e);
+
+            return e.LanesInsideFrustum;
         }
     }
 

@@ -721,6 +721,7 @@
             </e>
           </e>
         </e>
+        <e p="GlobalEventSystem.cs" t="Include" />
         <e p="Kirlitsias" t="Include">
           <e p="AI" t="Include">
             <e p="Actions" t="Include">
@@ -793,6 +794,8 @@
         <e p="logs" t="Include">
           <e p="fps_count-by-vehicle_number0.txt" t="Include" />
         </e>
+        <e p="MinimumEnclosingCircle.cs" t="Include" />
+        <e p="NewBehaviourScript.cs" t="Include" />
         <e p="Plugins" t="Include">
           <e p="crosstales" t="Include">
             <e p="Common" t="Include">

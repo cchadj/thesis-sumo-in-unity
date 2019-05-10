@@ -16,24 +16,44 @@ using UnityEditor;
 #endif
 
 
-[RequireComponent(typeof(Camera))]
+[RequireComponent(typeof(Camera), typeof(CameraIntersect))]
 public class LaneContextSubscription : MonoBehaviour
 {
-    [SerializeField] private float contextRange;
+    [CallSetter("RefreshSubscriptionEvery"), SerializeField] private float subscribeEverySeconds;
+
+    public float RefreshSubscriptionEvery
+    {
+        get => subscribeEverySeconds;
+        set
+        {
+            subscribeEverySeconds = value;
+            WaitForSeconds = new WaitForSeconds(subscribeEverySeconds);
+        }
+
+    }
+        
+     
+    // Debug 
+    [Header("For Debug")]
     [SerializeField, ReadOnly] private Lane closestLane;
+    [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
+    [SerializeField, ReadOnly] private SimulationState simulationState;
+    [SerializeField, ReadOnly] private float theContextRange;
+    
+    // Dependencies
     private Camera _cam;
     private SumoNetworkData _networkData;
     private SumoCommands _sumoCommands;
-    private Transform centerOfFrustum;
-    [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
+    private CameraIntersect _cameraIntersect;
+    private SumoClient _sumoClient;
+
     
+    // Cache
+    private Transform centerOfFrustum;
     private static readonly List<byte> ListOfVariablesToSubscribeTo = new List<byte>
         {TraCIConstants.VAR_POSITION, TraCIConstants.VAR_ANGLE};
-    
-    private static readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(2f);
-    
-    private SumoClient _sumoClient;
-    [SerializeField, ReadOnly] private SimulationState simulationState;
+    private static WaitForSeconds WaitForSeconds = new WaitForSeconds(2f); // cache to reduce gc time
+    private Vector3[] _hitPoints = new Vector3[4]; // The intersection points of the camera frustum with the xz plane
 
     [Inject]
     private void Construct(
@@ -49,9 +69,12 @@ public class LaneContextSubscription : MonoBehaviour
 
     private void Start()
     {
+        _cameraIntersect = GetComponent<CameraIntersect>();
         if (_sumoClient.SubscriptionType != SubscriptionType.Context)
         {
             Destroy(this);
+            _cameraIntersect.enabled = false;
+            Destroy(_cameraIntersect);
             enabled = false;
             return;
         }
@@ -61,8 +84,7 @@ public class LaneContextSubscription : MonoBehaviour
         
         transform.localScale.Set(1f, 1f, 1f);
         
-        // We need to keep track of the center of the frustum. The center of the frustum will be used to  find the
-        // closest lane to subscribe to
+        // We need to keep track of the center of the frustum when the camera frustum doesn't intersect xz plane
         var frustumCenterLocalPosition = new Vector3(0, 0, _cam.farClipPlane/2f);
         centerOfFrustum = new GameObject().transform;
         centerOfFrustum.gameObject.SetIcon(IconManager.Icon.CircleGreen);
@@ -94,19 +116,43 @@ public class LaneContextSubscription : MonoBehaviour
     /// </summary>
     private void ContextSubscribeToLaneInFrustum()
     {
+        var numOfIntersectionsWithPlane = _cameraIntersect.FindIntersectionsWithPlane(out _hitPoints);
+        
+        var positionToGetClosestLaneFrom = Vector3.one;
+        float contextRange = 0f;
+        
+        
+        //if frustum intersects with the xz plane then we know the optimal context range and the optimal centre
+        if (numOfIntersectionsWithPlane == 4)
+        {
+            // Calculate the minimum enclosing circle of the four intersection points
+            var enclosingCircle = SmallestEnclosingCircle.MakeUnityCircle(_hitPoints);
+
+            positionToGetClosestLaneFrom = new Vector3(enclosingCircle.c.x, 0f, enclosingCircle.c.y);
+            contextRange = enclosingCircle.r;
+        }
+        else
+        {
+            positionToGetClosestLaneFrom = centerOfFrustum.position;
+            contextRange = _cam.farClipPlane / 2f;
+        }
+        theContextRange = contextRange;
+
+        
         // Get all the lanes that are inside the camera frustum.
-        var lanesInsideFrustum = _networkData.LanesInsideFrustum;
-        if (_networkData.LanesInsideFrustum.Count == 0)
+        var lanesInsideFrustum = _networkData.RequestForVisibleLanes();
+        
+        if (lanesInsideFrustum.Count == 0)
             return;
        
-        // Find the closest lane
+        
+        // Find the closest lane from the position To Get Closest Lane From 
         closestLane = null;
         var closestDistanceSqr = Mathf.Infinity;
-        var centerOfFrustumPosition = centerOfFrustum.position;
-        foreach (var lane in lanesInsideFrustum.Values)
+        foreach (var lane in lanesInsideFrustum)
         {
-            var distX = lane.centerOfMass.x - centerOfFrustumPosition.x;
-            var distZ = lane.centerOfMass.z - centerOfFrustumPosition.z;
+            var distX = lane.centerOfMass.x - positionToGetClosestLaneFrom.x;
+            var distZ = lane.centerOfMass.z - positionToGetClosestLaneFrom.z;
             var dSqrToTarget = distX * distX + distZ * distZ;
          
             if (dSqrToTarget < closestDistanceSqr)
@@ -115,23 +161,25 @@ public class LaneContextSubscription : MonoBehaviour
                 closestLane = lane;
             }
         }
+        
+        
         // Assert because if a lane is visible and no closest lane found then something is wrong
         UnityEngine.Debug.Assert(closestLane != null, nameof(closestLane) + " != null");
 
+        
         // No need to subscribe to a a new lane if it close or the old one
         if (closestLane.ID == currentlySubscribedLaneID)
             return;
-
         if (closestDistanceSqr < 10f)
             return;
         
-        // Subscribe to new lane and unsubscribe from old one, if the lane  is different than the currently subscribed lane 
-        _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f,
-            Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
         
+        // Subscribe to new lane and unsubscribe from old one
+        _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f, Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
         _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, TraCIConstants.CMD_GET_VEHICLE_VARIABLE);
-        // Update currently subscribed lane        
- 
+        
+        
+        // Update currently subscribed lane       
         currentlySubscribedLaneID = closestLane.ID;
         simulationState.currentContextSubscribedLaneID = currentlySubscribedLaneID;
         simulationState.currentContextSubscribedLane = closestLane;
@@ -143,7 +191,7 @@ public class LaneContextSubscription : MonoBehaviour
         if (Application.isPlaying && closestLane)
         {
             GUI.color = Color.green;
-            UnityEditor.Handles.DrawWireDisc(closestLane.centerOfMass, Vector3.up, contextRange);    
+            UnityEditor.Handles.DrawWireDisc(closestLane.centerOfMass, Vector3.up, theContextRange);    
         }
     }
 #endif

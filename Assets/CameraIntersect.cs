@@ -42,11 +42,12 @@ public class CameraIntersect : MonoBehaviour
     /// </summary>
     /// <param name="planeHitPoints"> The hit points </param>
     /// <returns> The number of rays hit </returns>
-    private int FindIntersectionsWithPlane(out Vector3[] planeHitPoints)
+    public int FindIntersectionsWithPlane(out Vector3[] planeHitPoints)
     {
         _cam.CalculateFrustumCorners(Rect, _cam.farClipPlane, Camera.MonoOrStereoscopicEye.Mono, _frustumCorners );
 
-        _numberOfPointsHit = 0;
+        var numHitPoints = 0;
+
         for (int i = 0; i < 4; i++)
         {
             var worldSpaceCorner = _cam.transform.TransformVector(_frustumCorners[i]);
@@ -54,7 +55,7 @@ public class CameraIntersect : MonoBehaviour
 
             if (_horizontalPlane.Raycast(ray, out float dist))
             {
-                HitPoints[_numberOfPointsHit++] = ray.GetPoint(dist);
+                HitPoints[numHitPoints++] = ray.GetPoint(dist);
             }
             
             #if UNITY_EDITOR
@@ -63,9 +64,9 @@ public class CameraIntersect : MonoBehaviour
             
             planeHitPoints = HitPoints;
         }
-
-        planeHitPoints = null;
-        return _numberOfPointsHit;
+        planeHitPoints = HitPoints;
+        _numberOfPointsHit = numHitPoints;
+        return numHitPoints;
     }
     
     //Debugging 

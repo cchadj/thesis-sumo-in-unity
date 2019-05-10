@@ -8,6 +8,7 @@ using Zenject;
 
 public class LaneInCameraFrustum : MonoBehaviour
 {
+    
     [ReadOnly] public Lane Lane;
     [ReadOnly] public string ID;
 
@@ -59,10 +60,26 @@ public class LaneInCameraFrustum : MonoBehaviour
             triangles = new []{ 2, 1, 0},
         };
 
+        networkData.RequestVisibleLanes += NetworkData_RequestVisibleLanes;
         GetComponent<MeshFilter>().mesh = mesh;
-        StartCoroutine(VisibilityTest());
+        
+      //  StartCoroutine(VisibilityTest());
     }
 
+    private void OnDestroy()
+    {
+        networkData.RequestVisibleLanes -= NetworkData_RequestVisibleLanes;
+    }
+
+    // Adds self to visible lanes if visible
+    private void NetworkData_RequestVisibleLanes(object sender, LanesInsideFrustumEventArgs e)
+    {
+        if (_renderer.isVisible)
+        {
+            e.LanesInsideFrustum.Add(Lane);
+        }
+    }
+    
     
     private IEnumerator VisibilityTest()
     {
