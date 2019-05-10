@@ -28,13 +28,7 @@ namespace RiseProject.Tomis.DataContainers
         [SerializeField] private JunctionDictionary junctions;
 
         public event EventHandler<LanesInsideFrustumEventArgs> RequestVisibleLanes;
-        
-        
-        [SerializeField, Header("Debug")] 
-        public bool showLanesInsideFrustum = true;
-        public readonly LaneDictionary LanesInsideFrustum = new LaneDictionary();
-        
-        
+      
         public EdgeDictionary Edges { get => edges; set => edges = value; }
         public LaneDictionary Lanes { get => lanes; set => lanes = value; }
         public RouteDictionary Routes { get => routes; set => routes = value; }

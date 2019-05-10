@@ -60,7 +60,7 @@ public class LaneInCameraFrustum : MonoBehaviour
             triangles = new []{ 2, 1, 0},
         };
 
-        networkData.RequestVisibleLanes += NetworkData_RequestVisibleLanes;
+        networkData.RequestVisibleLanes += RequestVisibleLanes_AddLaneToVisibleLanes;
         GetComponent<MeshFilter>().mesh = mesh;
         
       //  StartCoroutine(VisibilityTest());
@@ -68,11 +68,11 @@ public class LaneInCameraFrustum : MonoBehaviour
 
     private void OnDestroy()
     {
-        networkData.RequestVisibleLanes -= NetworkData_RequestVisibleLanes;
+        networkData.RequestVisibleLanes -= RequestVisibleLanes_AddLaneToVisibleLanes;
     }
 
     // Adds self to visible lanes if visible
-    private void NetworkData_RequestVisibleLanes(object sender, LanesInsideFrustumEventArgs e)
+    private void RequestVisibleLanes_AddLaneToVisibleLanes(object sender, LanesInsideFrustumEventArgs e)
     {
         if (_renderer.isVisible)
         {
@@ -81,59 +81,44 @@ public class LaneInCameraFrustum : MonoBehaviour
     }
     
     
-    private IEnumerator VisibilityTest()
-    {
-        while (true)
-        {
-            if (_renderer.isVisible)
-            {
-                if (!networkData.LanesInsideFrustum.ContainsKey(ID))
-                {
-                 
-                    networkData.LanesInsideFrustum[ID] = Lane;
-                    _isInsideLanesInsideFrustum = true;
-                }
-            }
-
-            if (!_renderer.isVisible && _isInsideLanesInsideFrustum)
-            {
-                networkData.LanesInsideFrustum.Remove(ID);
-                _isInsideLanesInsideFrustum = false;
-            }
-            
-           
-            yield return WaitForSeconds;
-            
-        }
-    }
-
-    
-    //Debug
-    private Vector3 _vectorOne = Vector3.one;
-    private void OnDrawGizmos()
-    {
-        if (Application.isPlaying && networkData.showLanesInsideFrustum)
-        {
-            if(_isInsideLanesInsideFrustum)
-                Gizmos.DrawCube(transform.GetChild(0).position, _vectorOne);
-        }
-    }
-
-//    private void OnWillRenderObject()
+//    private IEnumerator VisibilityTest()
 //    {
-//        Debug.Log(Lane.ID  + " Lane is rendered");
-//        if (!networkData.LanesInsideFrustum.ContainsKey(ID))
+//        while (true)
 //        {
-//            
-//            networkData.LanesInsideFrustum[ID] = Lane;
-//            _isInsideLanesInsideFrustum = true;
+//            if (_renderer.isVisible)
+//            {
+//                if (!networkData.LanesInsideFrustum.ContainsKey(ID))
+//                {
+//                 
+//                    networkData.LanesInsideFrustum[ID] = Lane;
+//                    _isInsideLanesInsideFrustum = true;
+//                }
+//            }
 //
+//            if (!_renderer.isVisible && _isInsideLanesInsideFrustum)
+//            {
+//                networkData.LanesInsideFrustum.Remove(ID);
+//                _isInsideLanesInsideFrustum = false;
+//            }
+//            
+//           
+//            yield return WaitForSeconds;
+//            
 //        }
-//       
 //    }
 
+    
+//    //Debug
+//    private Vector3 _vectorOne = Vector3.one;
+//    private void OnDrawGizmos()
+//    {
+//        if (Application.isPlaying && networkData.showLanesInsideFrustum)
+//        {
+//            if(_isInsideLanesInsideFrustum)
+//                Gizmos.DrawCube(transform.GetChild(0).position, _vectorOne);
+//        }
+//    }
 }
-
 public interface ICallable
 {
     string ID { get;  }

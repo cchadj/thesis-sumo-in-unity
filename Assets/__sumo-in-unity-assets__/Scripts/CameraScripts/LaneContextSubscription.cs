@@ -69,7 +69,12 @@ public class LaneContextSubscription : MonoBehaviour
 
     private void Start()
     {
+                
+        _cam = GetComponent<Camera>();
+
         _cameraIntersect = GetComponent<CameraIntersect>();
+        _cameraIntersect.maxDist = _cam.farClipPlane;
+        
         if (_sumoClient.SubscriptionType != SubscriptionType.Context)
         {
             Destroy(this);
@@ -79,9 +84,7 @@ public class LaneContextSubscription : MonoBehaviour
             return;
         }
 
-        
-        _cam = GetComponent<Camera>();
-        
+
         transform.localScale.Set(1f, 1f, 1f);
         
         // We need to keep track of the center of the frustum when the camera frustum doesn't intersect xz plane

@@ -5,6 +5,7 @@ public class CameraIntersect : MonoBehaviour
 {
     [SerializeField] private float horizontalPlaneHeight = 0f;
     [SerializeField] private bool debug;
+    [SerializeField] public float maxDist;
     
     private Camera _cam;
     private float _farClipPlane;
@@ -55,11 +56,18 @@ public class CameraIntersect : MonoBehaviour
 
             if (_horizontalPlane.Raycast(ray, out float dist))
             {
+                if(dist > maxDist)
+                    continue;
                 HitPoints[numHitPoints++] = ray.GetPoint(dist);
             }
             
             #if UNITY_EDITOR
-            Debug.DrawRay(_transform.position, worldSpaceCorner, Color.blue, 3f);
+            
+            Debug.DrawRay(_transform.position, worldSpaceCorner, Color.blue, 0f);
+            for (int j = 0; j < numHitPoints; j++)
+            {
+                Debug.DrawLine(_transform.position, HitPoints[j], Color.red);
+            }
             #endif
             
             planeHitPoints = HitPoints;
