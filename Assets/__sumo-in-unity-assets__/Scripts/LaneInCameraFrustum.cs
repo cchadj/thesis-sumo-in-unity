@@ -59,11 +59,11 @@ public class LaneInCameraFrustum : MonoBehaviour
             vertices = newVertices, 
             triangles = new []{ 2, 1, 0},
         };
+        GetComponent<MeshFilter>().mesh = mesh;
 
         networkData.RequestVisibleLanes += RequestVisibleLanes_AddLaneToVisibleLanes;
-        GetComponent<MeshFilter>().mesh = mesh;
         
-      //  StartCoroutine(VisibilityTest());
+      // DEPRECATED_WAY:  StartCoroutine(VisibilityTest());
     }
 
     private void OnDestroy()
@@ -71,7 +71,7 @@ public class LaneInCameraFrustum : MonoBehaviour
         networkData.RequestVisibleLanes -= RequestVisibleLanes_AddLaneToVisibleLanes;
     }
 
-    // Adds self to visible lanes if visible
+    // Adds self to visible lanes if visible. Happens whenever someones request for visible lanes.
     private void RequestVisibleLanes_AddLaneToVisibleLanes(object sender, LanesInsideFrustumEventArgs e)
     {
         if (_renderer.isVisible)
@@ -80,7 +80,7 @@ public class LaneInCameraFrustum : MonoBehaviour
         }
     }
     
-    
+//    
 //    private IEnumerator VisibilityTest()
 //    {
 //        while (true)
@@ -100,14 +100,12 @@ public class LaneInCameraFrustum : MonoBehaviour
 //                networkData.LanesInsideFrustum.Remove(ID);
 //                _isInsideLanesInsideFrustum = false;
 //            }
-//            
 //           
 //            yield return WaitForSeconds;
 //            
 //        }
 //    }
-
-    
+//    
 //    //Debug
 //    private Vector3 _vectorOne = Vector3.one;
 //    private void OnDrawGizmos()
