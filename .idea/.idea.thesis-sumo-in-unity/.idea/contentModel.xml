@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\VR_Lab\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\VR_Lab\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.1934993073.00" t="ExcludeRecursive" />
-    <e p="C:\Users\VR_Lab\Desktop\tomis-thesis\unity-workspace\thesis-sumo-in-unity" t="IncludeRecursive">
+    <e p="C:\Users\VR_Lab\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.-1531431307.00" t="ExcludeRecursive" />
+    <e p="C:\Users\VR_Lab\Desktop\tomis-thesis\unity-workspace\new\thesis-sumo-in-unity" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -1407,6 +1407,33 @@
           </e>
           <e p="sumo-scenarios" t="Include">
             <e p="net.net.xml" t="Include" />
+            <e p="out-10-10" t="Include">
+              <e p="net.net.xml" t="Include" />
+              <e p="rou1.rou.alt.xml" t="Include" />
+              <e p="rou1.rou.xml" t="Include" />
+              <e p="rou10.rou.alt.xml" t="Include" />
+              <e p="rou10.rou.xml" t="Include" />
+              <e p="rou100.rou.alt.xml" t="Include" />
+              <e p="rou100.rou.xml" t="Include" />
+              <e p="rou1000.rou.alt.xml" t="Include" />
+              <e p="rou1000.rou.xml" t="Include" />
+              <e p="rou1250.rou.alt.xml" t="Include" />
+              <e p="rou1250.rou.xml" t="Include" />
+              <e p="rou250.rou.alt.xml" t="Include" />
+              <e p="rou250.rou.xml" t="Include" />
+              <e p="rou2500.rou.alt.xml" t="Include" />
+              <e p="rou2500.rou.xml" t="Include" />
+              <e p="rou3000.rou.alt.xml" t="Include" />
+              <e p="rou3000.rou.xml" t="Include" />
+              <e p="rou5.rou.alt.xml" t="Include" />
+              <e p="rou5.rou.xml" t="Include" />
+              <e p="rou50.rou.alt.xml" t="Include" />
+              <e p="rou50.rou.xml" t="Include" />
+              <e p="rou500.rou.alt.xml" t="Include" />
+              <e p="rou500.rou.xml" t="Include" />
+              <e p="rou750.rou.alt.xml" t="Include" />
+              <e p="rou750.rou.xml" t="Include" />
+            </e>
             <e p="out-15-15" t="Include">
               <e p="net.net.xml" t="Include" />
               <e p="rou1.rou.alt.xml" t="Include" />

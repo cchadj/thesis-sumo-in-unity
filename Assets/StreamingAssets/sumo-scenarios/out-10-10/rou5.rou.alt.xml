@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 05/10/19 21:27:01 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-10-10/./rou5.rou.xml"/>
+        <alternatives-output value="out-10-10/./rou5.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="1.0"/>
+        <end value="101.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="1.00">
+        <routeDistribution last="0">
+            <route cost="20.34" probability="1.00000000" edges="H4H3 H3G3 G3F3 F3E3 E3D3 D3D2 D2E2"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="1" depart="21.00">
+        <routeDistribution last="0">
+            <route cost="28.10" probability="1.00000000" edges="J4K4 K4J4 J4I4 I4H4 H4G4 G4F4 F4E4 E4E3 E3E2 E2E1 E1D1"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="2" depart="41.00">
+        <routeDistribution last="0">
+            <route cost="16.88" probability="1.00000000" edges="I10J10 J10I10 I10H10 H10G10 G10F10 F10E10 E10D10 D10C10 C10C1 C1B1"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="3" depart="61.00">
+        <routeDistribution last="0">
+            <route cost="34.89" probability="1.00000000" edges="G9G8 G8G7 G7G6 G6H6 H6I6 I6J6 J6J7"/>
+        </routeDistribution>
+    </vehicle>
+    <vehicle id="4" depart="81.00">
+        <routeDistribution last="0">
+            <route cost="32.56" probability="1.00000000" edges="G8H8 H8G8 G8F8 F8E8 E8D8 D8C8 C8B8 B8B7 B7B6 B6B5 B5B4 B4C4 C4D4 D4E4 E4F4 F4G4 G4H4 H4I4 I4J4 J4K4"/>
+        </routeDistribution>
+    </vehicle>
+</routes>

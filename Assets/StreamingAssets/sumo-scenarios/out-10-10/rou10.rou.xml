@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 05/10/19 21:27:03 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="out-10-10/./rou10.rou.xml"/>
+        <alternatives-output value="out-10-10/./rou10.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="1.0"/>
+        <end value="101.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="1.00">
+        <route edges="C7C8 C8C9 C9C10 C10D10 D10E10 E10F10 F10F1"/>
+    </vehicle>
+    <vehicle id="1" depart="11.00">
+        <route edges="G8H8 H8G8 G8F8 F8E8 E8D8 D8C8 C8B8 B8B9 B9B10 B10B1 B1B2"/>
+    </vehicle>
+    <vehicle id="2" depart="21.00">
+        <route edges="K9K10 K10J10 J10I10 I10H10 H10H9 H9H8 H8H9"/>
+    </vehicle>
+    <vehicle id="3" depart="31.00">
+        <route edges="E10E1 E1D1 D1D10 D10D9 D9C9"/>
+    </vehicle>
+    <vehicle id="4" depart="41.00">
+        <route edges="C4D4 D4C4 C4C5 C5C6 C6C7 C7C8 C8D8 D8E8 E8F8 F8F9"/>
+    </vehicle>
+    <vehicle id="5" depart="51.00">
+        <route edges="H2H3 H3G3 G3F3 F3F4 F4F5"/>
+    </vehicle>
+    <vehicle id="6" depart="61.00">
+        <route edges="D8D9 D9D8 D8E8"/>
+    </vehicle>
+    <vehicle id="7" depart="71.00">
+        <route edges="B4B5 B5B4 B4C4 C4D4 D4E4 E4F4 F4G4 G4H4 H4I4 I4J4 J4K4"/>
+    </vehicle>
+    <vehicle id="8" depart="81.00">
+        <route edges="G10H10 H10H9 H9H8 H8H7 H7I7 I7J7 J7I7"/>
+    </vehicle>
+    <vehicle id="9" depart="91.00">
+        <route edges="G1F1 F1F2 F2E2"/>
+    </vehicle>
+</routes>

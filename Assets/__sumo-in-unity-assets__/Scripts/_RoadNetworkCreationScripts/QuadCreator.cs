@@ -13,8 +13,10 @@ public class QuadCreator : MonoBehaviour {
     /// <param name="width"> The width the quad will have arround the line </param>
     /// <param name="createNormals"> Create normals or not. False if used only for mesh collider </param>
     /// <returns></returns>
-    public static GameObject CreateQuad(Vector2 startPoint, Vector2 endPoint, float width, bool createNormals,  bool addBoxCollider)
+    public static GameObject CreateQuad(Vector2 startPoint, Vector2 endPoint, float width, bool createNormals,  bool addBoxCollider, float minWidth=0f)
     {
+        if (Vector2.Distance(startPoint, endPoint) < minWidth)
+            return null;
         GameObject go = new GameObject();
         Mesh mesh = new Mesh();
         Vector3[] vertices = new Vector3[4];
@@ -120,21 +122,24 @@ public class QuadCreator : MonoBehaviour {
     /// </param>
     /// 
     /// <returns> A list of created quads </returns>
-    public static List<GameObject> CreateQuad(Vector2 startPoint, Vector2 endPoint, float width, bool createNormals=false, bool addBoxCollider=true, float lengthThreshold=Mathf.Infinity)
+    public static List<GameObject> CreateQuad(Vector2 startPoint, Vector2 endPoint, float width, bool createNormals=false, bool addBoxCollider=true, float lengthThreshold=Mathf.Infinity, float minimumLaneLength=0f)
     {
         if (lengthThreshold <= 0)
             lengthThreshold = 10000f;
         List<GameObject> createdQuads = new List<GameObject>();
-        if( Vector2.Distance(startPoint, endPoint) > lengthThreshold)
+
+        var dist = Vector2.Distance(startPoint, endPoint);
+        if( dist > lengthThreshold && dist/2f > minimumLaneLength)
         {
             Vector2 halfPoint = Vector2.Lerp(startPoint, endPoint, 0.5f);
-            createdQuads.AddRange(CreateQuad( startPoint, halfPoint,  width,  createNormals, addBoxCollider, lengthThreshold));
-            createdQuads.AddRange(CreateQuad(halfPoint, endPoint, width, createNormals, addBoxCollider, lengthThreshold));
+            createdQuads.AddRange(CreateQuad( startPoint, halfPoint,  width,  createNormals, addBoxCollider, lengthThreshold, minimumLaneLength));
+            createdQuads.AddRange(CreateQuad(halfPoint, endPoint, width, createNormals, addBoxCollider, lengthThreshold ,minimumLaneLength));
         }
         else
         {
-            createdQuads.Add(CreateQuad(startPoint, endPoint, width, createNormals, addBoxCollider));
+            createdQuads.Add(CreateQuad(startPoint, endPoint, width, createNormals, addBoxCollider, minimumLaneLength));
         }
+        
         return createdQuads;
     }
 }

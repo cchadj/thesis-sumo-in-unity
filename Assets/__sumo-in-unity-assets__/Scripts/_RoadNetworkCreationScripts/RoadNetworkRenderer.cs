@@ -2,16 +2,13 @@
 using System.Xml.Linq;
 using System.Globalization;
 using System.Collections.Generic;
-using System.Reflection;
 using Tomis.UnityEditor.Utilities;
 using cakeslice;
-
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using RiseProject.Tomis.Util.Serializable;
 using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.MVC;
 using UnityEngine;
-using Random = System.Random;
 
 [ExecuteInEditMode]
 public class RoadNetworkRenderer : MonoBehaviour
@@ -35,10 +32,11 @@ public class RoadNetworkRenderer : MonoBehaviour
     [Tooltip(" Each quad that has length more than Length Threshold is segmented recursively to smaller quads.\n" +
              " if Length Threshold is <=0 then no segmentation occurs. ")]
     public float lengthThreshold;
+    public float minimumLaneLength;
     public float roadWidth = 4f;
     public float renderPercentage;
     public bool renderJunctions;
-
+    
 
     private CurrentlySelectedTargets CurrentlySelectedTargets { get; set; }
     [SerializeField, ReadOnly] private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
@@ -170,7 +168,9 @@ public class RoadNetworkRenderer : MonoBehaviour
             _laneCount++;
             var curLane = lane;
             var laneGameObjects = RenderLane(curLane, roadWidth);
-             laneGameObjectDict.Add(curLane.ID, RenderLane(curLane, roadWidth));
+            if(laneGameObjects == null || laneGameObjects.Count == 0 )
+                continue;
+             laneGameObjectDict.Add(curLane.ID, laneGameObjects);
              sumoToUnityGameObjectMap.LaneIDGameObjectPairs.Add(curLane.ID, laneGameObjects[0]);
         }
 
@@ -202,6 +202,7 @@ public class RoadNetworkRenderer : MonoBehaviour
     /// </summary>
     /// <param name="lane"> The lane to render in unity </param>
     /// <param name="laneWidth"></param>
+    /// <para name="minimumLaneLength"></para>
     /// <returns> List of quads created for the lane </returns>
     private List<GameObject> RenderLane(Lane lane, float laneWidth)
     {
@@ -216,11 +217,16 @@ public class RoadNetworkRenderer : MonoBehaviour
             Vector2 endPoint = lane.ShapeVertexPoints[i + 1];
 
             Vector3 endPoint3D = new Vector3(endPoint.x, 0f, endPoint.y);
-            laneObjects = QuadCreator.CreateQuad(startPoint, endPoint, laneWidth, !_disableNormals, addBoxCollider, lengthThreshold);
+            laneObjects = QuadCreator.CreateQuad(startPoint, endPoint, laneWidth, !_disableNormals, addBoxCollider, lengthThreshold, minimumLaneLength);
 
             int edgeCount = 0;
+            if (laneObjects == null)
+                return null;
             foreach (GameObject laneQuad in laneObjects)
             {
+                if(laneQuad == null)
+                    continue;
+                
                 laneQuad.name = lane.GetType().Name + "_id=_" + lane.ID + i + "_quadcount=_" + edgeCount++;
                 laneQuad.transform.parent = _generatedLanes.transform;
                 laneQuad.layer = GENERATED_NETWORK_LAYER;
@@ -310,7 +316,8 @@ public class RoadNetworkRenderer : MonoBehaviour
                     layer = GENERATED_NETWORK_LAYER
                 };
                 junctionParent.transform.parent = _generatedJunctions.transform;
-                _gameObjectParentsByJunctionType.Add(junctionType, junctionParent);
+                if(!_gameObjectParentsByJunctionType.ContainsKey(junctionType))
+                    _gameObjectParentsByJunctionType.Add(junctionType, junctionParent);
             }
 
             newGameObject.transform.parent = junctionParent.transform;
