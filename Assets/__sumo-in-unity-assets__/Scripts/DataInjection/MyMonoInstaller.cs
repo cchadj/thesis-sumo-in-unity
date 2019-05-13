@@ -20,6 +20,10 @@ public class MyMonoInstaller : MonoInstaller
         Container.Bind<SimulationState>()
             .AsSingle()
             .NonLazy();
+
+        Container.Bind<CurrentlySelectedTargets>()
+            .AsSingle()
+            .NonLazy();
         
         // BindInstance is the same as Bind<ResultType>().FromInstance(theInstance)...
         Container.BindInstance(startupData)

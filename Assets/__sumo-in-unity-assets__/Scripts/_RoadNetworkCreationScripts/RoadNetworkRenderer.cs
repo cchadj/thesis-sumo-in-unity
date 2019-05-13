@@ -38,12 +38,9 @@ public class RoadNetworkRenderer : MonoBehaviour
     public bool renderJunctions;
     
 
-    private CurrentlySelectedTargets CurrentlySelectedTargets { get; set; }
     [SerializeField, ReadOnly] private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
     private SumoNetworkData NetworkData { get; set; }
-    
-    [field: SerializeField, Tooltip("These events get raised whenever a lane is clicked."),  Rename("On Click Lane Events")]
-    private List<GameEvent> OnClickLaneEvents { get; set; }
+
 
     [field: Space(8), Header("UI Related"), SerializeField, Rename("Make Clickable")]
     private bool MakeClickable { get;}
@@ -56,7 +53,6 @@ public class RoadNetworkRenderer : MonoBehaviour
     [Tooltip("Adds box collider. If unchecked adds convex mesh collider")]
     public bool addBoxCollider = true;
 
-    public Canvas laneCanvas;
 
     [Space(8), Header("Height Match Settings")]
 
@@ -78,11 +74,6 @@ public class RoadNetworkRenderer : MonoBehaviour
 
     private int _junctionCount;
     private const int GENERATED_NETWORK_LAYER = 9;
-
-    void Update()
-    {
-        AddHeightBufferScript();
-    }
 
     /// <summary>
     /// Adds HeightBufferCreator script to all HeightBufferObjects that have a mesh.
@@ -121,7 +112,6 @@ public class RoadNetworkRenderer : MonoBehaviour
     {
         NetworkData = SumoNetworkData.Instance;
         sumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
-        CurrentlySelectedTargets = CurrentlySelectedTargets.Instance;
         
         _generatedRoadNetwork = new GameObject()
         {
@@ -279,9 +269,8 @@ public class RoadNetworkRenderer : MonoBehaviour
                     highlightLine.enabled = false;
 
                     var selectableObjectEvent = laneQuad.gameObject.AddComponent<SelectableObjectEvent>();
-                    selectableObjectEvent.Transform = laneQuad.transform.GetChild(0);
+                    selectableObjectEvent._transform = laneQuad.transform.GetChild(0);
                     selectableObjectEvent.OnHoverOutline = highlightLine;
-                    selectableObjectEvent.SelectedTargets = CurrentlySelectedTargets;
                 }
             }
         }

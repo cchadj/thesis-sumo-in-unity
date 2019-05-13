@@ -75,7 +75,7 @@ public class QuadCreator : MonoBehaviour {
         mesh.uv = uv;
         go.AddComponent<MeshRenderer>();
 
-        (go.AddComponent<MeshFilter>()).mesh = mesh;
+        (go.AddComponent<MeshFilter>()).sharedMesh = mesh;
 
         if (addBoxCollider)
         {
