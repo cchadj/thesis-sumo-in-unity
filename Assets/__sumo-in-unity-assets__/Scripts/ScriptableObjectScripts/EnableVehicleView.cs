@@ -1,23 +1,29 @@
-﻿using RiseProject.Tomis.SumoInUnity.MVC;
+﻿using UnityEngine;
 
-using UnityEngine;
+using RiseProject.Tomis.SumoInUnity.MVC;
+using Zenject;
 
 public class EnableVehicleView : MonoBehaviour {
 
-    [SerializeField] private CurrentlySelectedTargets selectedTargets;
-
+    private CurrentlySelectedTargets _selectedTargets;
     private VehicleView _curView;
+
+    [Inject]
+    private void Construct(CurrentlySelectedTargets selectedTargets)
+    {
+        _selectedTargets = selectedTargets;
+    }
 
     private void Awake()
     {
-        selectedTargets.OnVehicleSelected += 
+        _selectedTargets.OnVehicleSelected += 
             delegate
             {
-                _curView = selectedTargets.SelectedTransform.GetComponent<VehicleView>();
+                _curView = _selectedTargets.SelectedTransform.GetComponent<VehicleView>();
                 _curView.enabled = true;
             };
 
-        selectedTargets.OnVehicleDeselected +=
+        _selectedTargets.OnVehicleDeselected +=
         delegate
         {
             if(_curView)

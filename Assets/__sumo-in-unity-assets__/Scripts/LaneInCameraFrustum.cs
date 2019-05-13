@@ -8,14 +8,15 @@ using Zenject;
 
 public class LaneInCameraFrustum : MonoBehaviour
 {
-    
     [ReadOnly] public Lane Lane;
     [ReadOnly] public string ID;
 
+    
     private SumoNetworkData networkData;
     private bool _isInsideLanesInsideFrustum = false;
     private Renderer _renderer;
 
+    
     // Cache WaitForSeconds for performance
     private static readonly WaitForSeconds WaitForSeconds = new WaitForSeconds(2f);
     
@@ -25,7 +26,13 @@ public class LaneInCameraFrustum : MonoBehaviour
     {
         networkData = sumoNetworkData;
     }
-    
+
+
+    private void Start()
+    {
+        _renderer = GetComponent<MeshRenderer>();
+        networkData.RequestVisibleLanes += RequestVisibleLanes_AddLaneToVisibleLanes;
+    }
     
     /// <summary>
     /// Replace the mesh of this lane object with a very small mesh that
@@ -33,14 +40,8 @@ public class LaneInCameraFrustum : MonoBehaviour
     /// and is fliped so it is not rendered by the camera. When this mesh is inside the camera
     /// frustum then 
     /// </summary>
-    private void Start()
+    public void ReplaceMesh()
     {
-        if (Random.value > 0.33f)
-        {
-            enabled = false;
-            Destroy(gameObject);            
-        }
-         
         _renderer = GetComponent<MeshRenderer>();
         _renderer.lightProbeUsage = LightProbeUsage.Off;
         _renderer.reflectionProbeUsage = ReflectionProbeUsage.Off;
@@ -59,9 +60,9 @@ public class LaneInCameraFrustum : MonoBehaviour
             vertices = newVertices, 
             triangles = new []{ 2, 1, 0},
         };
-        GetComponent<MeshFilter>().mesh = mesh;
+        GetComponent<MeshFilter>().sharedMesh = mesh;
 
-        networkData.RequestVisibleLanes += RequestVisibleLanes_AddLaneToVisibleLanes;
+
         
       // DEPRECATED_WAY:  StartCoroutine(VisibilityTest());
     }
