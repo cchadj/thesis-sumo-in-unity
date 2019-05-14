@@ -5,15 +5,15 @@ using Google.Protobuf;
 
 public class CarRayCaster : MonoBehaviour
 {
-    private const float RayLength = 20f;
-    private const int RoadNetworkLayerMask = 1 << 9;
+    [SerializeField] private float rayLength = 20f;
     [SerializeField] private bool showSingleRayCast;
-
     [Tooltip("A place holder used to assist casting ray at the front of the car"), SerializeField]
     private Transform vehicleFrontPlaceholder;
-
     [Tooltip("A place holder used to assist casting ray at the back of the car"), SerializeField]
     private Transform vehicleBackPlaceholder;
+    
+    private const int RoadNetworkLayerMask = 1 << 9;
+
 
     private Vector3 _frontPosition;
     private Vector3 _backPosition;
@@ -42,26 +42,26 @@ public class CarRayCaster : MonoBehaviour
         _backPosition = vehicleBackPlaceholder.position;
     }
 
-    void FixedUpdate () {
+    void Update () {
         _frontPosition = vehicleFrontPlaceholder.position;
         _backPosition = vehicleBackPlaceholder.position;
 
         Vector3 curPosition = transform.position;
-        CarFrontRay = new Ray(_frontPosition - Vector3.up * RayLength/2 , Vector3.up );
-        CarBackRay = new Ray(_backPosition - Vector3.up * RayLength / 2, Vector3.up);
+        CarFrontRay = new Ray(_frontPosition - Vector3.up * rayLength/2 , Vector3.up );
+        CarBackRay = new Ray(_backPosition - Vector3.up * rayLength / 2, Vector3.up);
 
-        FrontRayDidHit = Physics.Raycast(CarFrontRay, out FrontRayHitInfo, RayLength, RoadNetworkLayerMask);
-        BackRayDidHit = Physics.Raycast(CarBackRay, out BackRayHitInfo, RayLength, RoadNetworkLayerMask);
+        FrontRayDidHit = Physics.Raycast(CarFrontRay, out FrontRayHitInfo, rayLength, RoadNetworkLayerMask);
+        BackRayDidHit = Physics.Raycast(CarBackRay, out BackRayHitInfo, rayLength, RoadNetworkLayerMask);
 
 #if UNITY_EDITOR
         if (showSingleRayCast)
         {
-            Debug.DrawRay(Vector3.Lerp(CarFrontRay.origin, CarBackRay.origin, 0.5f ), CarFrontRay.direction * RayLength, Color.red);
+            Debug.DrawRay(Vector3.Lerp(CarFrontRay.origin, CarBackRay.origin, 0.5f ), CarFrontRay.direction * rayLength, Color.red);
         }
         else
         {
-            Debug.DrawRay(CarFrontRay.origin, CarFrontRay.direction * RayLength, Color.red);
-            Debug.DrawRay(CarBackRay.origin, CarBackRay.direction * RayLength, Color.red);     
+            Debug.DrawRay(CarFrontRay.origin, CarFrontRay.direction * rayLength, Color.red);
+            Debug.DrawRay(CarBackRay.origin, CarBackRay.direction * rayLength, Color.red);     
         }
        
 #endif
@@ -70,8 +70,8 @@ public class CarRayCaster : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawRay(CarFrontRay.origin, CarFrontRay.direction * RayLength);
-        Gizmos.DrawRay(CarBackRay.origin, CarBackRay.direction * RayLength);
+        Gizmos.DrawRay(CarFrontRay.origin, CarFrontRay.direction * rayLength);
+        Gizmos.DrawRay(CarBackRay.origin, CarBackRay.direction * rayLength);
     }
 #endif
 }
