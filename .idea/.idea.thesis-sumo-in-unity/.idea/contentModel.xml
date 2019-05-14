@@ -22,6 +22,9 @@
           <e p="Editor" t="Include">
             <e p="MeantToBeAbstractEditor.cs" t="Include" />
           </e>
+          <e p="Materials" t="Include">
+            <e p="README.txt" t="Include" />
+          </e>
           <e p="Prefabs" t="Include">
             <e p="CarPrefabs" t="Include">
               <e p="Truck" t="Include">
