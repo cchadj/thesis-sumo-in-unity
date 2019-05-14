@@ -280,15 +280,15 @@ public class RoadNetworkRenderer : MonoBehaviour
 
     private GameObject RenderShapedVariable<T>(T traciVar) where T : TraCIVariableShaped
     {
-        /* Mesh     https://docs.unity3d.com/ScriptReference/Mesh.html  */
-        /* Triangle http://wiki.unity3d.com/index.php/Triangulator      */
+        // Mesh     https://docs.unity3d.com/ScriptReference/Mesh.html
+        // Triangle http://wiki.unity3d.com/index.php/Triangulator
 
         GameObject newGameObject = PolygonMesher.CreateShapedObject(traciVar.ShapeVertexPoints);
         newGameObject.name = typeof(T).Name + "_id=_" + traciVar.ID;
         newGameObject.transform.parent = _generatedRoadNetwork.transform;
         
-        /* Do not cache MeshRenderer */
-        //MeshRenderer renderer = newGameObject.GetComponent<MeshRenderer>();
+        // Do not cache MeshRenderer
+        // MeshRenderer renderer = newGameObject.GetComponent<MeshRenderer>();
 
         if (traciVar is Junction)
         {
