@@ -53,10 +53,9 @@ namespace RiseProject.Tomis.VehicleControl
         /// <summary> 
         /// The number of steps the Vehicle should lag behind. 
         /// Used for smoothing and calculating route.
-        /// The simulation vehicle will be _numberOfLagSteps ahead of this car.
+        /// The simulation vehicle will be <see cref="numberOfLagSteps"/> ahead of this car.
         /// </summary>
-        [field: SerializeField, ReadOnly]
-        public int NumberOfLagSteps { get; protected set; }
+        [SerializeField, ReadOnly] protected int numberOfLagSteps;
 
         /// <summary>
         /// True if is subscribed to the vehicle change tranform event.
@@ -104,7 +103,7 @@ namespace RiseProject.Tomis.VehicleControl
 
         /// <summary>
         /// GetComponents and Setup properties such as <see cref="NumberOfStepsUsedForPathCalculation"/>,
-        /// <see cref="NumberOfLagSteps"/> e.t.c
+        /// <see cref="numberOfLagSteps"/> e.t.c
         /// </summary>
         protected virtual void Awake()
         {

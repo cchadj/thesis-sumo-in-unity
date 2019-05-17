@@ -53,7 +53,7 @@ namespace RiseProject.Tomis.SumoInUnity
         private SimulationStartupData StartupData { get; set; }
         private ApplicationManager AppManager { get; set; }
 
-        [field: SerializeField, Rename("Use Multithreading")]
+        [field: SerializeField]
         public bool UseMultithreading { get; set; }
 
         #region Defaults

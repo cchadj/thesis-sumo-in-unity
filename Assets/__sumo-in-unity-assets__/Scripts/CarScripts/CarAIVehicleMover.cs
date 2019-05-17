@@ -21,7 +21,7 @@ namespace RiseProject.Tomis.VehicleControl
         {
             WantToSubscribeToVehicle = true;
             NumberOfStepsUsedForPathCalculation = 0;
-            NumberOfLagSteps = 10;
+            numberOfLagSteps = 10;
 
             m_carAIControl = GetComponent<CarAIControl>();
             m_carAIControl.enabled = false;
@@ -71,7 +71,7 @@ namespace RiseProject.Tomis.VehicleControl
             _curStep++;
             _expectedSpeed = SumoVehicle.Speed;
 
-            if (m_waypointCircuit.WaypointsData.Length > NumberOfLagSteps)
+            if (m_waypointCircuit.WaypointsData.Length > numberOfLagSteps)
             {
                 m_carAIControl.Driving = true;
                 _expectedSpeed =  Vector3.Distance(SumoVehicle.PrevPosition2D, SumoVehicle.Position) / SharedVehicleData.SimulationStepLength;

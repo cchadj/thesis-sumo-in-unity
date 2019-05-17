@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\VR_Lab\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\VR_Lab\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.1934993073.00" t="ExcludeRecursive" />
-    <e p="C:\Users\VR_Lab\Desktop\tomis-thesis\unity-workspace\thesis-sumo-in-unity" t="IncludeRecursive">
+    <e p="C:\unity-workspace\thesis-sumo-in-unity" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -1618,5 +1616,7 @@
       <e p="Zenject-Editor.csproj" t="IncludeRecursive" />
       <e p="Zenject.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\chadj\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\chadj\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.-1960694894.00" t="ExcludeRecursive" />
   </component>
 </project>

@@ -16,7 +16,7 @@ namespace RiseProject.Tomis.VehicleControl
             base.Awake();
 
             NumberOfStepsUsedForPathCalculation = 0;
-            NumberOfLagSteps = 0;
+            numberOfLagSteps = 0;
             WantToSubscribeToVehicle = true;
         }
 

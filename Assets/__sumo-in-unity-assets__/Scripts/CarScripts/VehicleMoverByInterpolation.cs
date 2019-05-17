@@ -115,7 +115,7 @@ namespace RiseProject.Tomis.VehicleControl
         // Update is called once per frame
         protected virtual void Update()
         {
-            if (!SumoVehicle || !isActiveAndEnabled || SumoVehicle.StepsInSimulation < NumberOfLagSteps)
+            if (!SumoVehicle || !isActiveAndEnabled || SumoVehicle.StepsInSimulation < numberOfLagSteps)
                 return;
 
             if (CarRayCaster.FrontRayDidHit && CarRayCaster.BackRayDidHit)

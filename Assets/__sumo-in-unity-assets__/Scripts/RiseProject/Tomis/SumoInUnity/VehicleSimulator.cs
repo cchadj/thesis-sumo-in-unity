@@ -9,6 +9,7 @@ using RiseProject.Tomis.Util.Serializable;
 using RiseProject.Tomis.VehicleControl;
 using Tomis.Utils.Unity;
 using UnityEngine;
+using Zenject;
 
 namespace RiseProject.Tomis.SumoInUnity
 {
@@ -29,20 +30,7 @@ namespace RiseProject.Tomis.SumoInUnity
         
         private Queue<Transform> VehicleTransformPool { get; } = new Queue<Transform>();
 
-
         private SumoNetworkData _sumoNetworkData;
-
-        private SumoNetworkData SumoNetworkData
-        {
-            get
-            {
-                if (_sumoNetworkData == null)
-                    _sumoNetworkData = SumoNetworkData.Instance;
-                return _sumoNetworkData;
-            }
-            set => _sumoNetworkData = value;
-            
-        }
 
         private SumoToUnityGameObjectMap _sumoToUnityGameObjectMap = null;
         private SumoToUnityGameObjectMap SumoToUnityGameObjectMap {
@@ -59,13 +47,21 @@ namespace RiseProject.Tomis.SumoInUnity
             set => _sumoToUnityGameObjectMap = value;
         }
         private SharedVehicleData SharedVehicleData { get; set; }
-        private SumoClient Client { get; set; }
+        private SumoClient _client;
         private bool _onlyShowContextRangeVehicles;
         
         public Transform GeneratedVehiclesParent { private get; set; }
 
-        private int _poolSize = 200;
+        private const int PoolSize = 200;
 
+
+        [Inject]
+        private void Construct(SumoNetworkData networkData, SumoClient client)
+        {
+            _sumoNetworkData = networkData;
+            _client = client;
+        }
+        
         private void Awake()
         {
             var startUpData = SimulationStartupData.Instance;
@@ -76,11 +72,11 @@ namespace RiseProject.Tomis.SumoInUnity
                 return;
             }
             
-            Client = SumoClient.Instance;
-            _onlyShowContextRangeVehicles = Client.SubscriptionType == SubscriptionType.Context;
+            _client = SumoClient.Instance;
+            _onlyShowContextRangeVehicles = _client.SubscriptionType == SubscriptionType.Context;
             
             SumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
-            SumoNetworkData = SumoNetworkData.Instance;
+            _sumoNetworkData = SumoNetworkData.Instance;
             SharedVehicleData = SharedVehicleData.Instance;
             
             if( GetComponent<ApplicationManager> ().DontUseVehicleSimulator)
@@ -99,7 +95,7 @@ namespace RiseProject.Tomis.SumoInUnity
             if(SumoToUnityGameObjectMap != null)
                 SumoToUnityGameObjectMap.VehicleGameObjects = GameObjectByVehicleId;
             
-            PopulateVehicleTransformPool(_poolSize);
+            PopulateVehicleTransformPool(PoolSize);
         }
 
         private static List<Color> CarColors = new List<Color>
@@ -151,13 +147,13 @@ namespace RiseProject.Tomis.SumoInUnity
             
             if (_onlyShowContextRangeVehicles)
             {
-                vehiclesEntered = SumoNetworkData.VehiclesEnteredContextRange;
-                vehiclesLeft = SumoNetworkData.VehiclesExitedContextRange;
+                vehiclesEntered = _sumoNetworkData.VehiclesEnteredContextRange;
+                vehiclesLeft = _sumoNetworkData.VehiclesExitedContextRange;
             }
             else
             {
-                vehiclesEntered = SumoNetworkData.VehiclesDepartedShared;
-                vehiclesLeft = SumoNetworkData.VehiclesArrivedShared;
+                vehiclesEntered = _sumoNetworkData.VehiclesDepartedShared;
+                vehiclesLeft = _sumoNetworkData.VehiclesArrivedShared;
             }
             
             // Vehicles that reached their destination in the simulation become eligible for deletion
@@ -253,7 +249,7 @@ namespace RiseProject.Tomis.SumoInUnity
                newVehicleTransform = VehicleTransformPool.Dequeue();
             else
             {
-                PopulateVehicleTransformPool(_poolSize);
+                PopulateVehicleTransformPool(PoolSize);
                 newVehicleTransform = VehicleTransformPool.Dequeue();
             }
 
