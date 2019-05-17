@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 05/18/19 00:47:16 by Eclipse SUMO netedit Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <processing>
+        <offset.disable-normalization value="true"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+    </junctions>
+
+</configuration>
+-->
+
+<net version="1.1" junctionCornerDetail="5" limitTurnSpeed="5.50" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/net_file.xsd">
+
+    <location netOffset="0.00,0.00" convBoundary="-0.85,64.88,75.12,78.90" origBoundary="10000000000.00,10000000000.00,-10000000000.00,-10000000000.00" projParameter="!"/>
+
+    <edge id="-gneE1" from="gneJ3" to="gneJ2" priority="-1">
+        <lane id="-gneE1_0" index="0" speed="13.89" length="77.26" shape="75.41,66.45 -0.56,80.48"/>
+    </edge>
+    <edge id="gneE1" from="gneJ2" to="gneJ3" priority="-1">
+        <lane id="gneE1_0" index="0" speed="13.89" length="77.26" shape="-1.14,77.33 74.83,63.30"/>
+    </edge>
+
+    <junction id="gneJ2" type="dead_end" x="-0.85" y="78.90" incLanes="-gneE1_0" intLanes="" shape="-0.85,78.90 -0.27,82.05 -0.85,78.90"/>
+    <junction id="gneJ3" type="dead_end" x="75.12" y="64.88" incLanes="gneE1_0" intLanes="" shape="75.12,64.88 74.54,61.73 75.12,64.88"/>
+
+</net>

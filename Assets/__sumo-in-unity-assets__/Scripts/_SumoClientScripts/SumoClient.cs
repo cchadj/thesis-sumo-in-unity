@@ -46,8 +46,8 @@ namespace RiseProject.Tomis.SumoInUnity
     
     public class SumoClient : SingletonMonoBehaviour<SumoClient>
     {
-        
-        [SerializeField] public SumoProcessRedirectionMode RedirectionMode { get; set; }
+
+        [SerializeField] public SumoProcessRedirectionMode redirectionMode;
         
         private TaskManager MTaskManager { get; set; }
         private SimulationStartupData StartupData { get; set; }
@@ -82,8 +82,7 @@ namespace RiseProject.Tomis.SumoInUnity
         public bool UseLocalSumo;
         
         [field: SerializeField] public bool ShouldServeSumo { get; set; }
-
-        [field: SerializeField] public bool CaptureSumoProcessErrors { get; set; }
+        
         /// <summary> How many connections will this server support. </summary>
         [field: SerializeField] public int NumberOfConnections { get; set; } = DEFAULT_NUMBER_OF_CONNECTIONS;
 
@@ -380,10 +379,6 @@ namespace RiseProject.Tomis.SumoInUnity
         [field: SerializeField]
         public int RemotePort { get; set; } = DEFAULT_REMOTE_PORT;
 
-        /// <summary> Check to display the terminal when game starts. </summary>
-        [field: SerializeField]
-        public bool ShowTerminal { get; set; } = DEFAULT_SHOW_TERMINAL;
-
         [field: SerializeField] public SharedVehicleData SharedVehicleData { private get; set; }
 
         private bool IsSumoPathSet { get; set; }
@@ -454,7 +449,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 
                 StepLength = StartupData.stepLength;
                 SumocfgFile = StartupData.SumoConfigFilename;
-                RedirectionMode = StartupData.redirectionMode;
+                redirectionMode = StartupData.redirectionMode;
                 
                 UseMultithreading = StartupData.useMultithreading;
                 SubscriptionType = StartupData.subscriptionType;
@@ -550,7 +545,7 @@ namespace RiseProject.Tomis.SumoInUnity
             var captureStdout = false;
             var captureStderr = false;
                         
-            switch (RedirectionMode)
+            switch (redirectionMode)
             {
                 case SumoProcessRedirectionMode.NoRedirection:
                     mode = ProcessExecutor.RedirectionMode.None;
@@ -612,19 +607,8 @@ namespace RiseProject.Tomis.SumoInUnity
 
         private void SumoProcess_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if (!CaptureSumoProcessErrors)
-                return;
-
-            
             var message = $"SUMO error output:\n {e.Data}\n\n Do you wish to terminate simulation?";
             Debug.LogError(message);
-//            const string caption = "Error Detected in Sumo";
-//            const MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-//
-//            // Displays the MessageBox.
-//            var result = MessageBox.Show(message, caption, buttons);
-//            if (result == DialogResult.Yes)
-//                Terminate();
         }
 
         private async Task<bool> ConnectToSumoAsync()

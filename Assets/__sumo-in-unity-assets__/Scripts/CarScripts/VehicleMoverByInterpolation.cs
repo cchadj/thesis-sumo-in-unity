@@ -120,8 +120,8 @@ namespace RiseProject.Tomis.VehicleControl
 
             if (CarRayCaster.FrontRayDidHit && CarRayCaster.BackRayDidHit)
             {
-                _frontHit = CarRayCaster.FrontRayHitInfo;
-                _backHit = CarRayCaster.BackRayHitInfo;
+                _frontHit = CarRayCaster.frontRayHitInfo;
+                _backHit = CarRayCaster.backRayHitInfo;
             }
 
             VisualController.speed = SumoVehicle.Speed;

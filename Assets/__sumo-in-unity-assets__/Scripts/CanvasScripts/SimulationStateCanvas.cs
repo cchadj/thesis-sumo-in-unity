@@ -40,7 +40,7 @@ public class SimulationStateCanvas : SingletonMonoBehaviour<SimulationStateCanva
         yield return new WaitForEndOfFrame();
         
         sumocfgText.SetText($"{sumocfgText.text,LEFT_ALIGN}{Path.GetFileName(_sumoClient.SumocfgFile),RIGHT_ALIGN}");
-        redirectionModeText.SetText($"{redirectionModeText.text,LEFT_ALIGN}{_sumoClient.RedirectionMode.ToString(),RIGHT_ALIGN}");
+        redirectionModeText.SetText($"{redirectionModeText.text,LEFT_ALIGN}{_sumoClient.redirectionMode.ToString(),RIGHT_ALIGN}");
         usingMultithreadText.SetText($"{(_sumoClient.UseMultithreading?"No " : "Using ")} Multithreading");
         subscriptionTypeText.SetText($"{subscriptionTypeText.text,LEFT_ALIGN}{(_sumoClient.SubscriptionType.ToString()),RIGHT_ALIGN}");
         stepLengthText.SetText($"{stepLengthText.text,LEFT_ALIGN}{_sumoClient.StepLength,RIGHT_ALIGN:00.00}");
