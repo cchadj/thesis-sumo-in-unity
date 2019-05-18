@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 05/18/19 20:24:05 by Eclipse SUMO duarouter Version 1.1.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="net-1net.net.xml"/>
+        <route-files value="trips.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="output-net-1net/./rou10.rou.xml"/>
+        <alternatives-output value="output-net-1net/./rou10.rou.alt.xml"/>
+    </output>
+
+    <time>
+        <begin value="1.0"/>
+        <end value="101.0"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vehicle id="0" depart="1.00">
+        <route edges="36 37 64 7 13 62 68 16"/>
+    </vehicle>
+    <vehicle id="1" depart="11.00">
+        <route edges="71 7 13 32 40 52"/>
+    </vehicle>
+    <vehicle id="2" depart="21.00">
+        <route edges="3 55 36 49"/>
+    </vehicle>
+    <vehicle id="3" depart="31.00">
+        <route edges="20 50 22 53 34 29 4"/>
+    </vehicle>
+    <vehicle id="4" depart="41.00">
+        <route edges="71 58 20 21"/>
+    </vehicle>
+    <vehicle id="5" depart="51.00">
+        <route edges="28 17 43 63 62"/>
+    </vehicle>
+    <vehicle id="6" depart="61.00">
+        <route edges="50 22 53 34 29"/>
+    </vehicle>
+    <vehicle id="7" depart="71.00">
+        <route edges="51 21 71 7"/>
+    </vehicle>
+    <vehicle id="8" depart="81.00">
+        <route edges="21 71 7"/>
+    </vehicle>
+    <vehicle id="9" depart="91.00">
+        <route edges="50 22 53 41 39 -gneE6"/>
+    </vehicle>
+</routes>

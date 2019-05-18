@@ -1540,10 +1540,67 @@
               <e p="nodes.nod.xml" t="Include" />
               <e p="nodescp.nod.xml" t="Include" />
               <e p="out.net.xml" t="Include" />
+              <e p="output" t="Include">
+                <e p="net.net.xml" t="Include" />
+                <e p="rou1.rou.alt.xml" t="Include" />
+                <e p="rou1.rou.xml" t="Include" />
+                <e p="rou10.rou.alt.xml" t="Include" />
+                <e p="rou10.rou.xml" t="Include" />
+                <e p="rou100.rou.alt.xml" t="Include" />
+                <e p="rou100.rou.xml" t="Include" />
+                <e p="rou150.rou.alt.xml" t="Include" />
+                <e p="rou150.rou.xml" t="Include" />
+                <e p="rou25.rou.alt.xml" t="Include" />
+                <e p="rou25.rou.xml" t="Include" />
+                <e p="rou250.rou.alt.xml" t="Include" />
+                <e p="rou250.rou.xml" t="Include" />
+                <e p="rou275.rou.alt.xml" t="Include" />
+                <e p="rou275.rou.xml" t="Include" />
+                <e p="rou300.rou.alt.xml" t="Include" />
+                <e p="rou300.rou.xml" t="Include" />
+                <e p="rou475.rou.alt.xml" t="Include" />
+                <e p="rou475.rou.xml" t="Include" />
+                <e p="rou5.rou.alt.xml" t="Include" />
+                <e p="rou5.rou.xml" t="Include" />
+                <e p="rou50.rou.alt.xml" t="Include" />
+                <e p="rou50.rou.xml" t="Include" />
+                <e p="rou500.rou.alt.xml" t="Include" />
+                <e p="rou500.rou.xml" t="Include" />
+                <e p="rou75.rou.alt.xml" t="Include" />
+                <e p="rou75.rou.xml" t="Include" />
+              </e>
+              <e p="output-net-1net" t="Include">
+                <e p="net-1net.net.xml" t="Include" />
+                <e p="rou1.rou.alt.xml" t="Include" />
+                <e p="rou1.rou.xml" t="Include" />
+                <e p="rou10.rou.alt.xml" t="Include" />
+                <e p="rou10.rou.xml" t="Include" />
+                <e p="rou100.rou.alt.xml" t="Include" />
+                <e p="rou100.rou.xml" t="Include" />
+                <e p="rou150.rou.alt.xml" t="Include" />
+                <e p="rou150.rou.xml" t="Include" />
+                <e p="rou25.rou.alt.xml" t="Include" />
+                <e p="rou25.rou.xml" t="Include" />
+                <e p="rou250.rou.alt.xml" t="Include" />
+                <e p="rou250.rou.xml" t="Include" />
+                <e p="rou275.rou.alt.xml" t="Include" />
+                <e p="rou275.rou.xml" t="Include" />
+                <e p="rou300.rou.alt.xml" t="Include" />
+                <e p="rou300.rou.xml" t="Include" />
+                <e p="rou475.rou.alt.xml" t="Include" />
+                <e p="rou475.rou.xml" t="Include" />
+                <e p="rou5.rou.alt.xml" t="Include" />
+                <e p="rou5.rou.xml" t="Include" />
+                <e p="rou50.rou.alt.xml" t="Include" />
+                <e p="rou50.rou.xml" t="Include" />
+                <e p="rou500.rou.alt.xml" t="Include" />
+                <e p="rou500.rou.xml" t="Include" />
+                <e p="rou75.rou.alt.xml" t="Include" />
+                <e p="rou75.rou.xml" t="Include" />
+              </e>
               <e p="rout.rou.alt.xml" t="Include" />
               <e p="rout.rou.xml" t="Include" />
               <e p="test-netconvert-plainxml" t="Include">
-                <e p="fixedv2.net.xml" t="Include" />
                 <e p="net.net.xml" t="Include" />
                 <e p="new.net.xml" t="Include" />
                 <e p="neww.net.xml" t="Include" />

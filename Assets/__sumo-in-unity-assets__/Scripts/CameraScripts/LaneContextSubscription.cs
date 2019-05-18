@@ -41,16 +41,21 @@ public class LaneContextSubscription : MonoBehaviour
     [SerializeField, ReadOnly] private float roadHeight;
    
     [Space(3)]
-    [SerializeField, ReadOnly] private float theContextRange;
+
+    
+
     [Header("Subscription Circle")]
     [SerializeField] private Color subscriptionCircleColor = Color.red;
     [SerializeField, ReadOnly] private Lane closestLane;
     [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
+    [SerializeField, ReadOnly, Tooltip( "The Current actual Subscription Range that")] 
+    private float curContextRange;
 
     [Header("Enclosing Circle")]
     [SerializeField] private Color enclosingCircleColor = Color.white;
     [SerializeField, ReadOnly] private Vector3 _positionToGetClosestLaneFrom = Vector3.one;
-    
+    [SerializeField, ReadOnly, Tooltip( "The new subscription range that will be used for the next subscritpion " )] 
+    private float newContextRange;
 
     
     // Dependencies
@@ -162,7 +167,7 @@ public class LaneContextSubscription : MonoBehaviour
             _positionToGetClosestLaneFrom = centerOfFrustum.position;
             contextRange = _cam.farClipPlane / 2f;
         }
-        theContextRange = contextRange;
+        newContextRange = contextRange;
 
         
         // Get all the lanes that are inside the camera frustum.
@@ -196,15 +201,23 @@ public class LaneContextSubscription : MonoBehaviour
         
         // No need to subscribe to a a new lane if it close or the old one
         if (closestLane.ID == currentlySubscribedLaneID)
-            return;
+        {
+            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
+                return;
+        }
+
+
         if (closestDistanceSqr < 10f)
-            return;
+        {
+            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
+                return;
+        }
         
         
         // Subscribe to new lane and unsubscribe from old one
         _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f, Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
         _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, TraCIConstants.CMD_GET_VEHICLE_VARIABLE);
-        
+        curContextRange = newContextRange;
         
         // Update currently subscribed lane       
         currentlySubscribedLaneID = closestLane.ID;
@@ -219,9 +232,9 @@ public class LaneContextSubscription : MonoBehaviour
         if (Application.isPlaying && closestLane)
         {            
             UnityEditor.Handles.color = enclosingCircleColor;
-            UnityEditor.Handles.DrawWireDisc(_positionToGetClosestLaneFrom + new Vector3(0f, roadNetwork.transform.position.y, 0f), Vector3.up, theContextRange);   
+            UnityEditor.Handles.DrawWireDisc(_positionToGetClosestLaneFrom + new Vector3(0f, roadNetwork.transform.position.y, 0f), Vector3.up, newContextRange);   
             UnityEditor.Handles.color = subscriptionCircleColor;
-            UnityEditor.Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(closestLane.centerOfMass), Vector3.up, theContextRange);    
+            UnityEditor.Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(closestLane.centerOfMass), Vector3.up, curContextRange);    
         }
     }
 #endif
