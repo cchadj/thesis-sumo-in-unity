@@ -24,18 +24,22 @@ public class PrefabPlacer : MonoBehaviour
     {
 	    if (objectsWithNames != null) 
 			foreach (var name in objectsWithNames)
-		
 				foreach (var gameObject in (GameObject[]) FindObjectsOfType(typeof(GameObject)))
-					if ( !gameObject.transform.GetEnumerator().MoveNext() &&  gameObject.name == name)
+				{
+					// The second part is because when the localPosition is (0,0,0) then the object is just a placeholder
+					// and does not represent a gameobject with a renderer
+					if ( gameObject.name == name && gameObject.transform.localPosition != Vector3.zero)
 						AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
 							tranformToPlaceNewObjectsUnder);
-			
+				}
 
+	    
 	    if(gameObjects != null)
 			foreach (var gameObject in gameObjects)
 				AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
 					tranformToPlaceNewObjectsUnder);
 
+	    
 	    if(parentOfObjects)
 	    foreach (GameObject child in parentOfObjects)
 		    AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,

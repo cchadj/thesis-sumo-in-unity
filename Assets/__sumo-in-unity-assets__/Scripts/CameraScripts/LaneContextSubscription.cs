@@ -20,7 +20,7 @@ using UnityEditor;
 public class LaneContextSubscription : MonoBehaviour
 {
     [CallSetter("RefreshSubscriptionEvery"), SerializeField] private float subscribeEverySeconds;
-
+    
     public float RefreshSubscriptionEvery
     {
         get => subscribeEverySeconds;
@@ -31,14 +31,27 @@ public class LaneContextSubscription : MonoBehaviour
         }
 
     }
-        
-     
+
+    private Matrix4x4 _roadLocalToWorldMatrix;
+    
     // Debug 
-    [Header("For Debug")]
+    [Header("--- Debug ---")]
+    [SerializeField, ReadOnly] private SimulationState simulationState;  
+    [SerializeField, ReadOnly] private Transform roadNetwork;
+    [SerializeField, ReadOnly] private float roadHeight;
+   
+    [Space(3)]
+    [SerializeField, ReadOnly] private float theContextRange;
+    [Header("Subscription Circle")]
+    [SerializeField] private Color subscriptionCircleColor = Color.red;
     [SerializeField, ReadOnly] private Lane closestLane;
     [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
-    [SerializeField, ReadOnly] private SimulationState simulationState;
-    [SerializeField, ReadOnly] private float theContextRange;
+
+    [Header("Enclosing Circle")]
+    [SerializeField] private Color enclosingCircleColor = Color.white;
+    [SerializeField, ReadOnly] private Vector3 _positionToGetClosestLaneFrom = Vector3.one;
+    
+
     
     // Dependencies
     private Camera _cam;
@@ -69,9 +82,19 @@ public class LaneContextSubscription : MonoBehaviour
 
     private void Start()
     {
-                
-        _cam = GetComponent<Camera>();
+        if (!roadNetwork)
+        {
+            var go = GameObject.FindWithTag("GeneratedRoadNetwork");
+            if (go)
+                roadNetwork = go.transform; 
+        }
 
+        roadHeight = roadNetwork.transform.position.y;
+        _roadLocalToWorldMatrix = roadNetwork.transform.localToWorldMatrix;
+        
+        _cam = GetComponent<Camera>();
+        _cam.transform.localScale = Vector3.one;
+        
         _cameraIntersect = GetComponent<CameraIntersect>();
         _cameraIntersect.maxDist = _cam.farClipPlane;
         
@@ -112,6 +135,8 @@ public class LaneContextSubscription : MonoBehaviour
         }
     }
 
+    
+    
     /// <summary>
     /// Find and subscribe to the lane that is closest to the center of the frustum.
     /// The center of the frustum is calculated at Start.
@@ -120,9 +145,7 @@ public class LaneContextSubscription : MonoBehaviour
     private void ContextSubscribeToLaneInFrustum()
     {
         var numOfIntersectionsWithPlane = _cameraIntersect.FindIntersectionsWithPlane(out _hitPoints);
-        
-        var positionToGetClosestLaneFrom = Vector3.one;
-        float contextRange = 0f;
+        var contextRange = 0f;
         
         
         //if frustum intersects with the xz plane then we know the optimal context range and the optimal centre
@@ -131,12 +154,12 @@ public class LaneContextSubscription : MonoBehaviour
             // Calculate the minimum enclosing circle of the four intersection points
             var enclosingCircle = SmallestEnclosingCircle.MakeUnityCircle(_hitPoints);
 
-            positionToGetClosestLaneFrom = new Vector3(enclosingCircle.c.x, 0f, enclosingCircle.c.y);
+            _positionToGetClosestLaneFrom = new Vector3(enclosingCircle.c.x, 0f, enclosingCircle.c.y);
             contextRange = enclosingCircle.r;
         }
         else
         {
-            positionToGetClosestLaneFrom = centerOfFrustum.position;
+            _positionToGetClosestLaneFrom = centerOfFrustum.position;
             contextRange = _cam.farClipPlane / 2f;
         }
         theContextRange = contextRange;
@@ -154,8 +177,9 @@ public class LaneContextSubscription : MonoBehaviour
         var closestDistanceSqr = Mathf.Infinity;
         foreach (var lane in lanesInsideFrustum)
         {
-            var distX = lane.centerOfMass.x - positionToGetClosestLaneFrom.x;
-            var distZ = lane.centerOfMass.z - positionToGetClosestLaneFrom.z;
+            var lanePosition = _roadLocalToWorldMatrix.MultiplyPoint3x4(lane.centerOfMass);
+            var distX = lanePosition.x - _positionToGetClosestLaneFrom.x;
+            var distZ = lanePosition.z - _positionToGetClosestLaneFrom.z;
             var dSqrToTarget = distX * distX + distZ * distZ;
          
             if (dSqrToTarget < closestDistanceSqr)
@@ -191,10 +215,13 @@ public class LaneContextSubscription : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
+        
         if (Application.isPlaying && closestLane)
-        {
-            GUI.color = Color.green;
-            UnityEditor.Handles.DrawWireDisc(closestLane.centerOfMass, Vector3.up, theContextRange);    
+        {            
+            UnityEditor.Handles.color = enclosingCircleColor;
+            UnityEditor.Handles.DrawWireDisc(_positionToGetClosestLaneFrom + new Vector3(0f, roadNetwork.transform.position.y, 0f), Vector3.up, theContextRange);   
+            UnityEditor.Handles.color = subscriptionCircleColor;
+            UnityEditor.Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(closestLane.centerOfMass), Vector3.up, theContextRange);    
         }
     }
 #endif

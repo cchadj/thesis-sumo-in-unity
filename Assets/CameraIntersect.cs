@@ -24,10 +24,17 @@ public class CameraIntersect : MonoBehaviour
 
     private void Awake()
     {
+        var roadNetwork = GameObject.FindWithTag("GeneratedRoadNetwork");
+        if (roadNetwork)
+            horizontalPlaneHeight = roadNetwork.transform.position.y;
+        
         _cam = GetComponent<Camera>();
+        // Sure that the scale of the camera is 1,1,1 so the relative TransformVector and TransformPoint work as expected
+        _cam.transform.localScale = Vector3.one;
         _farClipPlane = _cam.farClipPlane;
         _nearClipPlane = _cam.nearClipPlane;
-        _horizontalPlane = new Plane(Vector3.up, Vector3.zero); 
+        _horizontalPlane = new Plane(Vector3.up, Vector3.zero);
+        _horizontalPlane.distance = -horizontalPlaneHeight;
         _transform = transform;
 
         enabled = debug;
