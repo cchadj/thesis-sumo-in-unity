@@ -10,6 +10,10 @@ public class MyMonoInstaller : MonoInstaller
     [SerializeField] private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
     [SerializeField] private ApplicationManager applicationManager;
     [SerializeField] private SumoClient sumoClient;
+    [SerializeField] private InputManager inputManager;
+
+    [Header("Canvases")]
+    [SerializeField] private VehicleCanvas vehicleCanvas;
 
     public override void InstallBindings()
     {
@@ -25,7 +29,13 @@ public class MyMonoInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
         
+        Container.BindInterfacesAndSelfTo<InputManager>()
+            .AsSingle()
+            .NonLazy();
+        
         // BindInstance is the same as Bind<ResultType>().FromInstance(theInstance)...
+        
+        //Bind Singletons. Simulation Components
         Container.BindInstance(startupData)
             .AsSingle()
             .NonLazy(); 
@@ -45,5 +55,16 @@ public class MyMonoInstaller : MonoInstaller
         Container.BindInstance(sumoClient)
             .AsSingle()
             .NonLazy();
-   }
+        
+        // Bind Canvases Instances 
+        Container.BindInstance(vehicleCanvas)
+            .AsSingle()
+            .NonLazy();
+        
+        // Factories
+        Container.BindFactory<GameObject, Car, Car.Factory>()
+            .FromFactory<PrefabFactory<Car>>();
+
+
+    }
 }

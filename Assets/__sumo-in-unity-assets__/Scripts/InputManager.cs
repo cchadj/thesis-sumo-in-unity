@@ -1,71 +1,92 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Zenject;
 
-public class InputManager : MonoBehaviour
+public class InputManager : ITickable
 {
-    [SerializeField] private CurrentlySelectedTargets selectedTargets;
-    [SerializeField] private GameEvent _pauseGameEvent;
-    [SerializeField] private GameEvent _followRandomVehicleGameEvent;
-    [SerializeField] private GameEvent _deselectObjectGameEvent;
-    [SerializeField] private GameEvent _menuOpenGameEvent;
-    [SerializeField] private GameEvent _menuCloseGameEvent;
-    [SerializeField] private GameEvent _searchModeEntered;
-    [SerializeField] private GameEvent _searchModeExited;
-    [SerializeField] private GameEvent _selectModeEntered;
-    [SerializeField] private GameEvent _selectModeExited;
+    private CurrentlySelectedTargets _selectedTargets;
 
     private bool _isMenuOpen = false;
     private bool _isSearchMenuOpen = false;
 
-    public GameEvent PauseGameEvent { get => _pauseGameEvent; set => _pauseGameEvent = value; }
-    public GameEvent FollowRandomVehicleGameEvent { get => _followRandomVehicleGameEvent; set => _followRandomVehicleGameEvent = value; }
-    public GameEvent DeselectObjectGameEvent { get => _deselectObjectGameEvent; set => _deselectObjectGameEvent = value; }
-    public GameEvent MenuOpenGameEvent { get => _menuOpenGameEvent; set => _menuOpenGameEvent = value; }
-    public GameEvent MenuCloseGameEvent { get => _menuCloseGameEvent; set => _menuCloseGameEvent = value; }
-    public GameEvent SearchModeEntered { get => _searchModeEntered; set => _searchModeEntered = value; }
-    public GameEvent SearchModeExited { get => _searchModeExited; set => _searchModeExited = value; }
-    public GameEvent SelectModeEntered { get => _selectModeEntered; set => _selectModeEntered = value; }
-    public GameEvent SelectModeExited { get => _selectModeExited; set => _selectModeExited = value; }
+    public event EventHandler<EventArgs> PauseGameEvent;
+    public event EventHandler<EventArgs> FollowRandomVehicleGameEvent;
+    public event EventHandler<EventArgs> MenuOpenGameEvent;
+    public event EventHandler<EventArgs> MenuCloseGameEvent;
+    public event EventHandler<EventArgs> SearchModeEntered;
+    public event EventHandler<EventArgs> SearchModeExited;
+    public event EventHandler<EventArgs> SelectModeEntered;
 
-    // Update is called once per frame
-    void Update()
+    public event EventHandler<EventArgs> ExitApplicationRequested; 
+
+    [Inject]
+    private void Construct(CurrentlySelectedTargets selectedTargets)
+    {
+        _selectedTargets = selectedTargets;
+    }
+    
+    private const int NumberOfTapsForEscape = 3;
+    private  float _buttonCooler = 0.5f ; // Half a second before reset
+    private  int _buttonCount = 0;
+    
+    public void Tick()
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PauseGameEvent?.Raise();
+            PauseGameEvent?.Invoke(this, EventArgs.Empty);
         }
         else if (Input.GetKeyDown(KeyCode.R)) /* Follow random vehicle */
         {
-            selectedTargets.SelectRandomVehicle();
-            FollowRandomVehicleGameEvent?.Raise();
+            _selectedTargets.SelectRandomVehicle();
+            FollowRandomVehicleGameEvent?.Invoke(this, EventArgs.Empty);
         }
-        else if (Input.GetKeyDown(KeyCode.Space)) /* Get Into Fly mode */
+        else if (Input.GetKeyDown(KeyCode.Space)) // Get Into Fly mode
         {
-            if(selectedTargets.IsATargetAlreadySelected())
+            if(_selectedTargets.IsATargetAlreadySelected)
             {
-                DeselectObjectGameEvent?.Raise();
-                selectedTargets.Unselect();
+                _selectedTargets.Unselect();
             }
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if ( _buttonCooler > 0 && _buttonCount == NumberOfTapsForEscape - 1)
+            {
+                Debug.Log("Tripple escape pressed");
+                ExitApplicationRequested?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                _buttonCooler = 0.5f ; 
+                _buttonCount += 1 ;
+            }
+            
+            if ( _buttonCooler > 0 )
+            {
+ 
+                _buttonCooler -= 1 * Time.deltaTime ;
+ 
+            }else{
+                _buttonCount = 0 ;
+            }
+            
+            
             if (_isSearchMenuOpen)
             {
-                SearchModeExited.Raise();
+                SearchModeExited?.Invoke(this, EventArgs.Empty);
                 _isSearchMenuOpen = false;
             }
             else if (_isMenuOpen)
             {
-                MenuCloseGameEvent.Raise();
+                MenuCloseGameEvent?.Invoke(this, EventArgs.Empty);
                 _isMenuOpen = false;
             }
-            else if(selectedTargets.IsATargetAlreadySelected())
+            else if(_selectedTargets.IsATargetAlreadySelected)
             {
-                DeselectObjectGameEvent?.Raise();
-                selectedTargets.Unselect();
+                _selectedTargets.Unselect();
             }
             else
             {
-                MenuOpenGameEvent.Raise();
+                MenuOpenGameEvent?.Invoke(this, EventArgs.Empty);
                 _isMenuOpen = true;
             }
         }
@@ -73,8 +94,8 @@ public class InputManager : MonoBehaviour
         {   
             if(!_isSearchMenuOpen)
             {
-                SearchModeEntered.Raise();
-                SelectModeEntered.Raise();
+                SearchModeEntered?.Invoke(this, EventArgs.Empty);
+                SelectModeEntered?.Invoke(this, EventArgs.Empty);
                 _isSearchMenuOpen = true;
             }
         }

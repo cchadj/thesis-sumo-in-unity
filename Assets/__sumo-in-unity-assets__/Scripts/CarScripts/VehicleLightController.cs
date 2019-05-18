@@ -10,18 +10,18 @@ namespace RiseProject.Tomis.VehicleControl
     /// <summary>
     /// Uses the Vehicle and CarVisualController 
     /// </summary>
-    [RequireComponent(typeof(CarVisualController), typeof(VehicleConfigurationData))]
+    [RequireComponent(typeof(CarVisualController), typeof(Car))]
     public class VehicleLightController : MonoBehaviour
     {
         private CarVisualController _visualController;
 
         private Vehicle _vehicle;
 
-        private VehicleConfigurationData _vehicleConfig;
+        private Car _vehicleConfig;
 
         private void Awake()
         {  
-            _vehicleConfig = GetComponent<VehicleConfigurationData>();
+            _vehicleConfig = GetComponent<Car>();
             _visualController = GetComponent<CarVisualController>();
         }
 

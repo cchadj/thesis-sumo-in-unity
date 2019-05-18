@@ -14,52 +14,43 @@ using Zenject;
 namespace RiseProject.Tomis.SumoInUnity
 {
     public class VehicleSimulator : SingletonMonoBehaviour<VehicleSimulator>
-    {   
-        private IDtoGameObjectDictionary GameObjectByVehicleId { get; set; }
+    {
+        private IDtoGameObjectDictionary _gameObjectByVehicleId;
         private Dictionary<string, Transform> _vehiclesEligibleForDeletion = new Dictionary<string, Transform>();
         
-        // GetComponent is actually faster than using dictionary.
-//        private Dictionary<string, VehicleMover> _vehicleMoverByVehicleId;
-//        private Dictionary<string, VehicleLightController> _lightControllerByVehicleId;
-//        private Dictionary<string, FadeOutAll> _renderFaderById;
-
         private Transform _roadNetwork;
 
         [SerializeField, Tooltip("The prefab used for visualising the vehicles"), Rename("Vehicle Prefab")]
-        private Transform vehiclePrefab;
+        private GameObject vehiclePrefab;
         
-        private Queue<Transform> VehicleTransformPool { get; } = new Queue<Transform>();
+        private readonly Queue<Transform> _vehicleTransformPool = new Queue<Transform>();
 
         private SumoNetworkData _sumoNetworkData;
 
         private SumoToUnityGameObjectMap _sumoToUnityGameObjectMap = null;
-        private SumoToUnityGameObjectMap SumoToUnityGameObjectMap {
-            get
-            {
-                if (_sumoToUnityGameObjectMap == null)
-                    _sumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
-                
-                if (_sumoToUnityGameObjectMap == null)
-
-                    throw new NullReferenceException("Could not retrieve TransformNetworkData singleton ");
-                return _sumoToUnityGameObjectMap;
-            }
-            set => _sumoToUnityGameObjectMap = value;
-        }
+        
         private SharedVehicleData SharedVehicleData { get; set; }
         private SumoClient _client;
         private bool _onlyShowContextRangeVehicles;
+        private Car.Factory _carFactory;
         
         public Transform GeneratedVehiclesParent { private get; set; }
 
         private const int PoolSize = 200;
 
-
+            
         [Inject]
-        private void Construct(SumoNetworkData networkData, SumoClient client)
+        private void Construct(
+            SumoNetworkData networkData, 
+            SumoClient client,
+            Car.Factory carFactory,
+            SumoToUnityGameObjectMap sumoToUnityGameObjectMap
+            )
         {
             _sumoNetworkData = networkData;
             _client = client;
+            _carFactory = carFactory;
+            _sumoToUnityGameObjectMap = sumoToUnityGameObjectMap;
         }
         
         private void Awake()
@@ -75,7 +66,6 @@ namespace RiseProject.Tomis.SumoInUnity
             _client = SumoClient.Instance;
             _onlyShowContextRangeVehicles = _client.SubscriptionType == SubscriptionType.Context;
             
-            SumoToUnityGameObjectMap = SumoToUnityGameObjectMap.Instance;
             _sumoNetworkData = SumoNetworkData.Instance;
             SharedVehicleData = SharedVehicleData.Instance;
             
@@ -89,11 +79,10 @@ namespace RiseProject.Tomis.SumoInUnity
             GeneratedVehiclesParent = vehiclesEmptyGameObject.transform;
             GeneratedVehiclesParent.name = "GeneratedVehicles";
             GeneratedVehiclesParent.transform.position = _roadNetwork.position;
-            GameObjectByVehicleId = new IDtoGameObjectDictionary();
+            _gameObjectByVehicleId = new IDtoGameObjectDictionary();
             _vehiclesEligibleForDeletion = new Dictionary<string, Transform>();
             
-            if(SumoToUnityGameObjectMap != null)
-                SumoToUnityGameObjectMap.VehicleGameObjects = GameObjectByVehicleId;
+                _sumoToUnityGameObjectMap.VehicleGameObjects = _gameObjectByVehicleId;
             
             PopulateVehicleTransformPool(PoolSize);
         }
@@ -109,31 +98,32 @@ namespace RiseProject.Tomis.SumoInUnity
             Color.green
 
         };
-
+        
         private void PopulateVehicleTransformPool(int numberOfTransforms)
         {
             for (var i = 0; i < numberOfTransforms; i++)
             {
-                var newVehicleTransform = Instantiate(vehiclePrefab, new Vector3(), Quaternion.Euler(Vector3.zero));
 
-                newVehicleTransform.GetComponent<CarVisualController>().CarHullColor = CarColors[
+                var car = _carFactory.Create(vehiclePrefab);
+
+                car.GetComponent<CarVisualController>().CarHullColor = CarColors[
                 (int) UnityEngine.Random.Range(0, CarColors.Count - 1)];
-                var mover = newVehicleTransform.GetComponent<VehicleMover>();
+                var mover = car.GetComponent<VehicleMover>();
                 
                 if (mover)
                     mover.enabled = false;
                 
-                var lc = newVehicleTransform.GetComponent<VehicleLightController>();
+                var lc = car.GetComponent<VehicleLightController>();
                 
                 if (lc)
                     lc.enabled = false;
                 
                 GameObject o;
-                (o = newVehicleTransform.gameObject).SetActive(false);
+                (o = car.gameObject).SetActive(false);
                 o.layer = 11;
                 
-                newVehicleTransform.parent = GeneratedVehiclesParent.transform;
-                VehicleTransformPool.Enqueue(newVehicleTransform);
+                car.transform.parent = GeneratedVehiclesParent.transform;
+                _vehicleTransformPool.Enqueue(car.transform);
             }
         }
         
@@ -168,7 +158,7 @@ namespace RiseProject.Tomis.SumoInUnity
                    continue;
                 }
                 
-                var isVehicleFound = GameObjectByVehicleId.TryGetValue(idVehiclePair.Key, out var vehicleGameObjectToDestroy);
+                var isVehicleFound = _gameObjectByVehicleId.TryGetValue(idVehiclePair.Key, out var vehicleGameObjectToDestroy);
                 if (!isVehicleFound)
                 {
                      Debug.LogError("Vehicle with id " + idVehiclePair.Key + " not found to be removed.");
@@ -194,10 +184,10 @@ namespace RiseProject.Tomis.SumoInUnity
                 var curVehicle = departedVehicle.Value;
                 curVehicle.AttachedVehicleTransform = newVehicleTransform;
                 // Attached the new transform to the Vehicle SO. Useful for testing. (SO = ScriptableObject)
-                GameObjectByVehicleId.Add(departedVehicle.Key, newVehicleTransform.gameObject);
+                _gameObjectByVehicleId.Add(departedVehicle.Key, newVehicleTransform.gameObject);
 
                 // ------------------------ ADD AND SETUP SCRIPTS TO NEW GAME OBJECT ------------------------ //
-                var vehicleConfiguration = newVehicleTransform.GetComponent<VehicleConfigurationData>();
+                var vehicleConfiguration = newVehicleTransform.GetComponent<Car>();
                 vehicleConfiguration.SharedVehicleData = SharedVehicleData;
                 vehicleConfiguration.TraciVariable = curVehicle;
                 vehicleConfiguration.enabled = true;
@@ -245,12 +235,12 @@ namespace RiseProject.Tomis.SumoInUnity
         private Transform RetrieveVehicleTransform()
         {
             Transform newVehicleTransform;
-            if(VehicleTransformPool.Any())
-               newVehicleTransform = VehicleTransformPool.Dequeue();
+            if(_vehicleTransformPool.Any())
+               newVehicleTransform = _vehicleTransformPool.Dequeue();
             else
             {
                 PopulateVehicleTransformPool(PoolSize);
-                newVehicleTransform = VehicleTransformPool.Dequeue();
+                newVehicleTransform = _vehicleTransformPool.Dequeue();
             }
 
             // REMEMBER TO SET POOL RETRIEVED TRANSFORM ACTIVE AND THEN DEACTIVATE IT ON DESTRUCTION
@@ -272,7 +262,7 @@ namespace RiseProject.Tomis.SumoInUnity
             if (_vehiclesEligibleForDeletion.TryGetValue(id, out var vehicleToDelete))
             {
                 // Deactivate it and put it back on queue
-                var vehicleConfigurationData = vehicleToDelete.GetComponent<VehicleConfigurationData>();
+                var vehicleConfigurationData = vehicleToDelete.GetComponent<Car>();
                 
                 vehicleConfigurationData.TraciVariable.Disable();
                 
@@ -297,8 +287,8 @@ namespace RiseProject.Tomis.SumoInUnity
         /// <returns></returns>
         private IEnumerator DisableVehicle(Transform vehicleToDelete, string id)
         {
-            var car = GameObjectByVehicleId[id];
-            GameObjectByVehicleId.Remove(id);
+            var car = _gameObjectByVehicleId[id];
+            _gameObjectByVehicleId.Remove(id);
 
             var fader = car.GetComponent<FadeOutAll>();
             fader.Fade(0f);
@@ -307,7 +297,7 @@ namespace RiseProject.Tomis.SumoInUnity
             
             var vehicleMover = car.GetComponent<VehicleMover> ();
             var lightControl = car.GetComponent<VehicleLightController>();
-            var vehicleConfigurationData = car.GetComponent<VehicleConfigurationData>();
+            var vehicleConfigurationData = car.GetComponent<Car>();
             
             vehicleToDelete.gameObject.SetActive(false);
             
@@ -328,7 +318,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 vehicleConfigurationData.enabled = false;
             
             
-            VehicleTransformPool.Enqueue(vehicleToDelete);
+            _vehicleTransformPool.Enqueue(vehicleToDelete);
             yield return null;
         }
     }

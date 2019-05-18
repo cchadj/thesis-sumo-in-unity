@@ -23,7 +23,12 @@ public class MouseOrbit : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
-    [SerializeField] private CurrentlySelectedTargets _currentlySelectedTargets;
+    private CurrentlySelectedTargets _selectedTargets;
+
+    private void Construct(CurrentlySelectedTargets selectedTargets)
+    {
+        _selectedTargets = selectedTargets;
+    }
     // Use this for initialization
     void Start()
     {
@@ -38,17 +43,16 @@ public class MouseOrbit : MonoBehaviour
         {
             _rigidBody.freezeRotation = true;
         }
+        
+        _selectedTargets.OnVehicleSelected += SelectedTargetsOnOnVehicleSelected;
     }
 
-    private void OnEnable()
+    private void SelectedTargetsOnOnVehicleSelected(object sender, SelectedTargetEventArgs e)
     {
-        Target = _currentlySelectedTargets.SelectedTransform;
+        Target = e.SelectedTransform;
     }
-
-    public void UpdateTarget()
-    {
-        Target = _currentlySelectedTargets.SelectedTransform;
-    }
+    
+    
 
     void LateUpdate()
     {

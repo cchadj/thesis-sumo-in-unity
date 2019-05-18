@@ -45,7 +45,7 @@ public class CameraModeManager : MonoBehaviour
 
    public void SelectedObjectMode()
     {
-        if (currentlySelectedTargets.SelectedTransform == null)
+        if (!currentlySelectedTargets.IsATargetAlreadySelected)
             return;
 
         DisableAllModes();
@@ -53,7 +53,6 @@ public class CameraModeManager : MonoBehaviour
         MouseOrbitMode.enabled = true;
         // OnEnabled is called on MouseObitMode when is disabled and then enabled
         // so if already enabled I should also update it's target.
-        MouseOrbitMode.UpdateTarget();
         _penultimateMode = _lastMode;
         _lastMode = MouseOrbitMode;
     }

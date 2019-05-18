@@ -113,10 +113,16 @@ public class CarVisualController : MonoBehaviour
                 rend.sharedMaterial = tempMaterial;
             }
             
-#else
+#else        
+        if (Application.isPlaying)
+        {  
             var meshRenderer = CarHull.GetComponent<MeshRenderer>();
             meshRenderer.material.color = _carHullColor;
+        }
+
 #endif
+
+
     }
     }
 

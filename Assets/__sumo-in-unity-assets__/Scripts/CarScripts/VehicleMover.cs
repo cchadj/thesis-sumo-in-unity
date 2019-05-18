@@ -18,7 +18,7 @@ namespace RiseProject.Tomis.VehicleControl
         }
     }
 
-    [RequireComponent(typeof(VehicleConfigurationData))]
+    [RequireComponent(typeof(Car))]
     public class VehicleMover : MonoBehaviour,  IVehicleMoverGettable
     {
         private Stopwatch _recordTimeSinceLastVehTransformChangeSw;
@@ -43,7 +43,7 @@ namespace RiseProject.Tomis.VehicleControl
         /// <summary>
         /// Contains all the information needed for the simulation. (Contains the Vehicle and the SharedVehicleData)
         /// </summary>
-        protected VehicleConfigurationData VehicleConfig { get; private set; }
+        protected Car VehicleConfig { get; private set; }
 
         /// <summary> The vehicle from the simulation. Used to poll data from. </summary>
         protected Vehicle SumoVehicle { get => _vehicle; private set => _vehicle = value; }
@@ -109,7 +109,7 @@ namespace RiseProject.Tomis.VehicleControl
         {
             // Rotate wheels manually by setting the speed of the visual controller
             VisualController = GetComponent<CarVisualController>();
-            VehicleConfig = GetComponent<VehicleConfigurationData>();
+            VehicleConfig = GetComponent<Car>();
             
             SumoVehicle = VehicleConfig.TraciVariable;
             SharedVehicleData = VehicleConfig.SharedVehicleData;

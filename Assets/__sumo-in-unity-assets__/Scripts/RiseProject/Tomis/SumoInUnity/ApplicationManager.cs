@@ -1,4 +1,5 @@
-﻿using RiseProject.Tomis.DataContainers;
+﻿using System;
+using RiseProject.Tomis.DataContainers;
 using Tomis.Utils.Unity;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,7 @@ namespace RiseProject.Tomis.SumoInUnity
     [RequireComponent(typeof(SumoClient), typeof(VehicleSimulator))]
     public class ApplicationManager : SingletonMonoBehaviour<ApplicationManager>
     {
+        private InputManager _inputManager;
         private VehicleSimulator Simulator { get; set; }
         private SumoClient Client { get; set; }
 
@@ -20,8 +22,12 @@ namespace RiseProject.Tomis.SumoInUnity
         private SimulationStartupData StartupData { get; set; }
 
         [Inject]
-        private void Construct(SimulationStartupData startupData)
+        private void Construct(
+            SimulationStartupData startupData,
+            InputManager inputManager
+            )
         {
+            _inputManager = inputManager;
             StartupData = startupData;
         }
         
@@ -79,9 +85,11 @@ namespace RiseProject.Tomis.SumoInUnity
                 if (!DontUseVehicleSimulator)
                     InvokeRepeating(nameof(StepNoSumo), 0f, Client.StepLength);
             }
+            
+            _inputManager.ExitApplicationRequested += TerminateSimulation;
         }
 
-        public void TerminateSimulation()
+        private void TerminateSimulation(object sender, EventArgs e)
         {
             Debug.Log("Closing Application and Gui");
             if (Client != null)
@@ -91,6 +99,7 @@ namespace RiseProject.Tomis.SumoInUnity
 #endif
             Application.Quit();
         }
+        
 
         private void Step()
         {

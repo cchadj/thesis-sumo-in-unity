@@ -1,29 +1,23 @@
-﻿
-using RiseProject.Tomis.DataContainers;
+﻿using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Tomis.Utils.Unity;
 using UnityEngine;
+using Zenject;
 
-[CreateAssetMenu]
-public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelectedTargets>, ISerializationCallbackReceiver
+public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelectedTargets>
 {
-   
-    private ISelectableTraciVariable _selectedObject;
-
-    [SerializeField] private SumoNetworkData _networkData;
-    [SerializeField] private GameEvent _onVehicleSelect;
-    [SerializeField] private GameEvent _onObjectSelect;
-
-    public event EventHandler<EventArgs> OnVehicleSelected;
-    public event EventHandler<EventArgs> OnVehicleDeselected;
+    private SumoNetworkData _networkData;
+    private SelectedTargetEventArgs lastEventArgs;
     
-    [SerializeField, ReadOnly] private Transform _selectedTransform;
+    public event EventHandler<SelectedTargetEventArgs> OnVehicleSelected;
+    public event EventHandler<EventArgs> OnVehicleDeselected;
 
-    public Transform SelectedTransform { get => _selectedTransform; set => _selectedTransform = value; }
-    public ISelectableTraciVariable SelectedObject { get => _selectedObject; set => _selectedObject = value; }
+    [Header("Debug")]
+    [SerializeField, ReadOnly] private Transform selectedTransform;
+    [SerializeField, ReadOnly] private ISelectableTraciVariable _selectedObject;
 
     /// <summary>
     /// Returns the traci variable 
@@ -34,27 +28,26 @@ public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelec
     {
         /* https://stackoverflow.com/questions/982952/c-sharp-generics-and-type-checking */
         Type typeExpected = typeof(T);
-        T traciVariable = ((T)SelectedObject?.GetTraciVariable<T>());
+        T traciVariable = ((T)_selectedObject?.GetTraciVariable<T>());
         Type typeGot = traciVariable?.GetType();
        
         return typeExpected == typeGot ? traciVariable : default(T);
     }
 
+    [Inject]
+    private void Construct(
+        SumoNetworkData networkData
+            )
+    {
+        _networkData = networkData;
+
+    }
+    
     /// <summary>
     /// Returns true if a target is selected. Use Unselect to unselect target.
     /// </summary>
     /// <returns> Returns true if a target is selected. False otherwise. </returns>
-    public bool IsATargetAlreadySelected() { return SelectedObject != null && SelectedTransform != null; }
-
-    public void OnAfterDeserialize()
-    {
-        Unselect();
-    }
-
-    public void OnBeforeSerialize()
-    {
-        
-    }
+    public bool IsATargetAlreadySelected => _selectedObject != null && selectedTransform != null;
 
     public IEnumerable<TValue> RandomValues<TKey, TValue>(IDictionary<TKey, TValue> dict)
     {
@@ -89,24 +82,37 @@ public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelec
         Unselect();
 
         // FIRST select
-        SelectedTransform = selectedTransform;
-        SelectedObject = selectableTraciVariable;
+        selectedTransform = selectedTransform;
+        _selectedObject = selectableTraciVariable;
 
-        // THEN raise even because other systems use this CurrenltySelectedTargets object.
-        _onObjectSelect.Raise();
-        Vehicle v = selectableTraciVariable.GetTraciVariable<Vehicle>();
+        var v = selectableTraciVariable.GetTraciVariable<Vehicle>();
         if (v)
         {
-            _onVehicleSelect.Raise();
-            OnVehicleSelected?.Invoke(this, null);
+            OnVehicleSelected?.Invoke(this, new SelectedTargetEventArgs(selectableTraciVariable, selectedTransform));
         }
 
     }
 
+
     public void Unselect()
     {
-        SelectedObject = null;
-        SelectedTransform = null;
-        OnVehicleDeselected?.Invoke(this, null);
+        _selectedObject = null;
+        selectedTransform = null;
+     
+        OnVehicleDeselected?.Invoke(this, lastEventArgs);
+    }
+    
+
+}
+
+public class SelectedTargetEventArgs : EventArgs
+{
+    public readonly ISelectableTraciVariable SelectableTraciVariable;
+    public readonly Transform SelectedTransform;
+
+    public SelectedTargetEventArgs(ISelectableTraciVariable selectableTraciVariable, Transform selectedTransform)
+    {
+        this.SelectableTraciVariable = selectableTraciVariable;
+        this.SelectedTransform = selectedTransform;
     }
 }

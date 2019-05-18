@@ -507,7 +507,7 @@ GameObject:
   - component: {fileID: 2156343206109068431}
   - component: {fileID: 6585208092056227125}
   m_Layer: 0
-  m_Name: Simple Polling Car
+  m_Name: SimplePollingCar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493568535204355124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2449.6, y: 0, z: 2123.66}
+  m_LocalPosition: {x: 2449.56, y: 0, z: 2123.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3951314373538584830}
@@ -600,6 +600,8 @@ MonoBehaviour:
   wheelFL: {fileID: 4881378897654234233}
   wheelRR: {fileID: 4424819135577169023}
   wheelRL: {fileID: 5957130352001934016}
+  CarHull: {fileID: 4434937720497996393}
+  _carHullColor: {r: 0, g: 0, b: 0, a: 0}
   txtSpeed: {fileID: 4828715299620120139}
   txtRPM: {fileID: 4828715299620120139}
   txtSpeed2: {fileID: 4828715299620120139}
@@ -642,8 +644,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644632a15ad7ff84f8b2be1153e3fadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vehicleFrontPlaceholder: {fileID: 5384984105920577183}
-  _vehicleBackPlaceholder: {fileID: 4328120334151056985}
+  rayLength: 20
+  vehicleFrontPlaceholder: {fileID: 5384984105920577183}
+  vehicleBackPlaceholder: {fileID: 4328120334151056985}
+  showSingleRayCast: 0
 --- !u!114 &6896626207778767990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,7 +700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b43251f3612c574a82edb8c6e0beba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <NumberOfLagSteps>k__BackingField: 0
+  numberOfLagSteps: 0
 --- !u!1 &1578811976844611211
 GameObject:
   m_ObjectHideFlags: 0
@@ -2155,10 +2159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onHoverRenderer: {fileID: 0}
-  _onHoverOutline: {fileID: 2280568636419813489}
-  _currentlySelectedTargets: {fileID: 11400000, guid: 762af430c92a3e6469703c2ffbb79152,
-    type: 2}
-  m_transform: {fileID: 2358583809302925617}
+  _transform: {fileID: 7055811543350288960}
+  onHoverRenderer: {fileID: 0}
+  onHoverOutline: {fileID: 2280568636419813489}
 --- !u!1 &4379712106187191261
 GameObject:
   m_ObjectHideFlags: 0

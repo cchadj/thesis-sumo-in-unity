@@ -109,6 +109,7 @@
             </e>
             <e p="CaptureScreen.cs" t="Include" />
             <e p="CarScripts" t="Include">
+              <e p="Car.cs" t="Include" />
               <e p="CarAIVehicleMover.cs" t="Include" />
               <e p="CarRayCaster.cs" t="Include" />
               <e p="ControlSteering.cs" t="Include" />
@@ -121,7 +122,6 @@
               <e p="PushCar.cs" t="Include" />
               <e p="SimpleCarController.cs" t="Include" />
               <e p="SumoTypeController.cs" t="Include" />
-              <e p="VehicleConfigurationData.cs" t="Include" />
               <e p="VehicleLightController.cs" t="Include" />
               <e p="VehicleMover.cs" t="Include" />
               <e p="VehicleMoverByInterpolation.cs" t="Include" />
@@ -155,6 +155,7 @@
             </e>
             <e p="DataInjection" t="Include">
               <e p="MyMonoInstaller.cs" t="Include" />
+              <e p="MyScriptableInstaller.cs" t="Include" />
             </e>
             <e p="DisplayRenderer.cs" t="Include" />
             <e p="EventSystem" t="Include">

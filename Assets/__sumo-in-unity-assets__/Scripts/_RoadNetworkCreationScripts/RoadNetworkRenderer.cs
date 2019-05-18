@@ -270,7 +270,7 @@ public class RoadNetworkRenderer : MonoBehaviour
 
                     var selectableObjectEvent = laneQuad.gameObject.AddComponent<SelectableObjectEvent>();
                     selectableObjectEvent._transform = laneQuad.transform.GetChild(0);
-                    selectableObjectEvent.OnHoverOutline = highlightLine;
+                    selectableObjectEvent.onHoverOutline = highlightLine;
                 }
             }
         }

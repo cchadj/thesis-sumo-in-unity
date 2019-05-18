@@ -7,6 +7,7 @@ using TMPro;
 
 using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
+using Zenject;
 
 namespace RiseProject.Tomis.SumoInUnity.MVC
 {
@@ -14,11 +15,11 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
     /// Intended use. Here there will be texts and labels (UI canvas)
     /// to change the state of the vehicle
     /// </summary>
-    [RequireComponent(typeof(VehicleConfigurationData), typeof(VehicleController))]
+    [RequireComponent(typeof(Car), typeof(VehicleController))]
     public class VehicleView : SumoTypeView<VehicleController, Vehicle>
     {
         
-        private CurrentlySelectedTargets selectedTargets;
+        private CurrentlySelectedTargets _selectedTargets;
         
         #region initial text values
         private string _initialVehicleIDText;
@@ -35,7 +36,7 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
         #endregion initial text values
         #region UI Components        
 
-        private VehicleConfigurationData _vehicleConfigurationData;
+        private Car _car;
 
         public TextMeshProUGUI VehicleIdText { get; set; }
         public TextMeshProUGUI SumoSpeedText { get; set; }
@@ -59,13 +60,17 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
 
         public Vehicle Vehicle { get; set; }
 
+        [Inject]
+        private void Construct(
+            CurrentlySelectedTargets selectedTargets,
+            VehicleCanvas vehicleCanvas )
+        {
+            _selectedTargets = selectedTargets;
+            Canvas = vehicleCanvas;
+        }
+        
         protected override void Awake()
         {
-            selectedTargets = CurrentlySelectedTargets.Instance;
-            Canvas = VehicleCanvas.Instance;
-            if (!Canvas)
-                return;
-
             VehicleIdText = Canvas.VehicleIdText;
             EdgeIdText = Canvas.EdgeIdText;
             LaneIdText = Canvas.LaneIdText;
@@ -94,8 +99,8 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
 
         public void UpdateReferencesToMatchAttachedVehicle()
         {
-            _vehicleConfigurationData = GetComponent<VehicleConfigurationData>();
-            Vehicle = _vehicleConfigurationData.TraciVariable;
+            _car = GetComponent<Car>();
+            Vehicle = _car.TraciVariable;
             Controller = GetComponent<VehicleController>();
         }
 
@@ -112,9 +117,9 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             Vehicle.VehicleTransformChanged += Vehicle_PositionAndAngleChanged;
             if(ApplySpeedButton)
                 ApplySpeedButton.onClick.AddListener(ApplySpeed);
-            
-            if (selectedTargets.SelectedTransform == transform)
-                UpdateView();
+//            
+//            if (_selectedTargets.selectedTransform == transform)
+//                UpdateView();
         }
 
         private void OnDisable()
