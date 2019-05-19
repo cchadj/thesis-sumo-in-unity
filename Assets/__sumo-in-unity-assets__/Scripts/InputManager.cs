@@ -9,14 +9,13 @@ public class InputManager : ITickable
     private bool _isMenuOpen = false;
     private bool _isSearchMenuOpen = false;
 
-    public event EventHandler<EventArgs> PauseGameEvent;
-    public event EventHandler<EventArgs> FollowRandomVehicleGameEvent;
-    public event EventHandler<EventArgs> MenuOpenGameEvent;
-    public event EventHandler<EventArgs> MenuCloseGameEvent;
-    public event EventHandler<EventArgs> SearchModeEntered;
-    public event EventHandler<EventArgs> SearchModeExited;
-    public event EventHandler<EventArgs> SelectModeEntered;
-
+    public event EventHandler<EventArgs> PauseGameEventRequested;
+    public event EventHandler<EventArgs> FollowRandomVehicleRequested;
+    public event EventHandler<EventArgs> MenuOpenRequested;
+    public event EventHandler<EventArgs> MenuCloseRequested;
+    public event EventHandler<EventArgs> SearchModeRequested;
+    public event EventHandler<EventArgs> SearchModeExitRequested;
+    public event EventHandler<EventArgs> SelectModeEnterRequested;
     public event EventHandler<EventArgs> ExitApplicationRequested; 
 
     [Inject]
@@ -33,12 +32,12 @@ public class InputManager : ITickable
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            PauseGameEvent?.Invoke(this, EventArgs.Empty);
+            PauseGameEventRequested?.Invoke(this, EventArgs.Empty);
         }
         else if (Input.GetKeyDown(KeyCode.R)) /* Follow random vehicle */
         {
             _selectedTargets.SelectRandomVehicle();
-            FollowRandomVehicleGameEvent?.Invoke(this, EventArgs.Empty);
+            FollowRandomVehicleRequested?.Invoke(this, EventArgs.Empty);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) // Get Into Fly mode
         {
@@ -51,7 +50,7 @@ public class InputManager : ITickable
         {
             if ( _buttonCooler > 0 && _buttonCount == NumberOfTapsForEscape - 1)
             {
-                Debug.Log("Tripple escape pressed");
+                Debug.Log("Triple escape pressed. Exiting application... ");
                 ExitApplicationRequested?.Invoke(this, EventArgs.Empty);
             }
             else
@@ -72,12 +71,12 @@ public class InputManager : ITickable
             
             if (_isSearchMenuOpen)
             {
-                SearchModeExited?.Invoke(this, EventArgs.Empty);
+                SearchModeExitRequested?.Invoke(this, EventArgs.Empty);
                 _isSearchMenuOpen = false;
             }
             else if (_isMenuOpen)
             {
-                MenuCloseGameEvent?.Invoke(this, EventArgs.Empty);
+                MenuCloseRequested?.Invoke(this, EventArgs.Empty);
                 _isMenuOpen = false;
             }
             else if(_selectedTargets.IsATargetAlreadySelected)
@@ -86,7 +85,7 @@ public class InputManager : ITickable
             }
             else
             {
-                MenuOpenGameEvent?.Invoke(this, EventArgs.Empty);
+                MenuOpenRequested?.Invoke(this, EventArgs.Empty);
                 _isMenuOpen = true;
             }
         }
@@ -94,8 +93,8 @@ public class InputManager : ITickable
         {   
             if(!_isSearchMenuOpen)
             {
-                SearchModeEntered?.Invoke(this, EventArgs.Empty);
-                SelectModeEntered?.Invoke(this, EventArgs.Empty);
+                SearchModeRequested?.Invoke(this, EventArgs.Empty);
+                SelectModeEnterRequested?.Invoke(this, EventArgs.Empty);
                 _isSearchMenuOpen = true;
             }
         }

@@ -29,7 +29,7 @@ public class EnableVehicleView : MonoBehaviour {
 
     private void SelectedTargetsOnOnVehicleSelected(object sender, SelectedTargetEventArgs e)
     {
-            _curView = e.SelectedTransform.GetComponent<VehicleView>();
-            _curView.enabled = true;
+        _curView = e.VehicleView;
+        _curView.enabled = true;
     }
 }

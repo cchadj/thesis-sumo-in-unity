@@ -3,6 +3,8 @@ using RiseProject.Tomis.SumoInUnity.SumoTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using RiseProject.Tomis.SumoInUnity.MVC;
 using Tomis.Utils.Unity;
 using UnityEngine;
 using Zenject;
@@ -109,10 +111,17 @@ public class SelectedTargetEventArgs : EventArgs
 {
     public readonly ISelectableTraciVariable SelectableTraciVariable;
     public readonly Transform SelectedTransform;
+    // is null if not a vehicle
+    public readonly VehicleView VehicleView;
+   
 
-    public SelectedTargetEventArgs(ISelectableTraciVariable selectableTraciVariable, Transform selectedTransform)
+    public SelectedTargetEventArgs(
+        ISelectableTraciVariable selectableTraciVariable, 
+        Transform selectedTransform
+        )
     {
-        this.SelectableTraciVariable = selectableTraciVariable;
-        this.SelectedTransform = selectedTransform;
+        SelectableTraciVariable = selectableTraciVariable;
+        SelectedTransform = selectedTransform;
+        VehicleView = selectedTransform.parent.GetComponent<VehicleView>();
     }
 }

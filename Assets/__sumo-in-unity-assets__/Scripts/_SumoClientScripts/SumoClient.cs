@@ -303,7 +303,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 var v = ScriptableObject.CreateInstance<Vehicle>();
                 v.Instantiate(NUMBER_OF_POSITIONS_TO_SAVE);
                 VehiclePool.Enqueue(v);
-                v.Disable();
+                v.Dispose();
             }
         }
 
@@ -890,10 +890,7 @@ namespace RiseProject.Tomis.SumoInUnity
         private List<string> _departedVehicleIDs;
         private List<string> _arrivedVehicleIDs;
         private List<string> _loadedVehicleIDs;
-
-        private List<string> _vehiclesThatEnteredContextRangeIDs;
-        private List<string> _vehiclesThatExitedContextRangeIDs;
-        
+      
         private void TraCIClient_SimulationSubscription(object sender, SubscriptionEventArgs e)
         {
             if (UseMultithreading)

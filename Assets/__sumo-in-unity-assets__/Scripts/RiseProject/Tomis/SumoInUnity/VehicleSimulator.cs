@@ -264,7 +264,7 @@ namespace RiseProject.Tomis.SumoInUnity
                 // Deactivate it and put it back on queue
                 var vehicleConfigurationData = vehicleToDelete.GetComponent<Car>();
                 
-                vehicleConfigurationData.TraciVariable.Disable();
+                vehicleConfigurationData.TraciVariable.Dispose();
                 
 
 

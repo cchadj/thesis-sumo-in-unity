@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using CodingConnected.TraCI.NET.Types;
+using Zenject;
 
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbit : MonoBehaviour
@@ -25,6 +26,7 @@ public class MouseOrbit : MonoBehaviour
 
     private CurrentlySelectedTargets _selectedTargets;
 
+    [Inject]
     private void Construct(CurrentlySelectedTargets selectedTargets)
     {
         _selectedTargets = selectedTargets;
@@ -50,6 +52,7 @@ public class MouseOrbit : MonoBehaviour
     private void SelectedTargetsOnOnVehicleSelected(object sender, SelectedTargetEventArgs e)
     {
         Target = e.SelectedTransform;
+        enabled = true;
     }
     
     

@@ -200,23 +200,23 @@ public class LaneContextSubscription : MonoBehaviour
 
         
         // No need to subscribe to a a new lane if it close or the old one
-        if (closestLane.ID == currentlySubscribedLaneID)
-        {
-            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
-                return;
-        }
+//        if (closestLane.ID == currentlySubscribedLaneID)
+//        {
+//            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
+//                return;
+//        }
 
 
-        if (closestDistanceSqr < 10f)
-        {
-            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
-                return;
-        }
+//        if (closestDistanceSqr < 10f)
+//        {
+//            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
+//                return;
+//        }
         
         
-        // Subscribe to new lane and unsubscribe from old one
-        _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f, Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
         _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, TraCIConstants.CMD_GET_VEHICLE_VARIABLE);
+        _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f, Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
+        
         curContextRange = newContextRange;
         
         // Update currently subscribed lane       

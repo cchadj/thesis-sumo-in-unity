@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -115,11 +116,18 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
                 return;
             
             Vehicle.VehicleTransformChanged += Vehicle_PositionAndAngleChanged;
+            Vehicle.OnDispose += VehicleOnOnDispose;
             if(ApplySpeedButton)
                 ApplySpeedButton.onClick.AddListener(ApplySpeed);
 //            
 //            if (_selectedTargets.selectedTransform == transform)
 //                UpdateView();
+        }
+
+        private void VehicleOnOnDispose(object sender, EventArgs e)
+        {
+             Vehicle.VehicleTransformChanged -=  Vehicle_PositionAndAngleChanged;
+             enabled = false;
         }
 
         private void OnDisable()
