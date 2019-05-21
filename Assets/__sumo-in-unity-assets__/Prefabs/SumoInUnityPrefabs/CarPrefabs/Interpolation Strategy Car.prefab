@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3445036654661943554
 Transform:
   m_ObjectHideFlags: 0
@@ -1445,7 +1445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2737646993043635614
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,7 +1554,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1577291684066797094
 Transform:
   m_ObjectHideFlags: 0
@@ -2762,14 +2762,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4800485052293571753}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   color: 1
   eraseRenderer: 0
-  firstUpdate: 0
+  firstUpdate: 1
   originalLayer: 0
   originalMaterials: []
 --- !u!1 &4934996424631003967
@@ -2920,7 +2920,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5063454305062300522
 Transform:
   m_ObjectHideFlags: 0
@@ -3593,43 +3593,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d7fd31c1523d1740b199884320fed5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SteerOrientation: 0
-  SteerRotationSpeed: 2.5
+  steerOrientation: 0
+  steerRotationSpeed: 0
   frontWheelSteeringAngle: 45
   steerWheelToWheelsRotationRatio: 1
   frontWheelAnimators: []
   rearWheelAnimators: []
-  Speed: 0
-  LeftBlink: 0
-  RightBlink: 0
+  speed: 0
+  leftBlink: 0
+  rightBlink: 0
   brakeLights: 0
   frontLights: 0
-  IndicatorBlinkInterval: 0.538
+  indicatorBlinkInterval: 0
   frontLightsOn: 1
   brakeEffectsOn: 1
-  leftIndicatorOn: 1
+  isLeftIndicatorOn: 0
   rightIndicatorOn: 1
   brakeEffects: {fileID: 4959024342024690326}
   frontLightEffects: {fileID: 7578118047013707013}
   reverseEffect: {fileID: 33015638185011926}
-  indicatorR: {fileID: 2652769847516021218}
-  indicatorL: {fileID: 2545031531075418259}
-  SpeedNeedle: {fileID: 0}
-  SpeedNeedleRotateRange: {x: 0, y: 359}
-  RpmNeedle: {fileID: 6628267746799383048}
-  RpmNeedleRotateRange: {x: 0, y: 359}
-  _NeedleSmoothing: 1
+  rightIndicator: {fileID: 2652769847516021218}
+  leftIndicator: {fileID: 2545031531075418259}
+  speedNeedle: {fileID: 0}
+  speedNeedleRotateRange: {x: 0, y: 0}
+  rpmNeedle: {fileID: 0}
+  rpmNeedleRotateRange: {x: 0, y: 0}
+  needleSmoothing: 1
   steeringWheel: {fileID: 6183219999640285303}
-  wheel_FR: {fileID: 121112880309075020}
-  wheel_FL: {fileID: 5662042744977660913}
-  wheel_RR: {fileID: 8926625606019990729}
-  wheel_RL: {fileID: 8478875026765609047}
+  wheelFR: {fileID: 121112880309075020}
+  wheelFL: {fileID: 5662042744977660913}
+  wheelRR: {fileID: 5962042980260601332}
+  wheelRL: {fileID: 8478875026765609047}
+  CarHull: {fileID: 0}
+  _carHullColor: {r: 0, g: 0, b: 0, a: 0}
   txtSpeed: {fileID: 3169638440463339384}
   txtRPM: {fileID: 3169638440463339384}
   txtSpeed2: {fileID: 3169638440463339384}
   sliderRPM: {fileID: 0}
-  wheelsEulersStr: (0.0, 0.0, 0.0)
-  ApplicationManager: {fileID: 0}
 --- !u!114 &3205354449413576306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,9 +3642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b82f00ecb24714ea64e3dd303c2d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _traciVariable: {fileID: 11400000, guid: 13907dfedeed57d4baacd65131b07d38, type: 2}
+  traciVariable: {fileID: 0}
   _ID: 
-  _sharedVehicleData: {fileID: 11400000, guid: 9613f96213a068647bafdc32d4abee15, type: 2}
 --- !u!114 &4012072014818012327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3669,8 +3668,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644632a15ad7ff84f8b2be1153e3fadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vehicleFrontPlaceholder: {fileID: 130006068671003606}
-  _vehicleBackPlaceholder: {fileID: 4967430324001835150}
+  rayLength: 20
+  vehicleFrontPlaceholder: {fileID: 130006068671003606}
+  vehicleBackPlaceholder: {fileID: 4967430324001835150}
+  showSingleRayCast: 0
 --- !u!114 &3544384483744126833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3683,8 +3684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c28a7922ee77fa44b431bdb6b5f483e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sumoCommands: {fileID: 11400000, guid: 3f8087754e015dc498dbe9529a8e201e, type: 2}
-  _traCIVariable: {fileID: 0}
+  traCIVariable: {fileID: 0}
+  <ID>k__BackingField: 
 --- !u!114 &5750931911036325229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3697,23 +3698,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd6336d0b250b843aef88af41ffbff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vehicleIDText: {fileID: 0}
-  _sumoSpeedText: {fileID: 0}
-  _sumoAccelerationText: {fileID: 0}
-  _actualSpeedText: {fileID: 0}
-  _positionText: {fileID: 0}
-  _routeIDText: {fileID: 0}
-  _edgeIDText: {fileID: 0}
-  _laneIDText: {fileID: 0}
-  _laneIndexText: {fileID: 0}
-  _routeDetailsRouteIDText: {fileID: 0}
-  _routeEdgeListIDsText: {fileID: 0}
-  _setSpeedInputField: {fileID: 0}
-  applySpeedButton: {fileID: 0}
-  onApplySpeedButtonPressedEvent: {fileID: 0}
-  selectedTargets: {fileID: 0}
-  <ViewSpeed>k__BackingField: 0
-  <Remove>k__BackingField: 0
 --- !u!114 &4741227460112834906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3740,7 +3724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa796b605040c324fae3b30b2470e528, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfLagSteps: 0
+  numberOfLagSteps: 0
   _useQueuedPositions: 0
   _lerpSteps: 15
 --- !u!1 &6392023915648094399
@@ -4145,10 +4129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onHoverRenderer: {fileID: 0}
-  _onHoverOutline: {fileID: 220617276834293828}
-  _currentlySelectedTargets: {fileID: 11400000, guid: 762af430c92a3e6469703c2ffbb79152,
-    type: 2}
-  m_transform: {fileID: 3368610216350230057}
+  _transform: {fileID: 0}
+  onHoverRenderer: {fileID: 0}
+  onHoverOutline: {fileID: 0}
 --- !u!1 &7190937130440255747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4352,7 +4335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5488793429675312905
 Transform:
   m_ObjectHideFlags: 0

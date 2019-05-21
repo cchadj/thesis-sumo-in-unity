@@ -72,6 +72,11 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
         
         protected override void Awake()
         {
+            if (!Canvas)
+            {
+                enabled = false;
+                return;
+            }
             VehicleIdText = Canvas.VehicleIdText;
             EdgeIdText = Canvas.EdgeIdText;
             LaneIdText = Canvas.LaneIdText;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using RiseProject.Tomis.CustomTypes;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace RiseProject.Tomis.VehicleControl
     public class VehicleMoverByLinearInterpolation : VehicleMoverByInterpolation
     {
 
+        [Header("Debug")] [SerializeField] private bool showGizmos;
         protected override void Awake()
         {
             base.Awake();
@@ -18,10 +20,6 @@ namespace RiseProject.Tomis.VehicleControl
             numberOfLagSteps = 0;
         }
 
-        protected override void OnEnable()
-        {
-            base.OnEnable();
-        }
         /// <summary>
         /// Sets the next target for this vehicle to reach in the next interpolation.
         /// </summary>
@@ -39,6 +37,8 @@ namespace RiseProject.Tomis.VehicleControl
                 _targetTransform = SumoVehicle.PositionAndOrientation;
             }
         }
+
+        private Vector3 targetPos;
 
         /******************/
         /* Sir Bored-a-lot*/
@@ -60,32 +60,53 @@ namespace RiseProject.Tomis.VehicleControl
         /// Change a cars position from starting to target using a simple linear interpolation.
         /// </summary>
         /// <returns></returns>
-        protected override IEnumerator ChangeVehiclePositionAndOrientation()
+        protected override IEnumerator ChangeVehiclePositionAndOrientation(MyTransform startingTransform, MyTransform targetTransform)
         {
-            float lerpRate = 0f;
+            var lerpRate = 0f;
             _isPositionChanged = false;
+
+            targetPos = targetTransform.position;
+            
             
             for (lerpRate = 0f; lerpRate < 1.0f; lerpRate += _lerpIncrease)
             {
-                /* Position interpolation */
-                var curPosition = Vector3.Lerp(_startingTransform.position, _targetTransform.position, lerpRate);
-                transform.localPosition = new Vector3(curPosition.x, transform.localPosition.y, curPosition.z);
+                // Interpolate 
+                var interpolatedPosition = Vector3.Lerp(startingTransform.position, targetTransform.position, lerpRate);
+                var interpolatedAngle = Mathf.LerpAngle(startingTransform.angle,    targetTransform.angle, lerpRate);
 
-                /* height from raycasting */
+                // Place
+                Transform.localPosition = new Vector3(interpolatedPosition.x, Transform.localPosition.y, interpolatedPosition.z);
+                Transform.localRotation = Quaternion.Euler(new Vector3(0, interpolatedAngle, 0));
+                
+                        
+                // height from raycasting 
                 //if (m_carRayCaster.FrontRayDidHit)
                 //    transform.localPosition = new Vector3(curPosition.x,/* CarRayCaster.FrontRayHitInfo.point.y + */ VehicleConfig.SharedVehicleData.GroundOffset, curPosition.z);
-                
-                /* Rotation interpolation */
-                float interpolatedAngle = Mathf.LerpAngle(_startingTransform.angle, _targetTransform.angle, lerpRate);
-                transform.localRotation = Quaternion.Euler(new Vector3(0, interpolatedAngle, 0));
-
+               
                 yield return new WaitForSeconds(_coroutineTime);
             }
             
-            transform.localPosition = new Vector3(_targetTransform.position.x, /* CarRayCaster.FrontRayHitInfo.point.y + */ VehicleConfig.SharedVehicleData.GroundOffset, _targetTransform.position.z);
-            transform.localRotation = _targetTransform.rotation;
+            Transform.localPosition = new Vector3(targetTransform.position.x, /* CarRayCaster.FrontRayHitInfo.point.y + */ VehicleConfig.SharedVehicleData.GroundOffset, targetTransform.position.z);
+            Transform.localRotation = targetTransform.rotation;
 
             _isPositionChanged = true;
+        }
+
+
+        private static readonly Vector3 CubeSize = Vector3.one * 2;
+        private void OnDrawGizmos()
+        {
+            if(!showGizmos)
+                return;
+            
+            Gizmos.color = Color.green;
+            Gizmos.DrawCube(ParentTransform.TransformPoint(_startingTransform.position), CubeSize);
+            
+            Gizmos.color = Color.red;
+            Gizmos.DrawCube(ParentTransform.TransformPoint(targetPos), CubeSize);
+            
+            Gizmos.color = Color.white;
+            Gizmos.DrawCube(ParentTransform.TransformPoint(_targetTransform.position), CubeSize);
         }
     }
 }

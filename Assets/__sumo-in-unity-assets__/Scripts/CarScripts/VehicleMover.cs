@@ -21,6 +21,8 @@ namespace RiseProject.Tomis.VehicleControl
     [RequireComponent(typeof(Car))]
     public class VehicleMover : MonoBehaviour,  IVehicleMoverGettable
     {
+        protected Transform Transform;
+        protected Transform ParentTransform;
         private Stopwatch _recordTimeSinceLastVehTransformChangeSw;
         protected float TimeSinceLastVehicleTransformChange { get; private set; }
 
@@ -107,6 +109,7 @@ namespace RiseProject.Tomis.VehicleControl
         /// </summary>
         protected virtual void Awake()
         {
+            Transform = transform;
             // Rotate wheels manually by setting the speed of the visual controller
             VisualController = GetComponent<CarVisualController>();
             VehicleConfig = GetComponent<Car>();
@@ -115,6 +118,7 @@ namespace RiseProject.Tomis.VehicleControl
             SharedVehicleData = VehicleConfig.SharedVehicleData;
             
             _recordTimeSinceLastVehTransformChangeSw = new Stopwatch();
+            ParentTransform = transform.parent;
         }
 
         private bool _isFirstEnable = true;

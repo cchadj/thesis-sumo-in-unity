@@ -600,7 +600,7 @@ MonoBehaviour:
   wheelFL: {fileID: 4881378897654234233}
   wheelRR: {fileID: 4424819135577169023}
   wheelRL: {fileID: 5957130352001934016}
-  CarHull: {fileID: 4434937720497996393}
+  CarHull: {fileID: 0}
   _carHullColor: {r: 0, g: 0, b: 0, a: 0}
   txtSpeed: {fileID: 4828715299620120139}
   txtRPM: {fileID: 4828715299620120139}
@@ -647,7 +647,7 @@ MonoBehaviour:
   rayLength: 20
   vehicleFrontPlaceholder: {fileID: 5384984105920577183}
   vehicleBackPlaceholder: {fileID: 4328120334151056985}
-  showSingleRayCast: 0
+  showSingleRayCast: 1
 --- !u!114 &6896626207778767990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2252,6 +2252,7 @@ GameObject:
   - component: {fileID: 1697074222794410905}
   - component: {fileID: 5578646251835304370}
   - component: {fileID: 2280568636419813489}
+  - component: {fileID: 5516075222621485443}
   m_Layer: 0
   m_Name: U_EC03_carPaint_outline
   m_TagString: Untagged
@@ -2335,6 +2336,20 @@ MonoBehaviour:
   firstUpdate: 1
   originalLayer: 0
   originalMaterials: []
+--- !u!64 &5516075222621485443
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4434937720497996393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: c62275a799503ae40a1ae6cf22f61b23, type: 3}
 --- !u!1 &4540566864857746769
 GameObject:
   m_ObjectHideFlags: 0

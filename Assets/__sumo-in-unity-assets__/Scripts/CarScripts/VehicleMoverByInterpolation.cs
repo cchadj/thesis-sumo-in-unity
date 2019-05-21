@@ -126,8 +126,8 @@ namespace RiseProject.Tomis.VehicleControl
 
             VisualController.speed = SumoVehicle.Speed;
 
-            var oldVehicleAngle = transform.localRotation;
-            var curVehicleAngle = Quaternion.Euler(transform.localRotation.x, SumoVehicle.Angle * Time.deltaTime, transform.localRotation.z);
+            var oldVehicleAngle = Transform.localRotation;
+            var curVehicleAngle = Quaternion.Euler(Transform.localRotation.x, SumoVehicle.Angle * Time.deltaTime, Transform.localRotation.z);
 
             if (Quaternion.Angle(oldVehicleAngle, curVehicleAngle) > 1f)
             {
@@ -143,7 +143,7 @@ namespace RiseProject.Tomis.VehicleControl
             else
                 VisualController.steerOrientation = CarVisualController.Steer.None;
             
-            /* https://stackoverflow.com/questions/40708014/difference-between-enabled-isactiveandenabled-and-activeinhierarchy-in-unity */
+            // https://stackoverflow.com/questions/40708014/difference-between-enabled-isactiveandenabled-and-activeinhierarchy-in-unity
             if (_isPositionChanged)
             {
                 OnReachedCurrentDestination();
@@ -151,12 +151,12 @@ namespace RiseProject.Tomis.VehicleControl
                 if (!enabled)
                     return;
                   
-                _startingTransform.position = new Vector3(transform.localPosition.x, 0f, transform.localPosition.z);
-                _startingTransform.angle = transform.localRotation.eulerAngles.y;
+                _startingTransform.position = new Vector3(transform.localPosition.x, 0f, Transform.localPosition.z);
+                _startingTransform.angle = Transform.localRotation.eulerAngles.y;
 
                 SetTarget();
 
-                StartCoroutine(ChangeVehiclePositionAndOrientation());
+                StartCoroutine(ChangeVehiclePositionAndOrientation(_startingTransform, _targetTransform));
             }
         }
 
@@ -164,9 +164,9 @@ namespace RiseProject.Tomis.VehicleControl
         /// Meant to be abstract but I can not use GetComponent on 
         /// abstract classes so sad.
         /// </summary>
-        /// <remars> Meant to be abstract </remars>
+        /// <remarks> Meant to be abstract </remarks>
         /// <returns></returns>
-        protected virtual IEnumerator ChangeVehiclePositionAndOrientation()
+        protected virtual IEnumerator ChangeVehiclePositionAndOrientation(MyTransform startTransform, MyTransform targetTransform)
         {
             throw new NotImplementedException();
         }
