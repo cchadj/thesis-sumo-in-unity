@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e599c441-d3bc-4f04-88cf-7c88355d2c29" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.thesis-sumo-in-unity/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/build_info.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraModeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraModeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/ExtendedFlycam.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/ExtendedFlycam.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/LaneContextSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/LaneContextSubscription.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/MouseOrbit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/MouseOrbit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CanvasScripts/VehicleCanvas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CanvasScripts/VehicleCanvas.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/DataInjection/MyMonoInstaller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/DataInjection/MyMonoInstaller.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/InputManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/EnableVehicleView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/EnableVehicleView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/MVC-Views-Controllers/VehicleView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/MVC-Views-Controllers/VehicleView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/TraCIVariables/TraCIVariable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/TraCIVariables/TraCIVariable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/_Scenes/SUMO - Windridge City Demo.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/_Scenes/SUMO - Windridge City Demo.unity" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,30 +30,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+            <state relative-caret-position="90">
+              <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
               <folding>
-                <marker date="1558445742806" expanded="false" signature="6:357" ph="..." />
-                <marker date="1558445742806" expanded="true" signature="445:6013" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="1225:1470" ph="/// Returns the traci variable  ... " />
-                <marker date="1558445742806" expanded="true" signature="1536:1882" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="2177:2631" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="2641:2836" ph="/// Returns true if a target is selected. Use Unselect to unselect target. ... " />
-                <marker date="1558445742806" expanded="true" signature="3031:3277" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="3201:3271" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="3317:4383" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="3670:3810" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="3823:4144" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="4173:4351" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="4384:5030" ph="/* private bool SelectRandomVehicle() ... */" />
-                <marker date="1558445742806" expanded="true" signature="5124:5820" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="5493:5813" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="5848:6005" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="6064:6733" ph="{...}" />
-                <marker date="1558445742806" expanded="true" signature="6478:6731" ph="{...}" />
+                <marker date="1558446930275" expanded="false" signature="6:357" ph="..." />
+                <marker date="1558446930275" expanded="true" signature="445:6163" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="1225:1470" ph="/// Returns the traci variable  ... " />
+                <marker date="1558446930275" expanded="true" signature="1536:1882" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="2177:2631" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="2641:2836" ph="/// Returns true if a target is selected. Use Unselect to unselect target. ... " />
+                <marker date="1558446930275" expanded="true" signature="3031:3277" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="3201:3271" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="3317:4533" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="3670:3810" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="3823:4294" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="4323:4501" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="4534:5180" ph="/* private bool SelectRandomVehicle() ... */" />
+                <marker date="1558446930275" expanded="true" signature="5274:5970" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="5643:5963" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="5998:6155" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="6214:6883" ph="{...}" />
+                <marker date="1558446930275" expanded="true" signature="6628:6881" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -153,8 +138,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/_SumoClientScripts/SumoClient.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-260">
-              <caret line="1001" column="81" lean-forward="true" selection-start-line="1001" selection-start-column="81" selection-end-line="1001" selection-end-column="81" />
+            <state relative-caret-position="-110">
+              <caret line="999" column="78" lean-forward="true" selection-start-line="999" selection-start-column="78" selection-end-line="999" selection-end-column="78" />
               <folding>
                 <marker date="1558432170932" expanded="false" signature="6:786" ph="..." />
                 <marker date="1558432170932" expanded="true" signature="882:63357" ph="{...}" />
@@ -328,11 +313,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="199" column="8" selection-start-line="199" selection-start-column="8" selection-end-line="199" selection-end-column="8" />
+            <state relative-caret-position="290">
+              <caret line="255" column="33" selection-start-line="255" selection-start-column="33" selection-end-line="255" selection-end-column="33" />
               <folding>
                 <marker date="1558446091510" expanded="false" signature="6:384" ph="..." />
                 <marker date="1558446091510" expanded="true" signature="507:12095" ph="{...}" />
@@ -396,8 +381,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/TraCIVariables/Vehicle.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="115">
-              <caret line="202" column="81" selection-start-line="202" selection-start-column="68" selection-end-line="202" selection-end-column="81" />
+            <state>
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
               <folding>
                 <marker date="1557505542923" expanded="false" signature="6:287" ph="..." />
                 <marker date="1557505542923" expanded="true" signature="338:18677" ph="{...}" />
@@ -411,7 +396,7 @@
                 <marker date="1557505542923" expanded="true" signature="1933:2457" ph="{...}" />
                 <marker date="1557505542923" expanded="true" signature="1993:2447" ph="{...}" />
                 <marker date="1557505542923" expanded="true" signature="2077:2433" ph="{...}" />
-                <marker date="1557505542923" expanded="false" signature="2495:5499" ph="Events" />
+                <marker date="1557505542923" expanded="true" signature="2495:5499" ph="Events" />
                 <marker date="1557505542923" expanded="true" signature="2563:2872" ph="{...}" />
                 <marker date="1557505542923" expanded="true" signature="2586:2692" ph="/// The projected transform as it should be in unity. ... " />
                 <marker date="1557505542923" expanded="true" signature="2796:2862" ph="{...}" />
@@ -520,7 +505,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>SelectModeExited</find>
       <find>SelectModeEntered</find>
       <find>_vehiclesThatEnteredContextRangeIDs</find>
       <find>context</find>
@@ -550,6 +534,7 @@
       <find>departed</find>
       <find>attached</find>
       <find>HandleConte</find>
+      <find>sumoClient</find>
     </findStrings>
     <replaceStrings>
       <replace>float</replace>
@@ -708,8 +693,8 @@
         <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/InputManager.cs" />
         <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/DataInjection/MyMonoInstaller.cs" />
         <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/RiseProject/Tomis/SumoInUnity/VehicleSimulator.cs" />
-        <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs" />
         <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs" />
+        <option value="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs" />
       </list>
     </option>
   </component>
@@ -812,12 +797,12 @@
       <workItem from="1558184380789" duration="28967000" />
       <workItem from="1558311079442" duration="958000" />
       <workItem from="1558334834491" duration="9695000" />
-      <workItem from="1558426329082" duration="18249000" />
+      <workItem from="1558426329082" duration="19096000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154324000" />
+    <option name="totallyTimeSpent" value="155171000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -950,19 +935,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="42" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs</url>
-          <line>102</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs" initialLine="100">
-            <startOffsets>
-              <option value="3598" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3670" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -2691,89 +2663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/TraCIVariables/Vehicle.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="202" column="81" selection-start-line="202" selection-start-column="68" selection-end-line="202" selection-end-column="81" />
-          <folding>
-            <marker date="1557505542923" expanded="false" signature="6:287" ph="..." />
-            <marker date="1557505542923" expanded="true" signature="338:18677" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="475:18675" ph="{...}" />
-            <marker date="1557505542923" expanded="false" signature="592:2477" ph="Vehicle States" />
-            <marker date="1557505542923" expanded="true" signature="651:852" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="906:1047" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="1200:1800" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="1265:1790" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="1354:1776" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="1933:2457" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="1993:2447" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="2077:2433" ph="{...}" />
-            <marker date="1557505542923" expanded="false" signature="2495:5499" ph="Events" />
-            <marker date="1557505542923" expanded="true" signature="2563:2872" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="2586:2692" ph="/// The projected transform as it should be in unity. ... " />
-            <marker date="1557505542923" expanded="true" signature="2796:2862" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="3068:3181" ph="/// Raised whenever all positional and orientation data are changed. ... " />
-            <marker date="1557505542923" expanded="true" signature="3252:3950" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="3278:3487" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="3506:3940" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="3686:3908" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="3733:3826" ph="/* If no subscribers left no need to make ... */" />
-            <marker date="1557505542923" expanded="true" signature="3968:4072" ph="/// Raised when the vehicle departs in the sumo simulation. ... " />
-            <marker date="1557505542923" expanded="true" signature="4154:4274" ph="/// Raised when the vehicle arrives its destination in the sumo simulation. ... " />
-            <marker date="1557505542923" expanded="true" signature="4347:4441" ph="/// Raised when the vehicle enters Context Range. ... " />
-            <marker date="1557505542923" expanded="true" signature="4534:4627" ph="/// Raised when the vehicle exits Context Range. ... " />
-            <marker date="1557505542923" expanded="true" signature="4782:4857" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="4939:5005" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="5077:5142" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="5235:5312" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="5395:5471" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="7584:8052" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="7636:8042" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="7893:8028" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="8181:8790" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="8240:8780" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="8614:8749" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="8800:8946" ph="/// Sets &lt;see cref=&quot;_isPositionChanged&quot;/&gt; and &lt;see cref=&quot;_isAngleChanged&quot;/&gt; ... " />
-            <marker date="1557505542923" expanded="true" signature="8986:9083" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="9093:9246" ph="/// Updates position and orientation and emits event &lt;see cref=&quot;OnVehicleTransformChange&quot;/&gt; ... " />
-            <marker date="1557505542923" expanded="true" signature="9305:10178" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="9370:9519" ph="/* This is done to improve efficiency if no additional positions are needed. ... */" />
-            <marker date="1557505542923" expanded="true" signature="9563:9863" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="9880:10118" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="10225:10626" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="10284:10439" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="10486:10593" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="11914:12085" ph="/// Route is an array of edges a vehicle is going to follow. The routeID is the  ... " />
-            <marker date="1557505542923" expanded="true" signature="12168:12345" ph="/// Signal is an int intigating what the vehicle signals. ... " />
-            <marker date="1557505542923" expanded="true" signature="12422:12599" ph="/// Signal is an int intigating what the vehicle signals. ... " />
-            <marker date="1557505542923" expanded="true" signature="13765:14028" ph="/// Holds previous positions. Up to &lt;see cref=&quot;NumberOfPositionsToSave&quot;/&gt; are cached.  ... " />
-            <marker date="1557505542923" expanded="true" signature="14141:14374" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="15232:15507" ph="/// Instantiate Vehicle. ... " />
-            <marker date="1557505542923" expanded="true" signature="15579:15696" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="15706:15879" ph="/// Instantiate Vehicle. ... " />
-            <marker date="1557505542923" expanded="true" signature="15940:16059" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="16211:16437" ph="///Used by VehicleEditor for selecting a position (for deleting). DO NOT PLACE THIS IN EDITOR ... " />
-            <marker date="1557505542923" expanded="true" signature="16841:16941" ph="/// The ammount of positions to cache for this Vehicle. ... " />
-            <marker date="1557505542923" expanded="true" signature="16984:17768" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="17067:17758" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="17098:17271" ph="/* Create an array of fixed size. Positions will contain up to _numberOfPositionsToSave ... */" />
-            <marker date="1557505542923" expanded="true" signature="17325:17668" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="17559:17649" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="17778:17945" ph="/// The amount of steps in the simulation with departure being the first. ... " />
-            <marker date="1557505542923" expanded="true" signature="18170:18473" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="18247:18463" ph="{...}" />
-            <marker date="1557505542923" expanded="true" signature="18510:18668" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D7AC571C-A2D0-4B2F-981D-0D886FA067CF/13/ee7e5dbd/NullReferenceException.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D7AC571C-A2D0-4B2F-981D-0D886FA067CF/0b/3f848c77/Environment.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -2835,37 +2724,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="66" column="61" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
+        <state relative-caret-position="290">
+          <caret line="255" column="33" selection-start-line="255" selection-start-column="33" selection-end-line="255" selection-end-column="33" />
           <folding>
-            <marker date="1558445742806" expanded="false" signature="6:357" ph="..." />
-            <marker date="1558445742806" expanded="true" signature="445:6013" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="1225:1470" ph="/// Returns the traci variable  ... " />
-            <marker date="1558445742806" expanded="true" signature="1536:1882" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="2177:2631" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="2641:2836" ph="/// Returns true if a target is selected. Use Unselect to unselect target. ... " />
-            <marker date="1558445742806" expanded="true" signature="3031:3277" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="3201:3271" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="3317:4383" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="3670:3810" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="3823:4144" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="4173:4351" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="4384:5030" ph="/* private bool SelectRandomVehicle() ... */" />
-            <marker date="1558445742806" expanded="true" signature="5124:5820" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="5493:5813" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="5848:6005" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="6064:6733" ph="{...}" />
-            <marker date="1558445742806" expanded="true" signature="6478:6731" ph="{...}" />
+            <marker date="1558446091510" expanded="false" signature="6:384" ph="..." />
+            <marker date="1558446091510" expanded="true" signature="507:12095" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="723:921" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="779:914" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="3151:3358" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="3384:4964" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="3416:3570" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="4001:4182" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="5034:5446" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="5304:5440" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="5533:5693" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="5797:5985" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="6056:6305" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="6092:6299" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="6359:6607" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="6395:6601" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="6668:7557" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="7572:7789" ph="/// Find and subscribe to the lane that is closest to the center of the frustum. ... " />
+            <marker date="1558446091510" expanded="true" signature="7840:10989" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="8156:8499" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="8512:8653" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="9132:9630" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="9505:9620" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="9853:10097" ph="/* No need to subscribe to a a new lane if it close or the old one ... */" />
+            <marker date="1558446091510" expanded="true" signature="10100:10258" ph="/* if (closestDistanceSqr &lt; 10f) ... */" />
+            <marker date="1558446091510" expanded="true" signature="11044:12081" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="11130:12075" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12134:12204" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12232:14970" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12261:12404" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12427:12792" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12949:13239" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="12985:13069" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="13302:13592" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="13338:13427" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="13663:13713" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="13768:13815" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="13896:14130" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="14238:14968" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="14396:14521" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="15013:15734" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="15099:15260" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="15340:15496" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="15572:15625" ph="{...}" />
+            <marker date="1558446091510" expanded="true" signature="15685:15732" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D7AC571C-A2D0-4B2F-981D-0D886FA067CF/13/ee7e5dbd/NullReferenceException.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/_SumoClientScripts/SumoClient.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="1001" column="81" lean-forward="true" selection-start-line="1001" selection-start-column="81" selection-end-line="1001" selection-end-column="81" />
+        <state relative-caret-position="-110">
+          <caret line="999" column="78" lean-forward="true" selection-start-line="999" selection-start-column="78" selection-end-line="999" selection-end-column="78" />
           <folding>
             <marker date="1558432170932" expanded="false" signature="6:786" ph="..." />
             <marker date="1558432170932" expanded="true" signature="882:63357" ph="{...}" />
@@ -3038,56 +2961,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/CameraScripts/CameraContextSubscription.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/TraciForCS/TraCIVariables/Vehicle.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="199" column="8" selection-start-line="199" selection-start-column="8" selection-end-line="199" selection-end-column="8" />
+        <state>
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
           <folding>
-            <marker date="1558446091510" expanded="false" signature="6:384" ph="..." />
-            <marker date="1558446091510" expanded="true" signature="507:12095" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="723:921" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="779:914" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="3151:3358" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="3384:4964" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="3416:3570" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="4001:4182" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="5034:5446" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="5304:5440" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="5533:5693" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="5797:5985" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="6056:6305" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="6092:6299" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="6359:6607" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="6395:6601" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="6668:7557" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="7572:7789" ph="/// Find and subscribe to the lane that is closest to the center of the frustum. ... " />
-            <marker date="1558446091510" expanded="true" signature="7840:10989" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="8156:8499" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="8512:8653" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="9132:9630" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="9505:9620" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="9853:10097" ph="/* No need to subscribe to a a new lane if it close or the old one ... */" />
-            <marker date="1558446091510" expanded="true" signature="10100:10258" ph="/* if (closestDistanceSqr &lt; 10f) ... */" />
-            <marker date="1558446091510" expanded="true" signature="11044:12081" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="11130:12075" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12134:12204" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12232:14970" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12261:12404" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12427:12792" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12949:13239" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="12985:13069" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="13302:13592" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="13338:13427" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="13663:13713" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="13768:13815" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="13896:14130" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="14238:14968" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="14396:14521" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="15013:15734" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="15099:15260" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="15340:15496" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="15572:15625" ph="{...}" />
-            <marker date="1558446091510" expanded="true" signature="15685:15732" ph="{...}" />
+            <marker date="1557505542923" expanded="false" signature="6:287" ph="..." />
+            <marker date="1557505542923" expanded="true" signature="338:18677" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="475:18675" ph="{...}" />
+            <marker date="1557505542923" expanded="false" signature="592:2477" ph="Vehicle States" />
+            <marker date="1557505542923" expanded="true" signature="651:852" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="906:1047" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="1200:1800" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="1265:1790" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="1354:1776" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="1933:2457" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="1993:2447" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="2077:2433" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="2495:5499" ph="Events" />
+            <marker date="1557505542923" expanded="true" signature="2563:2872" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="2586:2692" ph="/// The projected transform as it should be in unity. ... " />
+            <marker date="1557505542923" expanded="true" signature="2796:2862" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="3068:3181" ph="/// Raised whenever all positional and orientation data are changed. ... " />
+            <marker date="1557505542923" expanded="true" signature="3252:3950" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="3278:3487" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="3506:3940" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="3686:3908" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="3733:3826" ph="/* If no subscribers left no need to make ... */" />
+            <marker date="1557505542923" expanded="true" signature="3968:4072" ph="/// Raised when the vehicle departs in the sumo simulation. ... " />
+            <marker date="1557505542923" expanded="true" signature="4154:4274" ph="/// Raised when the vehicle arrives its destination in the sumo simulation. ... " />
+            <marker date="1557505542923" expanded="true" signature="4347:4441" ph="/// Raised when the vehicle enters Context Range. ... " />
+            <marker date="1557505542923" expanded="true" signature="4534:4627" ph="/// Raised when the vehicle exits Context Range. ... " />
+            <marker date="1557505542923" expanded="true" signature="4782:4857" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="4939:5005" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="5077:5142" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="5235:5312" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="5395:5471" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="7584:8052" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="7636:8042" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="7893:8028" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="8181:8790" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="8240:8780" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="8614:8749" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="8800:8946" ph="/// Sets &lt;see cref=&quot;_isPositionChanged&quot;/&gt; and &lt;see cref=&quot;_isAngleChanged&quot;/&gt; ... " />
+            <marker date="1557505542923" expanded="true" signature="8986:9083" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="9093:9246" ph="/// Updates position and orientation and emits event &lt;see cref=&quot;OnVehicleTransformChange&quot;/&gt; ... " />
+            <marker date="1557505542923" expanded="true" signature="9305:10178" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="9370:9519" ph="/* This is done to improve efficiency if no additional positions are needed. ... */" />
+            <marker date="1557505542923" expanded="true" signature="9563:9863" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="9880:10118" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="10225:10626" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="10284:10439" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="10486:10593" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="11914:12085" ph="/// Route is an array of edges a vehicle is going to follow. The routeID is the  ... " />
+            <marker date="1557505542923" expanded="true" signature="12168:12345" ph="/// Signal is an int intigating what the vehicle signals. ... " />
+            <marker date="1557505542923" expanded="true" signature="12422:12599" ph="/// Signal is an int intigating what the vehicle signals. ... " />
+            <marker date="1557505542923" expanded="true" signature="13765:14028" ph="/// Holds previous positions. Up to &lt;see cref=&quot;NumberOfPositionsToSave&quot;/&gt; are cached.  ... " />
+            <marker date="1557505542923" expanded="true" signature="14141:14374" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="15232:15507" ph="/// Instantiate Vehicle. ... " />
+            <marker date="1557505542923" expanded="true" signature="15579:15696" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="15706:15879" ph="/// Instantiate Vehicle. ... " />
+            <marker date="1557505542923" expanded="true" signature="15940:16059" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="16211:16437" ph="///Used by VehicleEditor for selecting a position (for deleting). DO NOT PLACE THIS IN EDITOR ... " />
+            <marker date="1557505542923" expanded="true" signature="16841:16941" ph="/// The ammount of positions to cache for this Vehicle. ... " />
+            <marker date="1557505542923" expanded="true" signature="16984:17768" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="17067:17758" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="17098:17271" ph="/* Create an array of fixed size. Positions will contain up to _numberOfPositionsToSave ... */" />
+            <marker date="1557505542923" expanded="true" signature="17325:17668" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="17559:17649" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="17778:17945" ph="/// The amount of steps in the simulation with departure being the first. ... " />
+            <marker date="1557505542923" expanded="true" signature="18170:18473" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="18247:18463" ph="{...}" />
+            <marker date="1557505542923" expanded="true" signature="18510:18668" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/__sumo-in-unity-assets__/Scripts/ScriptableObjectScripts/CurrentlySelectedTargets.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="17" column="41" lean-forward="true" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <marker date="1558446930275" expanded="false" signature="6:357" ph="..." />
+            <marker date="1558446930275" expanded="true" signature="445:6163" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="1225:1470" ph="/// Returns the traci variable  ... " />
+            <marker date="1558446930275" expanded="true" signature="1536:1882" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="2177:2631" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="2641:2836" ph="/// Returns true if a target is selected. Use Unselect to unselect target. ... " />
+            <marker date="1558446930275" expanded="true" signature="3031:3277" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="3201:3271" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="3317:4533" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="3670:3810" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="3823:4294" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="4323:4501" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="4534:5180" ph="/* private bool SelectRandomVehicle() ... */" />
+            <marker date="1558446930275" expanded="true" signature="5274:5970" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="5643:5963" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="5998:6155" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="6214:6883" ph="{...}" />
+            <marker date="1558446930275" expanded="true" signature="6628:6881" ph="{...}" />
           </folding>
         </state>
       </provider>

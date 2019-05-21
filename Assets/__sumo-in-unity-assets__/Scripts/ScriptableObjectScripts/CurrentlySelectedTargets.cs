@@ -110,6 +110,8 @@ public class CurrentlySelectedTargets : ScriptableObject
             vehicle.Instantiate(vehicleID);
             vehicle.SetPositionFromRawPosition2D(_sumoCommands.VehicleCommands.GetPosition(vehicleID).GetContentAs<Position2D>());
             _vehicleSimulator.SetupEnteredVehicle(vehicle);
+            if(_sumoClient.SubscriptionType == SubscriptionType.Context)
+                _networkData.VehiclesInContextRange.Add(vehicleID, vehicle);
         }
         
         if(vehicle)
