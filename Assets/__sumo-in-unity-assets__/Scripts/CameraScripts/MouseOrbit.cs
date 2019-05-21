@@ -46,10 +46,10 @@ public class MouseOrbit : MonoBehaviour
             _rigidBody.freezeRotation = true;
         }
         
-        _selectedTargets.OnVehicleSelected += SelectedTargetsOnOnVehicleSelected;
+        _selectedTargets.VehicleSelected += SelectedTargetsVehicleSelected;
     }
 
-    private void SelectedTargetsOnOnVehicleSelected(object sender, SelectedTargetEventArgs e)
+    private void SelectedTargetsVehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
         Target = e.SelectedTransform;
         enabled = true;

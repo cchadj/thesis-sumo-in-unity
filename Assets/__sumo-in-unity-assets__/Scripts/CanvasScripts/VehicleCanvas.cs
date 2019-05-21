@@ -49,16 +49,16 @@ public class VehicleCanvas : SingletonMonoBehaviour<VehicleCanvas>
     }
     private void Start()
     {
-        _selectedTargets.OnVehicleSelected += OnVehicleSelected;
-        _selectedTargets.OnVehicleDeselected += OnVehicleDeselected;
+        _selectedTargets.VehicleSelected += VehicleSelected;
+        _selectedTargets.VehicleDeselected += VehicleDeselected;
     }
 
-    private void OnVehicleDeselected(object sender, EventArgs e)
+    private void VehicleDeselected(object sender, EventArgs e)
     {
         enabled = false;
     }
 
-    private void OnVehicleSelected(object sender, SelectedTargetEventArgs e)
+    private void VehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
         enabled = true;
     }

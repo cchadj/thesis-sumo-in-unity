@@ -674,9 +674,18 @@ namespace RiseProject.Tomis.SumoInUnity
                 // By subscribing to simulation commands now (I believe) that arrived vehicles will be updated before
                 // using them to add them to vehicles that exited context range.
                 SimulationCommands.Subscribe("ignored", 0, 10000, SimulationSubscriptionList);
-                
+
                 if (SubscriptionType == SubscriptionType.Context) // Either use context or variable subscriptions for polling the vehicle data.
-                    TraCIClient.LaneContextSubscription += TraCIClient_LaneContextSubscription;
+                {
+                    TraCIClient.LaneContextSubscription            += TraCIClient_ContextSubscription;
+                    TraCIClient.VehicleContextSubscription         += TraCIClient_ContextSubscription;
+                    TraCIClient.PolygonContextSubscription         += TraCIClient_ContextSubscription;
+                    TraCIClient.JunctionContextSubscription        += TraCIClient_ContextSubscription; 
+                    TraCIClient.EdgeContextSubscription            += TraCIClient_ContextSubscription;
+                    TraCIClient.PointOfInterestContextSubscription += TraCIClient_ContextSubscription;
+                    TraCIClient.InductionLoopContextSubscription   += TraCIClient_ContextSubscription;
+                }
+
 
                 // When doing context subscription we do not need to subscribe to this subscription unless
                 // we want to collect information about the amount of active vehicles
@@ -912,18 +921,18 @@ namespace RiseProject.Tomis.SumoInUnity
         }
 
 
-        private void TraCIClient_LaneContextSubscription(object sender, ContextSubscriptionEventArgs e)
+        private void TraCIClient_ContextSubscription(object sender, ContextSubscriptionEventArgs e)
         {
             if (UseMultithreading)
-                MTaskManager.QueueAction(() => HandleLaneContextSubscription(e));
+                MTaskManager.QueueAction(() => HandleContextSubscription(e));
             else
-                HandleLaneContextSubscription(e);
+                HandleContextSubscription(e);
         }
 
 
         private void HandleSimulationSubscription(SubscriptionEventArgs e)
         {
-            
+           
             // Assert to check the bare minimum responses are being subscribed to
             Assert.IsTrue(
                 SubscriptionType == SubscriptionType.Context && e.Responses.Count() == 1 ||
@@ -988,9 +997,9 @@ namespace RiseProject.Tomis.SumoInUnity
 
 
         private static readonly HashSet<string> VehiclesFoundThisSimStep =  new HashSet<string>();
-        private void HandleLaneContextSubscription(ContextSubscriptionEventArgs e)
+        private void HandleContextSubscription(ContextSubscriptionEventArgs e)
         {
-            Assert.AreEqual(e.ObjectId, simulationState.currentContextSubscribedLaneID);
+            Assert.AreEqual(e.ObjectId, simulationState.currentContextSubscribedObjectID);
             
             NumberOfVehiclesInsideContextRange = 0;
             

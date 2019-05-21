@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using RiseProject.Tomis.DataContainers;
 using UnityEngine;
@@ -14,7 +15,6 @@ using Debug = UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-
 
 [RequireComponent(typeof(Camera), typeof(CameraIntersect))]
 public class LaneContextSubscription : MonoBehaviour
@@ -39,14 +39,14 @@ public class LaneContextSubscription : MonoBehaviour
     [SerializeField, ReadOnly] private SimulationState simulationState;  
     [SerializeField, ReadOnly] private Transform roadNetwork;
     [SerializeField, ReadOnly] private float roadHeight;
-   
-    [Space(3)]
-
+    [SerializeField, ReadOnly] private string currentlySubscribedVehicleID;
+    [SerializeField, ReadOnly] private ContextSubscriptionState subscriptionState = ContextSubscriptionState.NoSubscription;
     
-
+    [Space(3)]
     [Header("Subscription Circle")]
     [SerializeField] private Color subscriptionCircleColor = Color.red;
     [SerializeField, ReadOnly] private Lane closestLane;
+    [SerializeField, ReadOnly] private Vehicle subscribedVehicle;
     [SerializeField, ReadOnly] private string currentlySubscribedLaneID;
     [SerializeField, ReadOnly, Tooltip( "The Current actual Subscription Range that")] 
     private float curContextRange;
@@ -64,6 +64,7 @@ public class LaneContextSubscription : MonoBehaviour
     private SumoCommands _sumoCommands;
     private CameraIntersect _cameraIntersect;
     private SumoClient _sumoClient;
+    private CurrentlySelectedTargets _selectedTargets;
 
     
     // Cache
@@ -77,12 +78,16 @@ public class LaneContextSubscription : MonoBehaviour
     private void Construct(
         SumoClient sumoClient,
         SumoNetworkData sumoNetworkData, 
-        SumoCommands sumoCommands, SimulationState simState)
+        SumoCommands sumoCommands, 
+        SimulationState simState,
+        CurrentlySelectedTargets selectedTargets
+        )
     {
         _sumoClient = sumoClient;   
         _networkData = sumoNetworkData;
         _sumoCommands = sumoCommands;
         simulationState = simState;
+        _selectedTargets = selectedTargets;
     }
 
     private void Start()
@@ -122,12 +127,60 @@ public class LaneContextSubscription : MonoBehaviour
         centerOfFrustum.parent = transform;
         centerOfFrustum.localPosition = frustumCenterLocalPosition;
         centerOfFrustum.name = "Center Of Camera Frustum";
+        
+        _selectedTargets.VehicleSelected += SelectedTargets_OnVehicleSelected;
+        _selectedTargets.VehicleDeselected += SelectedTargets_OnVehicleDeselected;
 
-        StartCoroutine(SubscriptionCoroutine());
+        StartCoroutine(LaneSubscriptionCoroutine());
+    }
+    
+
+    private void UnsubscribeFromPreviouslySubscribedEgoObject()
+    {
+        if(subscriptionState == ContextSubscriptionState.LaneSubscription)
+            _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, Vehicle.ContextDomain);
+
+        if (subscriptionState == ContextSubscriptionState.VehicleSubscription)
+        {
+            //_sumoCommands.VehicleCommands.UnsubscribeContext(currentlySubscribedVehicleID, Vehicle.ContextDomain);
+
+        }
+    }
+
+    
+    private void SelectedTargets_OnVehicleDeselected(object sender, EventArgs e)
+    {
+        StopAllCoroutines();
+        
+        UnsubscribeFromPreviouslySubscribedEgoObject();
+
+        StartCoroutine(LaneSubscriptionCoroutine());
+    }
+    
+    
+    private void SelectedTargets_OnVehicleSelected(object sender, SelectedVehicleEventArgs e)
+    {
+        StopAllCoroutines();
+        
+        UnsubscribeFromPreviouslySubscribedEgoObject();
+        
+        StartCoroutine(VehicleSubscriptionCoroutine(e.SelectedVehicle));
+    }
+
+    private IEnumerator VehicleSubscriptionCoroutine(Vehicle vehicle)
+    {
+        
+        while (true)
+        {
+            Assert.AreEqual(_sumoClient.SubscriptionType, SubscriptionType.Context);
+            
+            ContextSubscribeToVehicle(vehicle);
+            yield return WaitForSeconds;
+        }
     }
 
 
-    private IEnumerator SubscriptionCoroutine()
+    private IEnumerator LaneSubscriptionCoroutine()
     {
         
         while (true)
@@ -136,10 +189,34 @@ public class LaneContextSubscription : MonoBehaviour
             
             ContextSubscribeToLaneInFrustum();
             yield return WaitForSeconds;
-
         }
     }
 
+    private void ContextSubscribeToVehicle(Vehicle vehicle)
+    {
+        UnsubscribeFromPreviouslySubscribedEgoObject();
+        var contextRange = 100f;
+
+        _sumoCommands.VehicleCommands.SubscribeContext(
+            vehicle.ID, 
+            0f, 
+            1000f,
+            Vehicle.ContextDomain,
+            contextRange,
+            ListOfVariablesToSubscribeTo);
+        
+        curContextRange = contextRange;
+        
+        
+        subscriptionState = ContextSubscriptionState.VehicleSubscription;
+        subscribedVehicle = vehicle;
+        currentlySubscribedVehicleID = vehicle.ID;
+        
+        
+        simulationState.subscriptionState = subscriptionState;
+        simulationState.currentContextSubscribedObjectID = currentlySubscribedVehicleID;
+        simulationState.currentContextSubcribedTraCIVariable = vehicle;
+    }
     
     
     /// <summary>
@@ -212,34 +289,57 @@ public class LaneContextSubscription : MonoBehaviour
 //            if(Mathf.Abs(newContextRange - curContextRange) < 10f)
 //                return;
 //        }
-        
-        
+
         _sumoCommands.LaneCommands.UnsubscribeContext(currentlySubscribedLaneID, TraCIConstants.CMD_GET_VEHICLE_VARIABLE);
         _sumoCommands.LaneCommands.SubscribeContext(closestLane.ID, 0f, 1000f, Vehicle.ContextDomain, contextRange, ListOfVariablesToSubscribeTo);
         
         curContextRange = newContextRange;
         
-        // Update currently subscribed lane       
+        // Update currently subscribed lane
+        subscriptionState = ContextSubscriptionState.LaneSubscription;
         currentlySubscribedLaneID = closestLane.ID;
-        simulationState.currentContextSubscribedLaneID = currentlySubscribedLaneID;
-        simulationState.currentContextSubscribedLane = closestLane;
+
+        simulationState.subscriptionState = subscriptionState;
+        simulationState.currentContextSubscribedObjectID = currentlySubscribedLaneID;
+        simulationState.currentContextSubcribedTraCIVariable = closestLane;
     }
+    
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        
-        if (Application.isPlaying && closestLane)
-        {            
-            UnityEditor.Handles.color = enclosingCircleColor;
-            UnityEditor.Handles.DrawWireDisc(_positionToGetClosestLaneFrom + new Vector3(0f, roadNetwork.transform.position.y, 0f), Vector3.up, newContextRange);   
-            UnityEditor.Handles.color = subscriptionCircleColor;
-            UnityEditor.Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(closestLane.centerOfMass), Vector3.up, curContextRange);    
+        if (!Application.isPlaying) return;
+
+        switch (subscriptionState)
+        {
+            case ContextSubscriptionState.VehicleSubscription:
+                Handles.color = subscriptionCircleColor;
+                Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(subscribedVehicle.Position), Vector3.up, curContextRange);
+                break;
+            case ContextSubscriptionState.LaneSubscription:
+                Handles.color = enclosingCircleColor;
+                Handles.DrawWireDisc(_positionToGetClosestLaneFrom + new Vector3(0f, roadNetwork.transform.position.y, 0f), Vector3.up, newContextRange);   
+                Handles.color = subscriptionCircleColor;
+                Handles.DrawWireDisc(_roadLocalToWorldMatrix.MultiplyPoint3x4(closestLane.centerOfMass), Vector3.up, curContextRange);
+                break;
+            case ContextSubscriptionState.NoSubscription:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 #endif
     
 }
+
+
+public enum ContextSubscriptionState
+{
+    NoSubscription,
+    VehicleSubscription,
+    LaneSubscription
+}
+
 
 public class IconManager {
 

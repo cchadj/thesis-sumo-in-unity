@@ -12,10 +12,10 @@ using Zenject;
 public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelectedTargets>
 {
     private SumoNetworkData _networkData;
-    private SelectedTargetEventArgs lastEventArgs;
+    private SelectedVehicleEventArgs lastEventArgs;
     
-    public event EventHandler<SelectedTargetEventArgs> OnVehicleSelected;
-    public event EventHandler<EventArgs> OnVehicleDeselected;
+    public event EventHandler<SelectedVehicleEventArgs> VehicleSelected;
+    public event EventHandler<EventArgs> VehicleDeselected;
 
     [Header("Debug")]
     [SerializeField, ReadOnly] private Transform selectedTransform;
@@ -90,7 +90,10 @@ public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelec
         var v = selectableTraciVariable.GetTraciVariable<Vehicle>();
         if (v)
         {
-            OnVehicleSelected?.Invoke(this, new SelectedTargetEventArgs(selectableTraciVariable, selectedTransform));
+            VehicleSelected?.Invoke(this, new SelectedVehicleEventArgs(
+                selectableTraciVariable: selectableTraciVariable,
+                selectedVehicle: v,
+                selectedTransform: selectedTransform));
         }
 
     }
@@ -101,27 +104,29 @@ public class CurrentlySelectedTargets : SingletonScriptableObject<CurrentlySelec
         _selectedObject = null;
         selectedTransform = null;
      
-        OnVehicleDeselected?.Invoke(this, lastEventArgs);
+        VehicleDeselected?.Invoke(this, lastEventArgs);
     }
     
 
 }
 
-public class SelectedTargetEventArgs : EventArgs
+public class SelectedVehicleEventArgs : EventArgs
 {
     public readonly ISelectableTraciVariable SelectableTraciVariable;
+    public readonly Vehicle SelectedVehicle;
     public readonly Transform SelectedTransform;
     // is null if not a vehicle
     public readonly VehicleView VehicleView;
    
 
-    public SelectedTargetEventArgs(
+    public SelectedVehicleEventArgs(
         ISelectableTraciVariable selectableTraciVariable, 
-        Transform selectedTransform
-        )
+        Vehicle selectedVehicle,
+        Transform selectedTransform)
     {
         SelectableTraciVariable = selectableTraciVariable;
         SelectedTransform = selectedTransform;
+        SelectedVehicle = selectedVehicle;
         VehicleView = selectedTransform.parent.GetComponent<VehicleView>();
     }
 }

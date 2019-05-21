@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SimulationState : ScriptableObject
 {
-    [ReadOnly] public string currentContextSubscribedLaneID;
-    [ReadOnly] public Lane currentContextSubscribedLane;   
-    
-    
+    [ReadOnly] public ContextSubscriptionState subscriptionState;
+
+    [ReadOnly] public TraCIVariable currentContextSubcribedTraCIVariable;
+    [ReadOnly] public string currentContextSubscribedObjectID;
+
+
+
 }
