@@ -51,15 +51,21 @@ public class VehicleCanvas : SingletonMonoBehaviour<VehicleCanvas>
     {
         _selectedTargets.VehicleSelected += VehicleSelected;
         _selectedTargets.VehicleDeselected += VehicleDeselected;
+
+        enabled = false;
+        gameObject.SetActive(false);
+
     }
 
     private void VehicleDeselected(object sender, EventArgs e)
     {
+        gameObject.SetActive(false);
         enabled = false;
     }
 
     private void VehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
         enabled = true;
+        gameObject.SetActive(true);
     }
 }

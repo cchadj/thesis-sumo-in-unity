@@ -6,8 +6,7 @@ using Zenject;
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbit : MonoBehaviour
 {
-
-    public Transform Target;
+    [SerializeField, ReadOnly] private Transform _target;
 
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
@@ -31,8 +30,9 @@ public class MouseOrbit : MonoBehaviour
     {
         _selectedTargets = selectedTargets;
     }
+    
     // Use this for initialization
-    void Start()
+    private void Awake()
     {
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
@@ -51,7 +51,7 @@ public class MouseOrbit : MonoBehaviour
 
     private void SelectedTargetsVehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
-        Target = e.SelectedTransform;
+        _target = e.SelectedTransform;
         enabled = true;
     }
     
@@ -59,12 +59,13 @@ public class MouseOrbit : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Target)
+        if (_target)
         {
-            if (Input.GetKey(KeyCode.LeftAlt))
+            if (Input.GetKey(KeyCode.Mouse1))
             {
                 x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
                 y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+                
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
@@ -87,7 +88,7 @@ public class MouseOrbit : MonoBehaviour
             //    distance -= hit.distance;
             //}
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-            Vector3 position = rotation * negDistance + Target.position;
+            Vector3 position = rotation * negDistance + _target.position;
 
             transform.rotation = rotation;
             transform.position = position;

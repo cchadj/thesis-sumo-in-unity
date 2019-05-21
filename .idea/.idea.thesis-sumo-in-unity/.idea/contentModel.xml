@@ -91,13 +91,13 @@
               <e p="SumoClient.cs" t="Include" />
             </e>
             <e p="CameraScripts" t="Include">
+              <e p="CameraContextSubscription.cs" t="Include" />
               <e p="CameraModeManager.cs" t="Include" />
               <e p="CaptureImage.cs" t="Include" />
               <e p="CursorLock.cs" t="Include" />
               <e p="ExtendedFlycam.cs" t="Include" />
               <e p="GetClosestVisibleItem.cs" t="Include" />
               <e p="GetVisibleTargets.cs" t="Include" />
-              <e p="LaneContextSubscription.cs" t="Include" />
               <e p="MenuToggle.cs" t="Include" />
               <e p="MouseOrbit.cs" t="Include" />
             </e>

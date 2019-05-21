@@ -41,7 +41,7 @@ namespace RiseProject.Tomis.SumoInUnity.SumoTypes
             ID = id;            
         }
 
-        public event EventHandler<EventArgs> OnDispose;
+        public event EventHandler<EventArgs> Disposed;
             
         /// <summary>
         /// Disables the TraCIVariable
@@ -49,7 +49,7 @@ namespace RiseProject.Tomis.SumoInUnity.SumoTypes
         public void Dispose()
         {
             _isInstantiated = false;
-            OnDispose?.Invoke(this ,EventArgs.Empty);
+            Disposed?.Invoke(this ,EventArgs.Empty);
         }
     }
 }

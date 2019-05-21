@@ -1,68 +1,74 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class CameraModeManager : MonoBehaviour
+public class CameraModeManager : IInitializable
 {
-    [SerializeField]
-    private CurrentlySelectedTargets currentlySelectedTargets;
-
     private Camera _mainCamera;
 
     private MouseOrbit _mouseOrbitMode;
     private ExtendedFlycam _flyCameraMode;
-    private List<MonoBehaviour> _cameraModes = new List<MonoBehaviour>();
+    private readonly List<MonoBehaviour> _cameraModes = new List<MonoBehaviour>();
 
     private MonoBehaviour _lastMode;
     private MonoBehaviour _penultimateMode;
 
-    public MouseOrbit MouseOrbitMode { get => _mouseOrbitMode; set => _mouseOrbitMode = value; }
-    public ExtendedFlycam FlyCameraMode { get => _flyCameraMode; set => _flyCameraMode = value; }
-    public Camera MainCamera { get => _mainCamera; set => _mainCamera = value; }
-    public List<MonoBehaviour> CameraModes { get => _cameraModes; set => _cameraModes = value; } 
+    // Dependencies 
+    private CurrentlySelectedTargets _selectedTargets;
 
-    private void Start()
+    [Inject]
+    private void Construct(CurrentlySelectedTargets selectedTargets)
     {
-        MainCamera = Camera.main;
-        MouseOrbitMode = MainCamera.GetComponent<MouseOrbit>();
-        FlyCameraMode = MainCamera.GetComponent<ExtendedFlycam>();
+        _selectedTargets = selectedTargets;
         
-        CameraModes.Add(MouseOrbitMode);
-        CameraModes.Add(FlyCameraMode);
+        _selectedTargets.VehicleSelected   += (sender, args) => EnableOrbitMode();
+        _selectedTargets.VehicleDeselected += (sender, args) => EnableFlyMode();
+        
+    }
 
-        FlyCameraMode.enabled = true;
-        _lastMode = FlyCameraMode;
-        MouseOrbitMode.enabled = false;
+    public void Initialize()
+    {
+        _mainCamera = Camera.main;
+        _mouseOrbitMode = _mainCamera.GetComponent<MouseOrbit>();
+        _flyCameraMode = _mainCamera.GetComponent<ExtendedFlycam>();
+        
+        _cameraModes.Add(_mouseOrbitMode);
+        _cameraModes.Add(_flyCameraMode);
+
+        _flyCameraMode.enabled = true;
+        _lastMode = _flyCameraMode;
+        _mouseOrbitMode.enabled = false;
     }
 
     public void DisableAllModes()
     {
-        foreach(MonoBehaviour modes in CameraModes )
+        foreach(MonoBehaviour modes in _cameraModes )
         {
             modes.enabled = false;
         }
     }
 
-   public void SelectedObjectMode()
+   public void EnableOrbitMode()
     {
-        if (!currentlySelectedTargets.IsATargetAlreadySelected)
+        if (!_selectedTargets.IsATargetAlreadySelected)
             return;
 
         DisableAllModes();
         
-        MouseOrbitMode.enabled = true;
+        _mouseOrbitMode.enabled = true;
         // OnEnabled is called on MouseObitMode when is disabled and then enabled
         // so if already enabled I should also update it's target.
         _penultimateMode = _lastMode;
-        _lastMode = MouseOrbitMode;
+        _lastMode = _mouseOrbitMode;
     }
 
-    public void FlyMode()
+    public void EnableFlyMode()
     {
         DisableAllModes();
-        FlyCameraMode.enabled = true;
+        _flyCameraMode.enabled = true;
+        
         _penultimateMode = _lastMode;
-        _lastMode = FlyCameraMode;
+        _lastMode = _flyCameraMode;
     }
 
     public void EnableLastMode()
@@ -76,5 +82,4 @@ public class CameraModeManager : MonoBehaviour
         DisableAllModes();
         _penultimateMode.enabled = true;
     }
-
 }

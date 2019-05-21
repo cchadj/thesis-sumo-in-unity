@@ -17,9 +17,10 @@ using UnityEditor;
 #endif
 
 [RequireComponent(typeof(Camera), typeof(CameraIntersect))]
-public class LaneContextSubscription : MonoBehaviour
+public class CameraContextSubscription : MonoBehaviour
 {
     [CallSetter("RefreshSubscriptionEvery"), SerializeField] private float subscribeEverySeconds;
+    [SerializeField] private  float vehicleContextSubscriptionRange;
     
     public float RefreshSubscriptionEvery
     {
@@ -142,7 +143,7 @@ public class LaneContextSubscription : MonoBehaviour
 
         if (subscriptionState == ContextSubscriptionState.VehicleSubscription)
         {
-            //_sumoCommands.VehicleCommands.UnsubscribeContext(currentlySubscribedVehicleID, Vehicle.ContextDomain);
+            _sumoCommands.VehicleCommands.UnsubscribeContext(currentlySubscribedVehicleID, Vehicle.ContextDomain);
 
         }
     }
@@ -194,8 +195,10 @@ public class LaneContextSubscription : MonoBehaviour
 
     private void ContextSubscribeToVehicle(Vehicle vehicle)
     {
-        UnsubscribeFromPreviouslySubscribedEgoObject();
-        var contextRange = 100f;
+        if(vehicle.ID != currentlySubscribedVehicleID)
+            UnsubscribeFromPreviouslySubscribedEgoObject();
+        
+        var contextRange = vehicleContextSubscriptionRange;
 
         _sumoCommands.VehicleCommands.SubscribeContext(
             vehicle.ID, 

@@ -16,7 +16,7 @@ public class EnableVehicleView : MonoBehaviour {
 
     private void Awake()
     {
-        _selectedTargets.VehicleSelected += SelectedTargetsVehicleSelected;
+        _selectedTargets.VehicleSelected += SelectedTargets_OnVehicleSelected;
 
         _selectedTargets.VehicleDeselected +=
         delegate
@@ -27,7 +27,7 @@ public class EnableVehicleView : MonoBehaviour {
         enabled = false;
     }
 
-    private void SelectedTargetsVehicleSelected(object sender, SelectedVehicleEventArgs e)
+    private void SelectedTargets_OnVehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
         _curView = e.VehicleView;
         _curView.enabled = true;

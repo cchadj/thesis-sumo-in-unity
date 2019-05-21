@@ -16,7 +16,8 @@ public class InputManager : ITickable
     public event EventHandler<EventArgs> SearchModeRequested;
     public event EventHandler<EventArgs> SearchModeExitRequested;
     public event EventHandler<EventArgs> SelectModeEnterRequested;
-    public event EventHandler<EventArgs> ExitApplicationRequested; 
+    public event EventHandler<EventArgs> ExitApplicationRequested;
+    public event EventHandler<EventArgs> VehicleDeselectRequested;
 
     [Inject]
     private void Construct(CurrentlySelectedTargets selectedTargets)
@@ -34,9 +35,8 @@ public class InputManager : ITickable
         {
             PauseGameEventRequested?.Invoke(this, EventArgs.Empty);
         }
-        else if (Input.GetKeyDown(KeyCode.R)) /* Follow random vehicle */
+        else if (Input.GetKeyDown(KeyCode.R)) // Follow random vehicle
         {
-            _selectedTargets.SelectRandomVehicle();
             FollowRandomVehicleRequested?.Invoke(this, EventArgs.Empty);
         }
         else if (Input.GetKeyDown(KeyCode.Space)) // Get Into Fly mode
@@ -61,7 +61,6 @@ public class InputManager : ITickable
             
             if ( _buttonCooler > 0 )
             {
- 
                 _buttonCooler -= 1 * Time.deltaTime ;
  
             }else{
@@ -81,7 +80,7 @@ public class InputManager : ITickable
             }
             else if(_selectedTargets.IsATargetAlreadySelected)
             {
-                _selectedTargets.Unselect();
+                VehicleDeselectRequested?.Invoke(this, EventArgs.Empty);
             }
             else
             {

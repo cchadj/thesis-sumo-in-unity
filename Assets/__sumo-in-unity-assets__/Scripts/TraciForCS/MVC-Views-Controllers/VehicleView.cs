@@ -110,7 +110,7 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             Controller = GetComponent<VehicleController>();
         }
 
-        private void Vehicle_PositionAndAngleChanged(object sender, System.EventArgs e)
+        private void Vehicle_OnTransformChanged(object sender, System.EventArgs e)
         {
              UpdateMobilityTexts();
         }
@@ -120,8 +120,9 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             if (!Canvas)
                 return;
             
-            Vehicle.VehicleTransformChanged += Vehicle_PositionAndAngleChanged;
-            Vehicle.OnDispose += VehicleOnOnDispose;
+            Vehicle.VehicleTransformChanged += Vehicle_OnTransformChanged;
+            Vehicle.Disposed += Vehicle_OnDisposed;
+            
             if(ApplySpeedButton)
                 ApplySpeedButton.onClick.AddListener(ApplySpeed);
 //            
@@ -129,9 +130,9 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
 //                UpdateView();
         }
 
-        private void VehicleOnOnDispose(object sender, EventArgs e)
+        private void Vehicle_OnDisposed(object sender, EventArgs e)
         {
-             Vehicle.VehicleTransformChanged -=  Vehicle_PositionAndAngleChanged;
+             Vehicle.VehicleTransformChanged -=  Vehicle_OnTransformChanged;
              enabled = false;
         }
 
@@ -145,7 +146,7 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             
             ApplySpeedButton.onClick.RemoveListener(ApplySpeed);
             if(Vehicle)
-                Vehicle.VehicleTransformChanged -= Vehicle_PositionAndAngleChanged;
+                Vehicle.VehicleTransformChanged -= Vehicle_OnTransformChanged;
         }
 
         private void Update()

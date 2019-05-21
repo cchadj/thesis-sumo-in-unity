@@ -5,12 +5,15 @@ using Zenject;
 
 public class MyMonoInstaller : MonoInstaller
 {
+    [Header("Main Sumo To Unity Components")]
+    [SerializeField] private ApplicationManager applicationManager;
+    [SerializeField] private SumoClient sumoClient;
+    [SerializeField] private VehicleSimulator vehicleSimulator;
+    
+    [Header("Shared Data")]
     [SerializeField] private SumoNetworkData sumoNetworkData;
     [SerializeField] private SimulationStartupData startupData;
     [SerializeField] private SumoToUnityGameObjectMap sumoToUnityGameObjectMap;
-    [SerializeField] private ApplicationManager applicationManager;
-    [SerializeField] private SumoClient sumoClient;
-    [SerializeField] private InputManager inputManager;
 
     [Header("Canvases")]
     [SerializeField] private VehicleCanvas vehicleCanvas;
@@ -32,6 +35,10 @@ public class MyMonoInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<InputManager>()
             .AsSingle()
             .NonLazy();
+
+        Container.BindInterfacesAndSelfTo<CameraModeManager>()
+            .AsSingle()
+            .NonLazy();
         
         // BindInstance is the same as Bind<ResultType>().FromInstance(theInstance)...
         
@@ -47,6 +54,10 @@ public class MyMonoInstaller : MonoInstaller
         Container.BindInstance(sumoToUnityGameObjectMap)
             .AsSingle()
             .NonLazy();
+
+        Container.BindInstance(vehicleSimulator)
+            .AsSingle()
+            .NonLazy();
         
         Container.BindInstance(applicationManager)
             .AsSingle()
@@ -55,6 +66,7 @@ public class MyMonoInstaller : MonoInstaller
         Container.BindInstance(sumoClient)
             .AsSingle()
             .NonLazy();
+        
         
         // Bind Canvases Instances 
         Container.BindInstance(vehicleCanvas)
