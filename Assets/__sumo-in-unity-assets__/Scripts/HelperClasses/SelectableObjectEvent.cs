@@ -13,10 +13,9 @@ using Zenject;
 public class SelectableObjectEvent : MonoBehaviour
 {
     [SerializeField, Tooltip("optional")] private MeshRenderer _onHoverRenderer;
-
-
-    public Transform _transform;
-    public MeshRenderer OnHoverRenderer { get => _onHoverRenderer; set => _onHoverRenderer = value; }
+    // ReSharper disable once InconsistentNaming
+    [SerializeField] public Transform _transform;
+    [SerializeField] private MeshRenderer onHoverRenderer;
 
     /// <summary>
     /// Used to check if there is already a selected target. When a target is already selected
@@ -24,7 +23,8 @@ public class SelectableObjectEvent : MonoBehaviour
     /// </summary>
     private CurrentlySelectedTargets _selectedTargets;
 
-    [field: SerializeField] [field: Tooltip("optional")] public Outline OnHoverOutline { get; set; }
+    [SerializeField, Tooltip("optional")]
+    public Outline onHoverOutline;
 
     /// <summary> I can not use GetComponent with generics so I use this to get TraCIVariableData </summary>
     public ISelectableTraciVariable SelectableTraciVariable { get; private set; }
@@ -35,13 +35,13 @@ public class SelectableObjectEvent : MonoBehaviour
     {
         _selectedTargets = selectedTargets;
     }
-    
-    void Awake()
+
+    private void Awake()
     {
         if (_transform == null)
             _transform = gameObject.transform;
 
-        /* I can not assign interface through editor so I search it in this object or its parrent */
+        /* I can not assign interface through editor so I search it in this object or its parent */
 
         if(SelectableTraciVariable == null)
             SelectableTraciVariable = GetComponent<ISelectableTraciVariable>();
@@ -60,36 +60,36 @@ public class SelectableObjectEvent : MonoBehaviour
     /// <param name="eventData"></param>
     public void OnMouseEnter()
     {
-        /* Object should be highlighted only if there isn't another object selected */
-        if(!_selectedTargets.IsATargetAlreadySelected())
-        {
-            if (OnHoverRenderer)
-                OnHoverRenderer.enabled = true;
-            if (OnHoverOutline)
-                OnHoverOutline.enabled = true;
-        }
+        // Object should be highlighted only if there isn't another object selected
+        if (_selectedTargets.IsATargetAlreadySelected)
+            return;
+        
+        if (onHoverRenderer)
+            onHoverRenderer.enabled = true;
+        if (onHoverOutline)
+            onHoverOutline.enabled = true;
     }
 
 
     public void OnMouseExit()
     {
-        if (OnHoverRenderer)
-            OnHoverRenderer.enabled = false;
-        if (OnHoverOutline)
-            OnHoverOutline.enabled = false;
+        if (onHoverRenderer)
+            onHoverRenderer.enabled = false;
+        if (onHoverOutline)
+            onHoverOutline.enabled = false;
     }
 
     public void OnMouseDown()
     {
-        if (_selectedTargets.IsATargetAlreadySelected())
+        if (_selectedTargets.IsATargetAlreadySelected)
             return;
 
-        if (OnHoverRenderer)
-            OnHoverRenderer.enabled = false;
-        if (OnHoverOutline)
-            OnHoverOutline.enabled = false;
+        if (onHoverRenderer)
+            onHoverRenderer.enabled = false;
+        if (onHoverOutline)
+            onHoverOutline.enabled = false;
 
-        /* FIRST configure selected object */
+        // FIRST configure selected object
         _selectedTargets.Select(_transform, SelectableTraciVariable);
     }
 }

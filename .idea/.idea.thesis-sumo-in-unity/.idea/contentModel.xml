@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\unity-workspace\thesis-sumo-in-unity" t="IncludeRecursive">
+    <e p="C:\Users\VR_Lab\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\VR_Lab\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.1934993073.00" t="ExcludeRecursive" />
+    <e p="C:\Users\VR_Lab\Desktop\tomis-thesis\unity-workspace\thesis-sumo-in-unity" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -89,13 +91,13 @@
               <e p="SumoClient.cs" t="Include" />
             </e>
             <e p="CameraScripts" t="Include">
+              <e p="CameraContextSubscription.cs" t="Include" />
               <e p="CameraModeManager.cs" t="Include" />
               <e p="CaptureImage.cs" t="Include" />
               <e p="CursorLock.cs" t="Include" />
               <e p="ExtendedFlycam.cs" t="Include" />
               <e p="GetClosestVisibleItem.cs" t="Include" />
               <e p="GetVisibleTargets.cs" t="Include" />
-              <e p="LaneContextSubscription.cs" t="Include" />
               <e p="MenuToggle.cs" t="Include" />
               <e p="MouseOrbit.cs" t="Include" />
             </e>
@@ -107,6 +109,7 @@
             </e>
             <e p="CaptureScreen.cs" t="Include" />
             <e p="CarScripts" t="Include">
+              <e p="Car.cs" t="Include" />
               <e p="CarAIVehicleMover.cs" t="Include" />
               <e p="CarRayCaster.cs" t="Include" />
               <e p="ControlSteering.cs" t="Include" />
@@ -119,7 +122,6 @@
               <e p="PushCar.cs" t="Include" />
               <e p="SimpleCarController.cs" t="Include" />
               <e p="SumoTypeController.cs" t="Include" />
-              <e p="VehicleConfigurationData.cs" t="Include" />
               <e p="VehicleLightController.cs" t="Include" />
               <e p="VehicleMover.cs" t="Include" />
               <e p="VehicleMoverByInterpolation.cs" t="Include" />
@@ -153,6 +155,7 @@
             </e>
             <e p="DataInjection" t="Include">
               <e p="MyMonoInstaller.cs" t="Include" />
+              <e p="MyScriptableInstaller.cs" t="Include" />
             </e>
             <e p="DisplayRenderer.cs" t="Include" />
             <e p="EventSystem" t="Include">
@@ -1538,6 +1541,92 @@
               <e p="nodes.nod.xml" t="Include" />
               <e p="nodescp.nod.xml" t="Include" />
               <e p="out.net.xml" t="Include" />
+              <e p="output" t="Include">
+                <e p="net.net.xml" t="Include" />
+                <e p="rou1.rou.alt.xml" t="Include" />
+                <e p="rou1.rou.xml" t="Include" />
+                <e p="rou10.rou.alt.xml" t="Include" />
+                <e p="rou10.rou.xml" t="Include" />
+                <e p="rou100.rou.alt.xml" t="Include" />
+                <e p="rou100.rou.xml" t="Include" />
+                <e p="rou150.rou.alt.xml" t="Include" />
+                <e p="rou150.rou.xml" t="Include" />
+                <e p="rou25.rou.alt.xml" t="Include" />
+                <e p="rou25.rou.xml" t="Include" />
+                <e p="rou250.rou.alt.xml" t="Include" />
+                <e p="rou250.rou.xml" t="Include" />
+                <e p="rou275.rou.alt.xml" t="Include" />
+                <e p="rou275.rou.xml" t="Include" />
+                <e p="rou300.rou.alt.xml" t="Include" />
+                <e p="rou300.rou.xml" t="Include" />
+                <e p="rou475.rou.alt.xml" t="Include" />
+                <e p="rou475.rou.xml" t="Include" />
+                <e p="rou5.rou.alt.xml" t="Include" />
+                <e p="rou5.rou.xml" t="Include" />
+                <e p="rou50.rou.alt.xml" t="Include" />
+                <e p="rou50.rou.xml" t="Include" />
+                <e p="rou500.rou.alt.xml" t="Include" />
+                <e p="rou500.rou.xml" t="Include" />
+                <e p="rou75.rou.alt.xml" t="Include" />
+                <e p="rou75.rou.xml" t="Include" />
+              </e>
+              <e p="output-net-1net" t="Include">
+                <e p="net-1net.net.xml" t="Include" />
+                <e p="rou1.rou.alt.xml" t="Include" />
+                <e p="rou1.rou.xml" t="Include" />
+                <e p="rou10.rou.alt.xml" t="Include" />
+                <e p="rou10.rou.xml" t="Include" />
+                <e p="rou100.rou.alt.xml" t="Include" />
+                <e p="rou100.rou.xml" t="Include" />
+                <e p="rou150.rou.alt.xml" t="Include" />
+                <e p="rou150.rou.xml" t="Include" />
+                <e p="rou25.rou.alt.xml" t="Include" />
+                <e p="rou25.rou.xml" t="Include" />
+                <e p="rou250.rou.alt.xml" t="Include" />
+                <e p="rou250.rou.xml" t="Include" />
+                <e p="rou275.rou.alt.xml" t="Include" />
+                <e p="rou275.rou.xml" t="Include" />
+                <e p="rou300.rou.alt.xml" t="Include" />
+                <e p="rou300.rou.xml" t="Include" />
+                <e p="rou475.rou.alt.xml" t="Include" />
+                <e p="rou475.rou.xml" t="Include" />
+                <e p="rou5.rou.alt.xml" t="Include" />
+                <e p="rou5.rou.xml" t="Include" />
+                <e p="rou50.rou.alt.xml" t="Include" />
+                <e p="rou50.rou.xml" t="Include" />
+                <e p="rou500.rou.alt.xml" t="Include" />
+                <e p="rou500.rou.xml" t="Include" />
+                <e p="rou75.rou.alt.xml" t="Include" />
+                <e p="rou75.rou.xml" t="Include" />
+              </e>
+              <e p="rout.rou.alt.xml" t="Include" />
+              <e p="rout.rou.xml" t="Include" />
+              <e p="test-netconvert-plainxml" t="Include">
+                <e p="net.net.xml" t="Include" />
+                <e p="new.net.xml" t="Include" />
+                <e p="neww.net.xml" t="Include" />
+                <e p="plain.con.xml" t="Include" />
+                <e p="plain.edg.xml" t="Include" />
+                <e p="plain.nod.xml" t="Include" />
+                <e p="plain.tll.xml" t="Include" />
+                <e p="very-simple.net.xml" t="Include" />
+              </e>
+              <e p="tripas.trips.xml" t="Include" />
+              <e p="trips.trips.xml" t="Include" />
+            </e>
+            <e p="sumo-windridge - Copy" t="Include">
+              <e p="decals.xml" t="Include" />
+              <e p="decalsv2.xml" t="Include" />
+              <e p="edges.edg.xml" t="Include" />
+              <e p="edgescp.edg.xml" t="Include" />
+              <e p="fixed.net-v2.xml" t="Include" />
+              <e p="fixed.net.xml" t="Include" />
+              <e p="fixedv2.net.xml" t="Include" />
+              <e p="net-1net.net.xml" t="Include" />
+              <e p="net.net.xml" t="Include" />
+              <e p="nodes.nod.xml" t="Include" />
+              <e p="nodescp.nod.xml" t="Include" />
+              <e p="out.net.xml" t="Include" />
               <e p="rout.rou.alt.xml" t="Include" />
               <e p="rout.rou.xml" t="Include" />
               <e p="tripas.trips.xml" t="Include" />
@@ -1547,6 +1636,7 @@
           </e>
         </e>
         <e p="TestTransformAccess.cs" t="Include" />
+        <e p="UpwardForce.cs" t="Include" />
         <e p="Windridge" t="Include">
           <e p="RoadNet" t="Include">
             <e p="LeftNicosia.net.xml" t="Include" />
@@ -1616,7 +1706,5 @@
       <e p="Zenject-Editor.csproj" t="IncludeRecursive" />
       <e p="Zenject.csproj" t="IncludeRecursive" />
     </e>
-    <e p="C:\Users\chadj\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\chadj\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_thesis-sumo-in-unity.-1960694894.00" t="ExcludeRecursive" />
   </component>
 </project>

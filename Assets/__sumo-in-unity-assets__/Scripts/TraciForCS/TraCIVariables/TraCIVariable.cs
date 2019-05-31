@@ -20,8 +20,10 @@ namespace RiseProject.Tomis.SumoInUnity.SumoTypes
             private set => _ID = value;
         }
 
-        public bool IsInstantiated { get => _isInstantiated; set => _isInstantiated = value;}
-        [SerializeField]private bool _isInstantiated = false;
+        public bool IsInstantiated { get => _isInstantiated; private set => _isInstantiated = value;}
+        
+        [Header("Debug")]
+        [SerializeField, ReadOnly]private bool _isInstantiated = false;
 
         private void Instantiate()
         {
@@ -39,12 +41,15 @@ namespace RiseProject.Tomis.SumoInUnity.SumoTypes
             ID = id;            
         }
 
+        public event EventHandler<EventArgs> Disposed;
+            
         /// <summary>
         /// Disables the TraCIVariable
         /// </summary>
-        public void Disable()
+        public void Dispose()
         {
             _isInstantiated = false;
+            Disposed?.Invoke(this ,EventArgs.Empty);
         }
     }
 }

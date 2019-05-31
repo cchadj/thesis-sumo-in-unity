@@ -16,14 +16,9 @@ public class EnableVehicleView : MonoBehaviour {
 
     private void Awake()
     {
-        _selectedTargets.OnVehicleSelected += 
-            delegate
-            {
-                _curView = _selectedTargets.SelectedTransform.GetComponent<VehicleView>();
-                _curView.enabled = true;
-            };
+        _selectedTargets.VehicleSelected += SelectedTargets_OnVehicleSelected;
 
-        _selectedTargets.OnVehicleDeselected +=
+        _selectedTargets.VehicleDeselected +=
         delegate
         {
             if(_curView)
@@ -32,7 +27,9 @@ public class EnableVehicleView : MonoBehaviour {
         enabled = false;
     }
 
-
-
-
+    private void SelectedTargets_OnVehicleSelected(object sender, SelectedVehicleEventArgs e)
+    {
+        _curView = e.VehicleView;
+        _curView.enabled = true;
+    }
 }

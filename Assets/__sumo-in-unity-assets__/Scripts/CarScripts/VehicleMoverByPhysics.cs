@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RiseProject.Tomis.VehicleControl
 {
 
-    [RequireComponent(typeof(Rigidbody), typeof(VehicleConfigurationData))]
+    [RequireComponent(typeof(Rigidbody), typeof(Car))]
     public class VehicleMoverByPhysics : VehicleMover
     {
 

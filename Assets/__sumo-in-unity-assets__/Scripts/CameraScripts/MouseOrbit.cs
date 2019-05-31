@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using CodingConnected.TraCI.NET.Types;
+using Zenject;
 
 [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
 public class MouseOrbit : MonoBehaviour
 {
-
-    public Transform Target;
+    [SerializeField, ReadOnly] private Transform _target;
 
     public float distance = 5.0f;
     public float xSpeed = 120.0f;
@@ -23,9 +23,16 @@ public class MouseOrbit : MonoBehaviour
     float x = 0.0f;
     float y = 0.0f;
 
-    [SerializeField] private CurrentlySelectedTargets _currentlySelectedTargets;
+    private CurrentlySelectedTargets _selectedTargets;
+
+    [Inject]
+    private void Construct(CurrentlySelectedTargets selectedTargets)
+    {
+        _selectedTargets = selectedTargets;
+    }
+    
     // Use this for initialization
-    void Start()
+    private void Awake()
     {
         Vector3 angles = transform.eulerAngles;
         x = angles.y;
@@ -38,26 +45,27 @@ public class MouseOrbit : MonoBehaviour
         {
             _rigidBody.freezeRotation = true;
         }
+        
+        _selectedTargets.VehicleSelected += SelectedTargetsVehicleSelected;
     }
 
-    private void OnEnable()
+    private void SelectedTargetsVehicleSelected(object sender, SelectedVehicleEventArgs e)
     {
-        Target = _currentlySelectedTargets.SelectedTransform;
+        _target = e.SelectedTransform;
+        enabled = true;
     }
-
-    public void UpdateTarget()
-    {
-        Target = _currentlySelectedTargets.SelectedTransform;
-    }
+    
+    
 
     void LateUpdate()
     {
-        if (Target)
+        if (_target)
         {
-            if (Input.GetKey(KeyCode.LeftAlt))
+            if (Input.GetKey(KeyCode.Mouse1))
             {
                 x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
                 y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+                
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
             }
@@ -80,7 +88,7 @@ public class MouseOrbit : MonoBehaviour
             //    distance -= hit.distance;
             //}
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
-            Vector3 position = rotation * negDistance + Target.position;
+            Vector3 position = rotation * negDistance + _target.position;
 
             transform.rotation = rotation;
             transform.position = position;

@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ using TMPro;
 
 using RiseProject.Tomis.DataContainers;
 using RiseProject.Tomis.SumoInUnity.SumoTypes;
+using Zenject;
 
 namespace RiseProject.Tomis.SumoInUnity.MVC
 {
@@ -14,11 +16,11 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
     /// Intended use. Here there will be texts and labels (UI canvas)
     /// to change the state of the vehicle
     /// </summary>
-    [RequireComponent(typeof(VehicleConfigurationData), typeof(VehicleController))]
+    [RequireComponent(typeof(Car), typeof(VehicleController))]
     public class VehicleView : SumoTypeView<VehicleController, Vehicle>
     {
         
-        private CurrentlySelectedTargets selectedTargets;
+        private CurrentlySelectedTargets _selectedTargets;
         
         #region initial text values
         private string _initialVehicleIDText;
@@ -35,7 +37,7 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
         #endregion initial text values
         #region UI Components        
 
-        private VehicleConfigurationData _vehicleConfigurationData;
+        private Car _car;
 
         public TextMeshProUGUI VehicleIdText { get; set; }
         public TextMeshProUGUI SumoSpeedText { get; set; }
@@ -59,13 +61,22 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
 
         public Vehicle Vehicle { get; set; }
 
+        [Inject]
+        private void Construct(
+            CurrentlySelectedTargets selectedTargets,
+            VehicleCanvas vehicleCanvas )
+        {
+            _selectedTargets = selectedTargets;
+            Canvas = vehicleCanvas;
+        }
+        
         protected override void Awake()
         {
-            selectedTargets = CurrentlySelectedTargets.Instance;
-            Canvas = VehicleCanvas.Instance;
             if (!Canvas)
+            {
+                enabled = false;
                 return;
-
+            }
             VehicleIdText = Canvas.VehicleIdText;
             EdgeIdText = Canvas.EdgeIdText;
             LaneIdText = Canvas.LaneIdText;
@@ -94,12 +105,12 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
 
         public void UpdateReferencesToMatchAttachedVehicle()
         {
-            _vehicleConfigurationData = GetComponent<VehicleConfigurationData>();
-            Vehicle = _vehicleConfigurationData.TraciVariable;
+            _car = GetComponent<Car>();
+            Vehicle = _car.TraciVariable;
             Controller = GetComponent<VehicleController>();
         }
 
-        private void Vehicle_PositionAndAngleChanged(object sender, System.EventArgs e)
+        private void Vehicle_OnTransformChanged(object sender, System.EventArgs e)
         {
              UpdateMobilityTexts();
         }
@@ -109,12 +120,20 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             if (!Canvas)
                 return;
             
-            Vehicle.VehicleTransformChanged += Vehicle_PositionAndAngleChanged;
+            Vehicle.VehicleTransformChanged += Vehicle_OnTransformChanged;
+            Vehicle.Disposed += Vehicle_OnDisposed;
+            
             if(ApplySpeedButton)
                 ApplySpeedButton.onClick.AddListener(ApplySpeed);
-            
-            if (selectedTargets.SelectedTransform == transform)
-                UpdateView();
+//            
+//            if (_selectedTargets.selectedTransform == transform)
+//                UpdateView();
+        }
+
+        private void Vehicle_OnDisposed(object sender, EventArgs e)
+        {
+             Vehicle.VehicleTransformChanged -=  Vehicle_OnTransformChanged;
+             enabled = false;
         }
 
         private void OnDisable()
@@ -127,7 +146,7 @@ namespace RiseProject.Tomis.SumoInUnity.MVC
             
             ApplySpeedButton.onClick.RemoveListener(ApplySpeed);
             if(Vehicle)
-                Vehicle.VehicleTransformChanged -= Vehicle_PositionAndAngleChanged;
+                Vehicle.VehicleTransformChanged -= Vehicle_OnTransformChanged;
         }
 
         private void Update()

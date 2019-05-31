@@ -69,15 +69,6 @@ namespace RiseProject.Tomis.Editors
                 }, Client.NumberOfConnections);
                 EditorGUILayout.EndHorizontal();
 
-                if (!Client.UseSumoGui)
-                {
-                    Client.ShowTerminal = EditorGUILayout.Toggle(new GUIContent()
-                    {
-                        text = "Show Terminal",
-                        tooltip = "If checked terminal doesn't pop up. Also output is redirected."
-                    }, Client.ShowTerminal);
-                }
-
                 Client.StepLength = EditorGUILayout.Slider(
                     new GUIContent
                     {
@@ -91,22 +82,13 @@ namespace RiseProject.Tomis.Editors
                     tooltip = " the -b option in sumo.exe and sumo-gui.exe.  0 for the start "
                 }, Client.BeginStep);
 
-                Client.CaptureSumoProcessErrors = EditorGUILayout.Toggle(
-                    new GUIContent
-                    {
-                        text = "Capture sumo process errors",
-                        tooltip =
-                            " Whether the sumo process errors should be printed. "
-                    }, Client.CaptureSumoProcessErrors
-                );
-
-                Client.RedirectionMode = (SumoProcessRedirectionMode) EditorGUILayout.EnumPopup(
+                Client.redirectionMode = (SumoProcessRedirectionMode) EditorGUILayout.EnumPopup(
                     new GUIContent
                     {
                         text = " Output Redirection Mode ",
                         tooltip = " How will the output of the SUMO process will be redirected "
                     },
-                    Client.RedirectionMode);
+                    Client.redirectionMode);
 
 
                 if (GUILayout.Button("Select Sumo Configuration File"))

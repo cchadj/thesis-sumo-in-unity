@@ -22,20 +22,25 @@ public class PrefabPlacer : MonoBehaviour
     // Use this for initialization
     public void PlacePrefabs ()
     {
+
 	    if (objectsWithNames != null) 
 			foreach (var name in objectsWithNames)
-		
 				foreach (var gameObject in (GameObject[]) FindObjectsOfType(typeof(GameObject)))
-					if ( !gameObject.transform.GetEnumerator().MoveNext() &&  gameObject.name == name)
-						AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
-							tranformToPlaceNewObjectsUnder);
-			
+				{
+					// The second part is because when the localPosition is (0,0,0) then the object is just a placeholder
+					// and does not represent a gameobject with a renderer
+					if ( gameObject.name == name && gameObject.transform.localPosition != Vector3.zero)
+						Undo.RegisterCreatedObjectUndo(AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
+							tranformToPlaceNewObjectsUnder),"placed prefab at scene");
+				}
 
+	    
 	    if(gameObjects != null)
 			foreach (var gameObject in gameObjects)
 				AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
 					tranformToPlaceNewObjectsUnder);
 
+	    
 	    if(parentOfObjects)
 	    foreach (GameObject child in parentOfObjects)
 		    AddGameObjectRelativeTo(gameObject, objectToPlace, relativePositionAndOrientation,
@@ -44,19 +49,19 @@ public class PrefabPlacer : MonoBehaviour
 	    
     }
 
-    private static void AddGameObjectRelativeTo(
+    private GameObject AddGameObjectRelativeTo(
 	    GameObject o,
 	    GameObject objToPlace,
 	    Transform relativeTransform,
 	    Transform parentToPlaceNewObjectsUnder = null)
     {
 	    var newGameObject =  (GameObject)PrefabUtility.InstantiatePrefab(objToPlace);
-	    newGameObject.transform.parent = o.transform;
 
-	    newGameObject.transform.localPosition = relativeTransform.position;
-	    newGameObject.transform.localRotation = relativeTransform.rotation;
+	    newGameObject.transform.position = o.transform.TransformPoint(relativeTransform.position);
+	    newGameObject.transform.rotation = o.transform.localRotation * relativeTransform.rotation;
 
 	    newGameObject.transform.parent = parentToPlaceNewObjectsUnder;
+	    return newGameObject;
     }
 }
 #endif

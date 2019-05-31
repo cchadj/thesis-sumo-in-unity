@@ -29,7 +29,7 @@ while getopts ":n:a:c:d:r:" opt; do
   esac
 done
 
-echo "Using net $NET_XML_NAME"
+echo "Creating net $NET_XML_NAME"
 echo "Arm number $ARM_NUMBER"
 echo "Circle number $CIRCLE_NUMBER"
 echo "Space radius $RADIUS"
@@ -52,6 +52,7 @@ NETGENERATE.exe --spider \
 
 cp "$NET_XML_NAME" "$DIRECTORY_OUTPUT/" 
 
+# Generate sumo.cfg for each rumber of vehicles based on NET_XML_NAME 
 NUMBER_OF_VEHICLES_ARRAY=( 1 5 10 50 100 250 500 750 1000 1250 2500 3000)
 for i in "${NUMBER_OF_VEHICLES_ARRAY[@]}"
 do
@@ -63,7 +64,7 @@ do
     cat <<EOF > "$DIRECTORY_OUTPUT/run$i.sumocfg"
     <configuration>
         <input>
-            <net-file value="net.net.xml"/>
+            <net-file value="$NET_XML_NAME"/>
             <route-files value="rou$i.rou.xml"/>
         </input>
     </configuration>

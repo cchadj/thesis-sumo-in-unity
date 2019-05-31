@@ -1,7 +1,10 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using Tomis.Utils.Unity;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+
 public class VehicleCanvas : SingletonMonoBehaviour<VehicleCanvas>
 {
     [SerializeField] private TextMeshProUGUI vehicleIdText;
@@ -33,4 +36,36 @@ public class VehicleCanvas : SingletonMonoBehaviour<VehicleCanvas>
     public TMP_InputField SetSpeedInputField => setSpeedInputField;
     
     public Button ApplySpeedButton => applySpeedButton;
+
+    private InputManager _inputManager;
+    private CurrentlySelectedTargets _selectedTargets;
+    
+    [Inject]
+    private void Construct(
+        CurrentlySelectedTargets selectedTargets
+        )
+    {
+        _selectedTargets = selectedTargets;
+    }
+    private void Start()
+    {
+        _selectedTargets.VehicleSelected += VehicleSelected;
+        _selectedTargets.VehicleDeselected += VehicleDeselected;
+
+        enabled = false;
+        gameObject.SetActive(false);
+
+    }
+
+    private void VehicleDeselected(object sender, EventArgs e)
+    {
+        gameObject.SetActive(false);
+        enabled = false;
+    }
+
+    private void VehicleSelected(object sender, SelectedVehicleEventArgs e)
+    {
+        enabled = true;
+        gameObject.SetActive(true);
+    }
 }

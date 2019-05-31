@@ -223,7 +223,6 @@ GameObject:
   - component: {fileID: 7109438482359096356}
   - component: {fileID: 7109539916797046796}
   - component: {fileID: 7109694825701252394}
-  - component: {fileID: 7109255757530605052}
   m_Layer: 0
   m_Name: ApplicationManager
   m_TagString: Untagged
@@ -257,21 +256,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5b15f8a1ad59249bdb03b94c9919ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redirectionMode: 0
   <UseMultithreading>k__BackingField: 0
   UseLocalSumo: 1
   <ShouldServeSumo>k__BackingField: 1
-  <CaptureSumoProcessErrors>k__BackingField: 0
   <NumberOfConnections>k__BackingField: 1
-  <UseContextSubscription>k__BackingField: 1
+  <SubscriptionType>k__BackingField: 1
   <SumoNetworkData>k__BackingField: {fileID: 11400000, guid: 4ee5074a6027d9f45ae3d8f41a7717d0,
     type: 2}
   <StepLength>k__BackingField: 0.05
-  <SumocfgFile>k__BackingField: C:/Users/VR_Lab/Desktop/tomis-thesis/unity-workspace/thesis-sumo-in-unity/Assets/StreamingAssets/sumo-scenarios/out-15-15/run500.sumocfg
+  <SumocfgFile>k__BackingField: C:/Users/VR_Lab/Desktop/tomis-thesis/unity-workspace/thesis-sumo-in-unity/Assets/StreamingAssets/sumo-scenarios/sumo-windridge/output-net-1net/run500.sumocfg
   <UseSumoGui>k__BackingField: 0
   <Ip>k__BackingField: 127.0.0.1
   <BeginStep>k__BackingField: 0
   <RemotePort>k__BackingField: 2500
-  <ShowTerminal>k__BackingField: 1
   <SharedVehicleData>k__BackingField: {fileID: 11400000, guid: 9613f96213a068647bafdc32d4abee15,
     type: 2}
   <CreateFpsByVehicleCountPlot>k__BackingField: 0
@@ -289,7 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b351f95d52fe5147bc9251484080a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehiclePrefab: {fileID: 8417816979413190554}
+  vehiclePrefab: {fileID: 1493568535204355124, guid: daa874e312a27cf4097e24c46dc0bbe0,
+    type: 3}
 --- !u!114 &7109694825701252394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,36 +304,6 @@ MonoBehaviour:
   <DontUseVehicleSimulator>k__BackingField: 0
   <DontUseSumo>k__BackingField: 0
   <UseReporter>k__BackingField: 0
---- !u!114 &7109255757530605052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7149967023925475808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1092130167e2e804c8e677c7eb1b83f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _gameEvents:
-  - {fileID: 11400000, guid: a66732ce144cf804ab70a19352c785db, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7109694825701252394}
-        m_MethodName: TerminateSimulation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &7150203255595629856
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7147468631145525810}
   m_Layer: 0
-  m_Name: SumoInUnity
+  m_Name: '---------- SumoInUnity ----------'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -383,7 +352,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7147547229144482188}
-  - component: {fileID: 7109181333314962842}
+  - component: {fileID: 7772376007821214746}
+  - component: {fileID: 2136884099}
   m_Layer: 0
   m_Name: RoadNetworkGenerator
   m_TagString: Untagged
@@ -405,7 +375,7 @@ Transform:
   m_Father: {fileID: 7147468631145525810}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7109181333314962842
+--- !u!114 &7772376007821214746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -414,22 +384,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 7150406702101040372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f867c84a25724e64fb86645865fd7d7b, type: 3}
+  m_Script: {fileID: 11500000, guid: a439d5d453aba65458ffb4723954011f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshName: Generated Road Network
+  meshName: 
   sumoNetXmlFile: 
-  roadMaterial: {fileID: 2100000, guid: 8800e1bcf2955da4191427c5386be758, type: 2}
-  junctionMaterial: {fileID: 2100000, guid: 8800e1bcf2955da4191427c5386be758, type: 2}
-  junctionTrafficLightMaterial: {fileID: 2100000, guid: 50ebf38c447be8f4a8b784703bf3fcc1,
-    type: 2}
+  roadMaterial: {fileID: 0}
+  junctionMaterial: {fileID: 0}
+  junctionTrafficLightMaterial: {fileID: 0}
   lengthThreshold: 0
+  minimumLaneLength: 0
   roadWidth: 4
-  renderPercentage: 0.5
+  renderPercentage: 0
   renderJunctions: 0
-  <OnClickLaneEvents>k__BackingField: []
+  sumoToUnityGameObjectMap: {fileID: 0}
   addBoxCollider: 1
-  laneCanvas: {fileID: 0}
+  attachHeightMatcher: 1
+  heightBufferObjects: []
+  drawNormals: 1
+  showDebugRays: 0
+--- !u!114 &2136884099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150406702101040372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a439d5d453aba65458ffb4723954011f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshName: 
+  sumoNetXmlFile: 
+  roadMaterial: {fileID: 0}
+  junctionMaterial: {fileID: 0}
+  junctionTrafficLightMaterial: {fileID: 0}
+  lengthThreshold: 0
+  minimumLaneLength: 0
+  roadWidth: 4
+  renderPercentage: 0
+  renderJunctions: 0
+  sumoToUnityGameObjectMap: {fileID: 11400000, guid: 37da75d34935d084689fe2b286f225b8,
+    type: 2}
+  addBoxCollider: 1
   attachHeightMatcher: 1
   heightBufferObjects: []
   drawNormals: 1
@@ -611,72 +609,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3176474325668546533, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3176702424965589799, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3176199749139067241, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3177063172762007417, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3177111834417792919, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3177219776883123675, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3177286365131600959, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3178086758272127945, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3178133418655016183, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3176611929937103265, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
-    - target: {fileID: 3176717810572188879, guid: 9be2c19815b195743b5c25e72e4f6cb7,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9be2c19815b195743b5c25e72e4f6cb7, type: 3}
 --- !u!224 &4124154895894005996 stripped
@@ -818,26 +750,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6925454559936725892, guid: 1ad83ecf4638476428087407eb0e18c6,
-        type: 3}
-      propertyPath: CarHull
-      value: 
-      objectReference: {fileID: 7630602824410354882}
-    - target: {fileID: 6925454559936725892, guid: 1ad83ecf4638476428087407eb0e18c6,
-        type: 3}
-      propertyPath: _carHullColor.r
-      value: 0.58860123
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925454559936725892, guid: 1ad83ecf4638476428087407eb0e18c6,
-        type: 3}
-      propertyPath: _carHullColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6925454559936725892, guid: 1ad83ecf4638476428087407eb0e18c6,
-        type: 3}
-      propertyPath: _carHullColor.b
-      value: 0.033018887
-      objectReference: {fileID: 0}
     - target: {fileID: 6920504725427986450, guid: 1ad83ecf4638476428087407eb0e18c6,
         type: 3}
       propertyPath: m_IsActive
@@ -848,33 +760,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8725611560923316905, guid: 1ad83ecf4638476428087407eb0e18c6,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5344712462043714302, guid: 1ad83ecf4638476428087407eb0e18c6,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798978741927713932, guid: 1ad83ecf4638476428087407eb0e18c6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6798978741927713932, guid: 1ad83ecf4638476428087407eb0e18c6,
+        type: 3}
+      propertyPath: firstUpdate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ad83ecf4638476428087407eb0e18c6, type: 3}
 --- !u!4 &8934490597504681827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2010904641835973331, guid: 1ad83ecf4638476428087407eb0e18c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6923585973536472496}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8417816979413190554 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1497327252246395434, guid: 1ad83ecf4638476428087407eb0e18c6,
-    type: 3}
-  m_PrefabInstance: {fileID: 6923585973536472496}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7630602824410354882 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 716314325913364850, guid: 1ad83ecf4638476428087407eb0e18c6,
     type: 3}
   m_PrefabInstance: {fileID: 6923585973536472496}
   m_PrefabAsset: {fileID: 0}
